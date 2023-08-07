@@ -17,6 +17,13 @@ Route::get('product-edit/{id}', [ProductController::class, 'edit']);
 Route::post('product-update', [ProductController::class, 'update']);
 
 // admin dashboard
-Route::get('admin/index', [AdminController::class, 'dashboard']);
-Route::get('admin/product-list', [AdminController::class, 'list']);
-Route::get('admin/product-add', [AdminController::class, 'add']);
+Route::get('admin/index', [AdminController::class, 'dashboard'])->name('adminHome')->middleware("isLoggedIn");
+Route::get('admin/login', [AdminController::class, 'login'])->name('adminLogin');
+Route::post('admin/loginProcess', [AdminController::class, 'loginProcess'])->name('adminLoginProcess');
+Route::get('admin/loginout', [AdminController::class, 'logout'])->name('adminLogout');
+// admin Product
+Route::get('admin/product-list', [AdminController::class, 'list'])->middleware('isLoggedIn');
+Route::get('admin/product-add', [AdminController::class, 'add'])->middleware('isLoggedIn');
+//admin Category
+Route::get('admin/category-list', [AdminController::class, 'list'])->middleware('isLoggedIn');
+Route::get('admin/category-add', [AdminController::class, 'add'])->middleware('isLoggedIn');

@@ -17,50 +17,46 @@
     <div class="container mt-3" style="margin-top:20px">
         <h2>Update product</h2>
         @if (Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
-            </div>
+        <div class="alert alert-success" role="alert">
+            {{Session::get('success')}}
+        </div>
         @endif
-        <form action="{{ url('product-update') }}" method="POST">
+        <form action="{{url('product-update')}}" method="POST">
             @csrf
             <div class="mb-3 mt-3">
                 <label for="id">Product ID:</label>
-                <input type="text" class="form-control" id="id" name="id" value="{{ $data->productID }}"
-                    readonly>
+                <input type="text" class="form-control" id="id" name="id" value="{{$data->productID}}" readonly>
             </div>
             <div class="mb-3 mt-3">
                 <label for="name">Product Name:</label>
-                <input type="text" class="form-control" id="name" name="name"
-                    value="{{ $data->productName }}">
+                <input type="text" class="form-control" id="name" name="name" value="{{$data->productName}}">
             </div>
             <div class="mb-3 mt-3">
                 <label for="price">Product Price:</label>
-                <input type="number" class="form-control" id="price" name="price"
-                    value="{{ $data->productPrice }}">
+                <input type="number" class="form-control" id="price" name="price" value="{{$data->productPrice}}">
             </div>
             <div class="mb-3 mt-3">
                 <label for="image">Product Image:</label>
-                <input type="hidden" value="{{ $data->productImage }}" id="old_image" name="old_image"><br>
-                <img src="../pro_img/{{ $data->productImage }}" style="height: 100px; width: 100px;"><br>
+                <input type="hidden" value="{{$data->productImage}}" id="old_image" name="old_image"><br>
+                <img src="../pro_img/{{$data->productImage}}" style="height: 100px; width: 100px;"><br>
                 <input type="file" class="form-control" id="new_image" name="new_image">
             </div>
             <div class="mb-3 mt-3">
                 <label for="details">Details:</label>
                 <textarea class="form-control" rows="5" id="details" name="details">
-                {{ $data->productDetails }}
+                {{$data->productDetails}}
                 </textarea>
             </div>
             <div class="mb-3 mt-3">
                 <label for="category">Category:</label>
                 <select name="category" id="category" class="form-control">
                     @foreach ($cat as $c)
-                        <option value="{{ $c->catID }}" {{ $c->catID == $data->catID ? 'selected' : '' }}>
-                            {{ $c->catName }}</option>
+                    <option value="{{$c->catID}}" {{$c->catID == $data->catID ? 'selected' : ''}}>{{$c->catName}}</option>
                     @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ url('product-list') }}" class="btn btn-danger">Back</a>
+            <a href="{{url('product-list')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </body>

@@ -10,8 +10,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $data = Product::get();
-        return view('product-list', compact('data'));
+        $pro = Product::get();
+        return view('product-list', compact('pro'));
     }
 
     public function add()
@@ -36,5 +36,11 @@ class ProductController extends Controller
     {
         Product::where('productID', '=', $id)->delete();
         return redirect()->back()->with('success', 'Product delete successfully!');
+    }
+    public function edit($id)
+    {
+        $cat = Category::get();
+        $pro = Product::where('productID', '=', $id)->first();
+        return view('admin/product-edit', compact('data', 'cat'));
     }
 }

@@ -29,17 +29,16 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-                <a class="navbar-brand brand-logo" href="{{ url('admin/index') }}">
+                <a class="navbar-brand brand-logo" href="{{url('admin/index')}}">
                     <img src="../admin/assets/images/logo.svg" alt="logo" /> </a>
-                <a class="navbar-brand brand-logo-mini" href="{{ url('admin/index') }}">
+                <a class="navbar-brand brand-logo-mini" href="{{url('admin/index')}}">
                     <img src="../admin/assets/images/logo-mini.svg" alt="logo" /> </a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
                 <ul class="navbar-nav">
                     <li class="nav-item font-weight-semibold d-none d-lg-block">Help : +050 2992 709</li>
                     <li class="nav-item dropdown language-dropdown">
-                        <a class="nav-link dropdown-toggle px-2 d-flex align-items-center" id="LanguageDropdown"
-                            href="#" data-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle px-2 d-flex align-items-center" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                             <div class="d-inline-flex mr-0 mr-md-3">
                                 <div class="flag-icon-holder">
                                     <i class="flag-icon flag-icon-us"></i>
@@ -47,8 +46,7 @@
                             </div>
                             <span class="profile-text font-weight-medium d-none d-md-block">English</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2"
-                            aria-labelledby="LanguageDropdown">
+                        <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
                             <a class="dropdown-item">
                                 <div class="flag-icon-holder">
                                     <i class="flag-icon flag-icon-us"></i>
@@ -79,13 +77,11 @@
                 </form>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                             <i class="mdi mdi-bell-outline"></i>
                             <span class="count">7</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                            aria-labelledby="messageDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
                             <a class="dropdown-item py-3">
                                 <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
                                 <span class="badge badge-pill badge-primary float-right">View all</span>
@@ -93,8 +89,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="../admin/assets/images/faces/face10.jpg" alt="image"
-                                        class="img-sm profile-pic">
+                                    <img src="../admin/assets/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
                                 </div>
                                 <div class="preview-item-content flex-grow py-2">
                                     <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
@@ -103,8 +98,7 @@
                             </a>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="../admin/assets/images/faces/face12.jpg" alt="image"
-                                        class="img-sm profile-pic">
+                                    <img src="../admin/assets/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
                                 </div>
                                 <div class="preview-item-content flex-grow py-2">
                                     <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
@@ -113,25 +107,21 @@
                             </a>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
-                                    <img src="../admin/assets/images/faces/face1.jpg" alt="image"
-                                        class="img-sm profile-pic">
+                                    <img src="../admin/assets/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
                                 </div>
                                 <div class="preview-item-content flex-grow py-2">
-                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins
-                                    </p>
+                                    <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
                                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
                                 </div>
                             </a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator" id="notificationDropdown" href="#"
-                            data-toggle="dropdown">
+                        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
                             <i class="mdi mdi-email-outline"></i>
                             <span class="count bg-success">3</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                            aria-labelledby="notificationDropdown">
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
                             <a class="dropdown-item py-3 border-bottom">
                                 <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
                                 <span class="badge badge-pill badge-primary float-right">View all</span>
@@ -141,8 +131,7 @@
                                     <i class="mdi mdi-alert m-auto text-primary"></i>
                                 </div>
                                 <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error
-                                    </h6>
+                                    <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
                                     <p class="font-weight-light small-text mb-0"> Just now </p>
                                 </div>
                             </a>
@@ -160,37 +149,30 @@
                                     <i class="mdi mdi-airballoon m-auto text-primary"></i>
                                 </div>
                                 <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration
-                                    </h6>
+                                    <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
                                     <p class="font-weight-light small-text mb-0"> 2 days ago </p>
                                 </div>
                             </a>
                         </div>
                     </li>
                     <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
-                            aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="../pro_img/{{ Session::get('adminPhoto') }}"
-                                alt="Profile image"> </a>
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <img class="img-xs rounded-circle" src="../pro_img/{{Session::get('adminPhoto')}}" alt="Profile image"> </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="../pro_img/{{ Session::get('adminPhoto') }}"
-                                    alt="Profile image">
-                                <p class="mb-1 mt-3 font-weight-semibold">{{ Session::get('adminID') }}</p>
-                                <p class="font-weight-light text-muted mb-0">{{ Session::get('adminName') }}</p>
+                                <img class="img-md rounded-circle" src="../pro_img/{{Session::get('adminPhoto')}}" alt="Profile image">
+                                <p class="mb-1 mt-3 font-weight-semibold">{{Session::get('adminID')}}</p>
+                                <p class="font-weight-light text-muted mb-0">{{Session::get('adminName')}}</p>
                             </div>
-                            <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i
-                                    class="dropdown-item-icon ti-dashboard"></i></a>
+                            <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
                             <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
                             <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
                             <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                            <a class="dropdown-item" href="{{ route('adminLogout') }}">Sign Out<i
-                                    class="dropdown-item-icon ti-power-off"></i></a>
+                            <a class="dropdown-item" href="{{route('adminLogout')}}">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
                         </div>
                     </li>
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
@@ -203,26 +185,24 @@
                     <li class="nav-item nav-profile">
                         <a href="#" class="nav-link">
                             <div class="profile-image">
-                                <img class="img-xs rounded-circle" src="../pro_img/{{ Session::get('adminPhoto') }}"
-                                    alt="profile image">
+                                <img class="img-xs rounded-circle" src="../admin/assets/images/faces/face8.jpg" alt="profile image">
                                 <div class="dot-indicator bg-success"></div>
                             </div>
                             <div class="text-wrapper">
-                                <p class="profile-name">{{ Session::get('adminName') }}</p>
+                                <p class="profile-name">{{Session::get('adminName')}}</p>
                                 <p class="designation">Premium user</p>
                             </div>
                         </a>
                     </li>
                     <li class="nav-item nav-category">Main Menu</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('admin/index') }}">
+                        <a class="nav-link" href="{{url('admin/index')}}">
                             <i class="menu-icon typcn typcn-document-text"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon typcn typcn-coffee"></i>
                             <span class="menu-title">Product Management</span>
                             <i class="menu-arrow"></i>
@@ -230,20 +210,19 @@
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('admin/product-add') }}">Add product</a>
+                                    <a class="nav-link" href="{{url('admin/product-add')}}">Add product</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('admin/product-list') }}">Show all</a>
+                                    <a class="nav-link" href="{{url('admin/product-list')}}">Show all</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('admin/product-list') }}">Edit/Delete</a>
+                                    <a class="nav-link" href="{{url('admin/product-list')}}">Edit/Delete</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon typcn typcn-coffee"></i>
                             <span class="menu-title">Category Management</span>
                             <i class="menu-arrow"></i>
@@ -251,7 +230,7 @@
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('admin/catelogy-add') }}">Add category</a>
+                                    <a class="nav-link" href="pages/ui-features/buttons.html">Add category</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="pages/ui-features/dropdowns.html">Show all</a>
@@ -263,8 +242,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon typcn typcn-coffee"></i>
                             <span class="menu-title">Producer Management</span>
                             <i class="menu-arrow"></i>
@@ -284,8 +262,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon typcn typcn-coffee"></i>
                             <span class="menu-title">Customer Management</span>
                             <i class="menu-arrow"></i>
@@ -310,68 +287,48 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h3 class="card-title">Product List</h3>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Product name</th>
-                                                <th>Price</th>
-                                                <th>Image</th>
-                                                <th>Category</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($pro as $p)
-                                                <tr>
-                                                    <td>{{ $p->productID }}</td>
-                                                    <td>{{ $p->productName }}</td>
-                                                    <td>{{ $p->productPrice }}</td>
-                                                    <td><img src=" ..\pro_img\{{ $p->productImage }}"
-                                                            style="height: 100px; width: 100px;"></td>
-                                                    <td>{{ $p->catID }}</td>
-                                                    <td>
-                                                        <a href="{{ url('product-edit/' . $p->productID) }}"
-                                                            class="btn btn-danger">Edit</a>
-                                                        <a href="#" class="btn btn-danger" data-toggle="modal"
-                                                            data-target="#deleteModal">Delete</a>
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="deleteModal" tabindex="-1"
-                                                            role="dialog" aria-labelledby="deleteModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="deleteModalLabel">
-                                                                            Confirm Deletion</h5>
-                                                                        <button type="button" class="close"
-                                                                            data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <p>Are you sure you want to delete this product?
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
-                                                                            data-dismiss="modal">Cancel</button>
-                                                                        <a href="{{ url('product-delete/' . $p->productID) }}"
-                                                                            class="btn btn-danger">Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                    <h3 class="card-title">Add new product</h3>
+                                    <form class="forms-sample">
+                                        <div class="form-group">
+                                            <label for="">Product ID</label>
+                                            <input type="text" class="form-control" id="id" name="id" placeholder="Enter product id">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter product name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Price</label>
+                                            <input type="number" class="form-control" id="price" name="price" placeholder="Enter product price">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>File upload</label>
+                                            <input type="file" id="image" name="imgage[]" class="file-upload-default">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                                <span class="input-group-append">
+                                                    <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Details</label>
+                                            <textarea class="form-control" name="details" id="details" cols="30" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Category</label>
+                                            <select name="category" id="category" class="form-control">
+                                                @foreach ($cat as $c)
+                                                <option value="{{$c->catID}}">{{$c->catName}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-success mr-2">Add new</button>
+                                        <a href="{{url('admin/product-list')}}" class="btn btn-danger">Cancel</a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -381,11 +338,8 @@
                 <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
                     <div class="container-fluid clearfix">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                            bootstrapdash.com 2020</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                                href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
                     </div>
                 </footer>
                 <!-- partial -->
