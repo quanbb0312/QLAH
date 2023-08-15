@@ -38,8 +38,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'users', // Hoặc provider bạn đang sử dụng
         ],
+        // ...
+    ],
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        // ...
     ],
 
     /*
@@ -59,17 +68,12 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
+
+    // 'users' => [
+    //     'driver' => 'database',
+    //     'table' => 'users',
+    // ],
 
     /*
     |--------------------------------------------------------------------------

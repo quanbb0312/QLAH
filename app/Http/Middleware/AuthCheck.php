@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Session;
 
@@ -16,8 +17,8 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Session::has('adminsID')) {
-            return redirect('admin/login')->with('fail', 'You must first log in.');
+        if (!Auth::check()) {
+            return redirect()->route('adminLogin')->with('fail', 'You must first log in.');
         }
         return $next($request);
     }

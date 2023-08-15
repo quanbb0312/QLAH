@@ -11,19 +11,23 @@ class ProductController extends Controller
     public function index()
     {
         $pro = Product::get();
-        return view('product-list', compact('pro'));
+        return view('admin.product.list', compact('pro'));
+    }
+    public function list()
+    {
+        $pro = Product::get();
+        return view('admin.product.list', compact('pro'));
     }
 
     public function add()
     {
         $cat = Category::get();
-        return view('product-add', compact('cat'));
+        return view('admin.product.add', compact('cat'));
     }
 
     public function save(Request $request)
     {
         $pro = new Product();
-        $pro->productID = $request->id;
         $pro->productName = $request->name;
         $pro->productPrice = $request->price;
         $pro->productImage = $request->image;
@@ -32,6 +36,8 @@ class ProductController extends Controller
         $pro->save();
         return redirect()->back()->with('success', 'Product added successfully!');
     }
+
+
     public function delete($id)
     {
         Product::where('productID', '=', $id)->delete();
@@ -41,6 +47,18 @@ class ProductController extends Controller
     {
         $cat = Category::get();
         $pro = Product::where('productID', '=', $id)->first();
-        return view('admin/product-edit', compact('data', 'cat'));
+        return view('admin.product.edit', compact('pro', 'cat'));
+    }
+    public function update(Request $request)
+    {
+        $img = $request->new_image == "" ? $request->old_image : $request->new_image;
+        Product::where('productID', '=', $request->id)->update([
+            'productName' => $request->name,
+            'productPrice' => $request->price,
+            'productImage' => $img,
+            'productDetails' => $request->details,
+            'catID' => $request->category
+        ]);
+        return redirect()->back()->with('success', 'Product updated successfully!');
     }
 }
