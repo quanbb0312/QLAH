@@ -60,7 +60,8 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
         Route::post('save', [OrderController::class, 'save'])->name('order-save');
         Route::delete('delete/{id}', [OrderController::class, 'delete'])->name('order-delete');
         Route::get('edit/{id}', [OrderController::class, 'edit'])->name('order-edit');
-        Route::post('update', [OrderController::class, 'update'])->name('order-update');
+        Route::get('show-detail/{id}', [OrderController::class, 'show'])->name('order-show-detail');
+        Route::put('update/{id}', [OrderController::class, 'update'])->name('order-update');
     });
 
     //admin Customer
@@ -70,7 +71,7 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
         Route::post('save', [CustomerController::class, 'save'])->name('customer-save');
         Route::delete('delete/{id}', [CustomerController::class, 'delete'])->name('customer-delete');
         Route::get('edit/{id}', [CustomerController::class, 'edit'])->name('customer-edit');
-        Route::post('update', [CustomerController::class, 'update'])->name('customer-update');
+        Route::put('update/{id}', [CustomerController::class, 'update'])->name('customer-update');
     });
 });
 

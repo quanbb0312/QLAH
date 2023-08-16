@@ -25,10 +25,11 @@ class CustomerController extends Controller
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->password = bcrypt($request->password);
         // Thêm các trường thông tin khác tương tự ở đây
         $customer->save();
-
-        return redirect()->route('admin.customer.list')->with('success', 'Customer added successfully!');
+        return redirect()->route('customer-list')->with('success', 'Customer added successfully!');
     }
 
     public function edit($id)
@@ -43,11 +44,12 @@ class CustomerController extends Controller
         // Xử lý cập nhật thông tin khách hàng vào CSDL
         $customer = Customer::findOrFail($id);
         $customer->name = $request->name;
+        $customer->phone = $request->phone;
         $customer->email = $request->email;
         // Cập nhật các trường thông tin khác tương tự ở đây
         $customer->save();
 
-        return redirect()->route('admin.customer.list')->with('success', 'Customer updated successfully!');
+        return redirect()->route('customer-list')->with('success', 'Customer updated successfully!');
     }
 
     public function delete($id)

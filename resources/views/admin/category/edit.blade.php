@@ -5,7 +5,6 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-
                         <h2>Update Category</h2>
                         @if (Session::has('success'))
                             <div class="alert alert-success" role="alert">
