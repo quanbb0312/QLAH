@@ -13,6 +13,7 @@
                                     <th>ID</th>
                                     <th>Product name</th>
                                     <th>Price</th>
+                                    <th>Quantity</th>
                                     <th>Image</th>
                                     <th>Description</th>
                                     <th>Category</th>
@@ -22,21 +23,21 @@
                             <tbody>
                                 @foreach ($pro as $p)
                                     <tr>
-                                        <td>{{ $p->productID }}</td>
+                                        <td>{{ $p->id }}</td>
                                         <td>{{ $p->productName }}</td>
                                         <td>{{ $p->productPrice }}</td>
-                                        <td><img src="{{ asset('storage/admin_photos/' . $p->productImage) }}"
+                                        <td>{{ $p->productQuantity }}</td>
+                                        <td><img src="{{ asset('storage/products/' . $p->productImage) }}"
                                                 style="height: 100px; width: 100px;">
                                         </td>
                                         <td>{{ $p->productDetails }}</td>
-                                        <td>{{ $p->catID }}</td>
+                                        <td>{{ $p->category->catName }}</td>
                                         <td>
 
-                                            <a href="{{ route('product-edit', $p->productID) }}"
+                                            <a href="{{ route('product-edit', $p->id) }}"
                                                 class="btn btn-primary">Edit</a>
-                                            <button class='btn' type="submit">Delete</button>
                                             <a href="#" class="btn btn-danger" data-toggle="modal"
-                                                data-target="#deleteModal">Delete</a>
+                                                data-target="#deleteModal{{ $p->id }}">Delete</a>
                                             <!-- Modal -->
                                             <div class="modal fade" id="deleteModal{{ $p->id }}" tabindex="-1"
                                                 role="dialog" aria-labelledby="deleteModalLabel{{ $p->id }}"
@@ -57,16 +58,15 @@
                                                             </p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancel</button>
-                                                            <form action="{{ url('product-delete/', ['id' => $p->id]) }}"
-                                                                method="POST">
-                                                                @method('DELETE')
-                                                                @csrf
-                                                                <button type="submit"
-                                                                    class="btn btn-danger">Delete</button>
-                                                            </form>
-                                                        </div>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Cancel</button>
+                                                        <form action="{{ route('product-delete', $p->id) }}"
+                                                            method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>

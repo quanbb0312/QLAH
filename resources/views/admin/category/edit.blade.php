@@ -40,7 +40,7 @@
                                     value="{{ $category->catParentID }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ url('admin/category-list') }}" class="btn btn-danger">Back</a>
+                            <a href="{{ route('category-list') }}" class="btn btn-danger">Back</a>
                         </form>
                     </div>
                 </div>
