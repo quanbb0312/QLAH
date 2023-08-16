@@ -8,21 +8,27 @@
                         <thead>
                             <tr>
                                 <th>Order ID</th>
-                                <th>Customer ID</th>
-                                <th>Order Date</th>
+                                <th>Customer Name</th>
+                                <th>Customer Email</th>
+                                <th>Customer Phone</th>
+                                <th>Date</th>
                                 <th>Total Amount</th>
+                                <th>Note</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($order as $order)
+                            @foreach ($order as $key => $order)
                                 <tr>
-                                    <td>{{ $order->id }}</td>
-                                    <td>{{ $order->customer_id }}</td>
-                                    <td>{{ $order->order_date }}</td>
-                                    <td>{{ $order->total_amount }}</td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $order->customer->name }}</td>
+                                    <td>{{ $order->customer->email }}</td>
+                                    <td>{{ $order->customer->phone }}</td>
+                                    <td>{{ $order->date_at }}</td>
+                                    <td>{{ number_format($order->total) }} VND</td>
+                                    <td>{{ $order->note }}</td>
                                     <td>
-                                        <a href="{{ route('order-edit', $order->id) }}" class="btn btn-danger">Edit</a>
+                                        <a href="{{ route('order-show-detail', $order->id) }}" class="btn btn-danger">Show</a>
 
                                         <!-- Delete Form -->
                                         <a href="#" class="btn btn-danger" data-toggle="modal"

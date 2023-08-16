@@ -15,6 +15,11 @@
                                     value="{{ $customer->name }}" required>
                             </div>
                             <div class="form-group">
+                                <label for="name">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone"
+                                    value="{{ $customer->phone }}" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     value="{{ $customer->email }}" required>

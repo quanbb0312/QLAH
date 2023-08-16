@@ -18,4 +18,14 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_details', 'product_id', 'order_id');
+    }
+
+    public function orderdetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'product_id', 'id');
+    }
 }

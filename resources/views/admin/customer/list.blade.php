@@ -9,6 +9,7 @@
                             <tr>
                                 <th>Customer ID</th>
                                 <th>Name</th>
+                                <th>Phone</th>
                                 <th>Email</th>
                                 <th>Actions</th>
                             </tr>
@@ -18,6 +19,7 @@
                                 <tr>
                                     <td>{{ $customer->id }}</td>
                                     <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->phone }}</td>
                                     <td>{{ $customer->email }}</td>
                                     <td>
                                         <a href="{{ route('customer-edit', $customer->id) }}"

@@ -8,7 +8,7 @@ class Customer extends Model
 {
     protected $table = 'customers'; // Tên bảng trong CSDL
 
-    protected $fillable = ['id', 'name', 'email']; // Các trường cho phép fillable
+    protected $fillable = ['id', 'name', 'phone', 'email', 'password']; // Các trường cho phép fillable
 
     // Các phương thức hoặc liên kết đến các đơn hàng (nếu có)
     public function orders()
