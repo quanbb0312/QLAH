@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -28,37 +29,78 @@ class ProductController extends Controller
     public function save(Request $request)
     {
         $pro = new Product();
-        $pro->productName = $request->name;
-        $pro->productPrice = $request->price;
-        $pro->productImage = $request->image;
-        $pro->productDetails = $request->details;
-        $pro->catID = $request->category;
-        $pro->save();
-        return redirect()->back()->with('success', 'Product added successfully!');
+        $pro->productName = $request->productName;
+        $pro->productSlug = $request->productSlug;
+        $pro->productPrice = $request->productPrice;
+        $pro->productDetails = $request->productDetails;
+        $pro->productQuantity = $request->productQuantity;
+        $pro->category_id = $request->category_id;
+        $file = $request->image;
+        if ($request->hasFile('image')) {
+            $fileExtension = $file->getClientOriginalName();
+            $fileName = time(); // create file name by curent time
+            $newFileName = $fileName . '.' . $fileExtension; //45678908766.jpg
+            //Lưu file vào thư mục storage/app/public/image với tên mới
+            $request->file('image')->storeAs('public/products', $newFileName);
+            // Gán trường image của đối tượng task với tên mới
+            $pro->productImage = $newFileName;
+        }
+        try {
+            $pro->save();
+            return redirect()->back()->with('success', 'Product added successfully!');
+        } catch (\Exception $th) {
+            $image = 'public/products/' . $pro->image;
+            Storage::delete($image);
+            return redirect()->back();
+        }
     }
 
 
     public function delete($id)
     {
-        Product::where('productID', '=', $id)->delete();
+        Product::where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'Product delete successfully!');
     }
     public function edit($id)
     {
         $cat = Category::get();
-        $pro = Product::where('productID', '=', $id)->first();
+        $pro = Product::where('id', '=', $id)->first();
         return view('admin.product.edit', compact('pro', 'cat'));
     }
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
-        $img = $request->new_image == "" ? $request->old_image : $request->new_image;
-        Product::where('productID', '=', $request->id)->update([
-            'productName' => $request->name,
-            'productPrice' => $request->price,
-            'productImage' => $img,
-            'productDetails' => $request->details,
-            'catID' => $request->category
-        ]);
-        return redirect()->back()->with('success', 'Product updated successfully!');
+        $product = Product::find($id);
+        $product->productName = $request->productName;
+        $product->productSlug = $request->productSlug;
+        $product->productPrice = $request->productPrice;
+        $product->productDetails = $request->productDetails;
+        $product->productQuantity = $request->productQuantity;
+        $product->category_id = $request->category_id;
+        $oldImg = $product->productImage;
+        $file = $request->new_image;
+        if ($request->hasFile('new_image')) {
+            $fileExtension = $file->getClientOriginalName();
+            $fileName = time(); // create file name by curent time
+            $newFileName = $fileName . '.' . $fileExtension; //45678908766.jpg
+            //Lưu file vào thư mục storage/app/public/image với tên mới
+            $request->file('new_image')->storeAs('public/products', $newFileName);
+            // Gán trường image của đối tượng task với tên mới
+            $product->productImage = $newFileName;
+        }
+        try {
+            $product->save();
+            if ($request->hasFile('new_image')) {
+                $image = 'public/products/' . $oldImg;
+                Storage::delete($image);
+            }
+            return redirect()->back()->with('success', 'Product updated successfully!');
+        } catch (\Exception $th) {
+            dd($th);
+            if ($request->hasFile('new_image')) {
+                $image = 'public/products/' . $product->image;
+                Storage::delete($image);
+            }
+            return redirect()->back();
+        }
     }
 }

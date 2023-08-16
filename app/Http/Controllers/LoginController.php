@@ -73,7 +73,6 @@ class LoginController extends Controller
             $user->save();
             return redirect()->route('adminLogin')->with('success', 'Đăng ký thành công.');
         } catch (\Exception $th) {
-            dd($th);
             $image = 'public/images/' . $user->image;
             Storage::delete($image);
             return redirect()->back();

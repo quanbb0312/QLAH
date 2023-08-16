@@ -1,7 +1,6 @@
 @extends('admin.master')
 @section('content')
     <!-- partial -->
-    <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
                 <div class="container mt-3" style="margin-top:20px">
@@ -11,17 +10,27 @@
                             {{ Session::get('success') }}
                         </div>
                     @endif
-                    <form action="{{ route('product-save') }}" method="POST">
+                    <form action="{{ route('product-save') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 mt-3">
                             <label for="name">Product Name:</label>
-                            <input type="text" class="form-control" id="name" name="name"
+                            <input type="text" class="form-control" id="name" name="productName"
                                 placeholder="Enter product name" required>
                         </div>
                         <div class="mb-3 mt-3">
+                            <label for="name">Product Slug:</label>
+                            <input type="text" class="form-control" id="name" name="productSlug"
+                                placeholder="Enter product Slug" required>
+                        </div>
+                        <div class="mb-3 mt-3">
                             <label for="price">Product Price:</label>
-                            <input type="number" class="form-control" id="price" name="price"
+                            <input type="number" class="form-control" id="price" name="productPrice"
                                 placeholder="Enter product price" required>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="price">Product Quantity:</label>
+                            <input type="number" class="form-control" id="price" name="productQuantity"
+                                placeholder="Enter product quantity" required>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="image">Product Image:</label>
@@ -29,33 +38,20 @@
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="details">Details:</label>
-                            <textarea class="form-control" rows="5" id="details" name="details"></textarea>
+                            <textarea class="form-control" rows="5" id="details" name="productDetails"></textarea>
                         </div>
                         <div class="mb-3 mt-6">
                             <label for="category">Category:</label>
-                            <select name="category" id="category" class="form-control">
+                            <select name="category_id" id="category" class="form-control">
                                 @foreach ($cat as $c)
-                                    <option value="{{ $c->catID }}">{{ $c->catName }}</option>
+                                    <option value="{{ $c->id }}">{{ $c->catName }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{{ url('admin/product-list') }}" class="btn btn-danger">Back</a>
+                        <a href="{{ route('product-list') }}" class="btn btn-danger">Back</a>
                     </form>
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-            <div class="container-fluid clearfix">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                    bootstrapdash.com 2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-                        templates</a> from Bootstrapdash.com</span>
-            </div>
-        </footer>
-        <!-- partial -->
-    </div>
 @endsection
