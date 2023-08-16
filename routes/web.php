@@ -1,37 +1,34 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\DoshboadController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\CustomerController;
+use App\Http\Controllers\admin\DashboadController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\admin\AuthController;
 
 
 Route::get('/', function () {
     return view('admin/auth/login');
 });
-// Route::resource('product', ProductController::class);
-
 
 // admin dashboard
 Route::prefix('admin')->group(function () {
-    Route::get('login', [LoginController::class, 'showLoginForm'])->name('adminLogin');
-    Route::post('login', [LoginController::class, 'login'])->name('adminLoginProcess');
-    Route::get('logout', [LoginController::class, 'logout'])->name('adminLogout');
-    Route::get('register', [LoginController::class, 'showRegistrationForm'])->name('adminRegister');
-    Route::post('register', [LoginController::class, 'register'])->name('adminRegisterProcess');
-    Route::get('confirm-email', [LoginController::class, 'showViewEmail'])->name('confirm-email');
-    Route::post('send-email', [LoginController::class, 'sendMail'])->name('send-email');
-    Route::get('change-password', [LoginController::class, 'showViewChangePassword'])->name('show-change-password');
-    Route::post('change-password', [LoginController::class, 'changePassword'])->name('change-password');
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('adminLogin');
+    Route::post('login', [AuthController::class, 'login'])->name('adminLoginProcess');
+    Route::get('logout', [AuthController::class, 'logout'])->name('adminLogout');
+    Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('adminRegister');
+    Route::post('register', [AuthController::class, 'register'])->name('adminRegisterProcess');
+    Route::get('confirm-email', [AuthController::class, 'showViewEmail'])->name('confirm-email');
+    Route::post('send-email', [AuthController::class, 'sendMail'])->name('send-email');
+    Route::get('change-password', [AuthController::class, 'showViewChangePassword'])->name('show-change-password');
+    Route::post('change-password', [AuthController::class, 'changePassword'])->name('change-password');
 });
 
 // admin Product
 Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
-    Route::get('index', [DoshboadController::class, 'index'])->name('admin.index');
+    Route::get('index', [DashboadController::class, 'index'])->name('admin.index');
 
     //product
     Route::prefix('product')->group(function () {
@@ -75,25 +72,7 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
     });
 });
 
-//admin Category
-// Route::get('admin/category-list', [CategoryController::class, 'list'])->middleware('isLoggedIn');
-// Route::get('admin/category-add', [CategoryController::class, 'add'])->middleware('isLoggedIn');
-// Route::post('admin/categories/save', [CategoryController::class, 'save'])->name('category.save');
-// Route::delete('admin/category/{id}', [CategoryController::class, 'delete'])->name('category.delete');
-// Route::get('admin/category-edit/{id}', [CategoryController::class, 'edit']);
-//admin Order
-// Route::get('admin/order-add', [OrderController::class, 'add'])->middleware('isLoggedIn');
-// Route::post('admin/orders/save', [OrderController::class, 'save'])->name('order.save');
-// Route::get('admin/order-edit/{id}', [OrderController::class, 'edit'])->middleware('isLoggedIn');
-// Route::put('admin/order-update/{id}', [OrderController::class, 'update'])->name('order.update');
-// Route::delete('admin/order-delete/{id}', [OrderController::class, 'delete'])->name('order.delete');
-// Route::get('admin/order-list', [OrderController::class, 'list'])->middleware('isLoggedIn')->name('admin.order-list');
-//admin Customer
-// routes/web.php
-// Route::get('admin/customer-add', [CustomerController::class, 'add'])->middleware('isLoggedIn')->name('admin.customer-add');
-// Route::post('admin/customers/save', [CustomerController::class, 'save'])->name('customer.save');
-// Route::get('admin/customer-edit/{id}', [CustomerController::class, 'edit'])->middleware('isLoggedIn')->name('admin.customer-edit');
-// Route::delete('admin/customer-delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
-// Route::get('admin/customer-list', [CustomerController::class, 'list'])->middleware('isLoggedIn')->name('admin.customer-list');
-// Route::post('admin/customer-update/{id}', [CustomerController::class, 'update'])->name('customer.update');
-// Route::put('admin/customer-update/{id}', [CustomerController::class, 'update']);
+Route::prefix('shop')->group(function () {
+
+});
+

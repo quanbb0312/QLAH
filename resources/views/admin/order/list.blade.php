@@ -28,7 +28,7 @@
                                     <td>{{ number_format($order->total) }} VND</td>
                                     <td>{{ $order->note }}</td>
                                     <td>
-                                        <a href="{{ route('order-show-detail', $order->id) }}" class="btn btn-danger">Show</a>
+                                        <a href="{{ route('order-show-detail', $order->id) }}" class="btn btn-primary">Show</a>
 
                                         <!-- Delete Form -->
                                         <a href="#" class="btn btn-danger" data-toggle="modal"
