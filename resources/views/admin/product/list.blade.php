@@ -25,11 +25,12 @@
                                         <td>{{ $p->productID }}</td>
                                         <td>{{ $p->productName }}</td>
                                         <td>{{ $p->productPrice }}</td>
+                                        <td>{{ $p->productQuantity }}</td>
                                         <td><img src="{{ asset('storage/admin_photos/' . $p->productImage) }}"
                                                 style="height: 100px; width: 100px;">
                                         </td>
                                         <td>{{ $p->productDetails }}</td>
-                                        <td>{{ $p->catID }}</td>
+                                        <td>{{ $p->category->catName }}</td>
                                         <td>
 
                                             <a href="{{ route('product-edit', $p->productID) }}"

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $user->username  = "test123";
         $user->email = "test@gmail.com";
         $user->password = bcrypt(123456);
+        $user->photo = 'Screenshot 2023-08-16 102203.png';
         $user->save();
     }
 }

@@ -23,9 +23,11 @@ Route::prefix('admin')->group(function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('adminLogout');
     Route::get('register', [LoginController::class, 'showRegistrationForm'])->name('adminRegister');
     Route::post('register', [LoginController::class, 'register'])->name('adminRegisterProcess');
+    Route::get('confirm-email', [LoginController::class, 'showViewEmail'])->name('confirm-email');
+    Route::post('send-email', [LoginController::class, 'sendMail'])->name('send-email');
+    Route::get('change-password', [LoginController::class, 'showViewChangePassword'])->name('show-change-password');
+    Route::post('change-password', [LoginController::class, 'changePassword'])->name('change-password');
 });
-
-
 
 // admin Product
 Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
