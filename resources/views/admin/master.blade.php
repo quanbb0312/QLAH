@@ -23,18 +23,17 @@
 <body>
     <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
-        @include('layout.header')
+        @include('admin.layouts.header')
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_sidebar.html -->
-            @include('layout.sidebar')
+            @include('admin.layouts.sidebar')
+
             <div class="main-panel">
                 @yield('content')
-                @include('layout.footer')
+                @include('admin.layouts.footer')
             </div>
-
             <!-- partial -->
-
             <!-- main-panel ends -->
         </div>
         <!-- page-body-wrapper ends -->
@@ -42,7 +41,6 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="{{ asset('admin/assets/vendors/js/vendor.bundle.base.js') }}"></script>
-    {{-- <script src="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}"></script> --}}
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{ asset('admin/assets/vendors/chart.js/Chart.min.js') }}"></script>
