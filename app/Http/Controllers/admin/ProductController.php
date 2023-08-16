@@ -96,9 +96,8 @@ class ProductController extends Controller
             }
             return redirect()->back()->with('success', 'Product updated successfully!');
         } catch (\Exception $th) {
-            dd($th);
             if ($request->hasFile('new_image')) {
-                $image = 'public/products/' . $product->image;
+                $image = 'public/products/' . $newFileName;
                 Storage::delete($image);
             }
             return redirect()->back();

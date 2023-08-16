@@ -33,9 +33,9 @@
                             <h4>Hello! Let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
                             <form class="pt-3" action="{{ route('adminLoginProcess') }}" method="POST">
-                                @if (Session::has('fail'))
+                                @if (Session::has('error'))
                                     <div class="alert alert-danger">
-                                        {{ Session::get('fail') }}
+                                        {{ Session::get('error') }}
                                     </div>
                                 @endif
                                 @csrf
@@ -59,7 +59,8 @@
                                             <input type="checkbox" class="form-check-input"> Keep me signed in
                                         </label>
                                     </div>
-                                    <a href="{{ route('confirm-email') }}" class="auth-link text-black">Forgot password?</a>
+                                    <a href="{{ route('confirm-email') }}" class="auth-link text-black">Forgot
+                                        password?</a>
                                 </div>
                                 <div class="mb-2">
                                     <button type="button" class="btn btn-block btn-facebook auth-form-btn">

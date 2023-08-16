@@ -73,6 +73,4 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
 });
 
 Route::prefix('shop')->group(function () {
-
 });
-
