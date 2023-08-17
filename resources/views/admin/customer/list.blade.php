@@ -11,6 +11,7 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
+                                <th>Address</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -21,6 +22,7 @@
                                     <td>{{ $customer->name }}</td>
                                     <td>{{ $customer->phone }}</td>
                                     <td>{{ $customer->email }}</td>
+                                    <td>{{ $customer->address }}</td>
                                     <td>
                                         <a href="{{ route('customer-edit', $customer->id) }}"
                                             class="btn btn-primary">Edit</a>

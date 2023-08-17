@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     //get view cart
-    public function cart() {
-
+    public function list() {
+        return view('shop.cart');
     }
 
     //add to cart

@@ -27,6 +27,7 @@ class CustomerController extends Controller
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->phone = $request->phone;
+        $customer->address = $request->address;
         $customer->password = bcrypt($request->password);
         // Thêm các trường thông tin khác tương tự ở đây
         $customer->save();
@@ -47,6 +48,7 @@ class CustomerController extends Controller
         $customer->name = $request->name;
         $customer->phone = $request->phone;
         $customer->email = $request->email;
+        $customer->address = $request->address;
         // Cập nhật các trường thông tin khác tương tự ở đây
         $customer->save();
 

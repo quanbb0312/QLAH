@@ -7,7 +7,10 @@ use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\DashboadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
-
+use App\Http\Controllers\shop\CartController;
+use App\Http\Controllers\shop\DashboadController as ShopDashboadController;
+use App\Http\Controllers\shop\ProductController as ShopProductController;
+use App\Http\Controllers\shop\ShopController;
 
 Route::get('/', function () {
     return view('admin/auth/login');
@@ -73,4 +76,18 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
 });
 
 Route::prefix('shop')->group(function () {
+    Route::get('list', [ShopDashboadController::class, 'index'])->name('dashboad-list');
+
+    Route::prefix('product')->group(function () {
+        Route::get('list', [ShopProductController::class, 'listProductOfCategory'])->name('shop-product-list');
+    });
+
+    Route::prefix('cart')->group(function () {
+        Route::get('list', [CartController::class, 'list'])->name('shop-cart-list');
+    });
+
+    Route::prefix('payment')->group(function () {
+        Route::get('list', [ShopController::class, 'getViewPayment'])->name('shop-cart-list');
+    });
+
 });
