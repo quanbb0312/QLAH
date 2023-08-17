@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js" lang="vi">
 
@@ -449,6 +450,68 @@
             let href = $(this).attr('data-href');
             getCartSidebar(href);
         });
+
+        //register customer
+        $('#register-customer').on('click', function(e) {
+            e.preventDefault();
+            let csrf = '{{ csrf_token() }}';
+            let name = $('#register-first-name').val();
+            let email = $('#register-email').val();
+            let phone = $('#register-phone').val();
+            let address = $('#register-phone').val();
+            let password = $('#register-password').val();
+            let href = $(this).attr('data-href');
+
+            $.ajax({
+				type: 'POST',
+				url: href,
+				data: {
+                    _token: csrf,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    address: address,
+                    password: password,
+				},
+				success: function() {
+                    $('#modalLoginTab').trigger('click');
+				},
+				error: function(XMLHttpRequest, textStatus) {
+					Haravan.onError(XMLHttpRequest, textStatus);
+				}
+			})
+        });
+
+        //login-customer
+        $('#login-customer').on('click', function(e){
+            e.preventDefault();
+            $('#message-error').html('');
+            let href = $(this).attr('data-href');
+            let email = $('#login-email').val();
+            let password = $('#login-password').val();
+            let csrf = '{{ csrf_token() }}';
+
+            $.ajax({
+				type: 'POST',
+				url: href,
+				data: {
+                    _token: csrf,
+                    email: email,
+                    password: password,
+				},
+				success: function(res) {
+                    if(res == 200) {
+                        console.log('login success');
+                        $('.closeModal').trigger('click');
+                    } else {
+                        $('#message-error').html('Email or passord is not correct!');
+                    }
+				},
+				error: function(XMLHttpRequest, textStatus) {
+					Haravan.onError(XMLHttpRequest, textStatus);
+				}
+			})
+        })
     </script>
 
 

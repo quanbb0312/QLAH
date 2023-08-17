@@ -38,6 +38,11 @@
                                         {{ Session::get('error') }}
                                     </div>
                                 @endif
+                                @if (Session::has('success'))
+                                    <div class="alert alert-danger">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                @endif
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" name="email"

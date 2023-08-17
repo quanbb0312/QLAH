@@ -55,7 +55,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Customer::class,
         ],
-        // ...
     ],
 
     /*
@@ -107,13 +106,7 @@ return [
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
-        ],
-        'customers' => [
-            'provider' => 'customers',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+        ]
     ],
 
     /*

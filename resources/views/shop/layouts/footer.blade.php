@@ -271,17 +271,27 @@
                                             <input name='form_type' type='hidden' value='customer_login'>
                                             <input name='utf8' type='hidden' value='✓'>
 
+                                            @if (Auth::guard('customers')->user())
+                                                <div class="form-group">
+                                                    <label for="recover-email">Name*</label>
+                                                    <input type="text" id="recover-email" value="{{Auth::guard('customers')->user()->name}}" class="form-control" disabled name="email" required>
+                                                </div>
+                                            @endif
 
                                             <div class="form-group">
                                                 <label for="login-email">Email*</label>
-                                                <input type="email" id="login-email" class="form-control" name="customer[email]" required>
+                                                <input type="email" id="login-email" value="<?= Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : '' ?>"
+                                                  <?= Auth::guard('customers')->user() ? 'disabled' : '' ?> class="form-control" name="customer[email]" required>
                                             </div>
+                                            @if (!Auth::guard('customers')->user())
+                                                <div class="form-group">
+                                                    <label for="login-password">Mật khẩu*</label>
+                                                    <input type="password" id="login-password" class="form-control" name="customer[password]" required>
+                                                </div>
+                                            @endif
+                                            <p id="message-error" style="color:red"></p>
                                             <div class="form-group">
-                                                <label for="login-password">Mật khẩu*</label>
-                                                <input type="password" id="login-password" class="form-control" name="customer[password]" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary hoverOpacity">
+                                                <button <?= Auth::guard('customers')->user() ? 'disabled' : '' ?> type="submit" id="login-customer" data-href="{{route('gaurd-login')}}" class="btn btn-primary hoverOpacity">
                                                     ĐĂNG NHẬP
                                                 </button>
                                             </div>
@@ -302,10 +312,12 @@
                                             <input name='form_type' type='hidden' value='recover_customer_password'>
                                             <input name='utf8' type='hidden' value='✓'>
 
+                                           
+                                
 
                                             <div class="form-group">
                                                 <label for="recover-email">Email*</label>
-                                                <input type="email" id="recover-email" class="form-control" name="email" required>
+                                                <input type="email" id="recover-email" value="" class="form-control" name="email" required>
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary hoverOpacity">
@@ -328,43 +340,33 @@
                                         <form accept-charset='UTF-8' action='/account' id='create_customer' method='post'>
                                             <input name='form_type' type='hidden' value='create_customer'>
                                             <input name='utf8' type='hidden' value='✓'>
-
-
                                             <div class="form-group">
-                                                <label for="register-last-name">Họ của bạn*</label>
-                                                <input type="text" id="register-last-name" class="form-control" name="customer[last_name]" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="register-first-name">Tên của bạn*</label>
+                                                <label for="register-first-name">Name*</label>
                                                 <input type="text" id="register-first-name" class="form-control" name="customer[first_name]" required>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="register-phone">Số điện thoại</label>
-                                                <input type="text" id="register-phone" class="form-control" name="customer[phone]" pattern='^\+?\d{0,10}'>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Giới tính</label>
-                                                <div class="row">
-                                                    <div class="col-2">
-                                                        <input type="radio" id="register-gender-0" value="0" name="customer[gender]" checked />
-                                                        <label for="register-gender-0">Nữ</label>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <input type="radio" id="register-gender-1" value="1" name="customer[gender]" />
-                                                        <label for="register-gender-1">Nam</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <div class="form-group">
                                                 <label for="register-email">Email*</label>
                                                 <input type="email" id="register-email" class="form-control" name="customer[email]" required>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="register-phone">Phone*</label>
+                                                <input type="text" id="register-phone" class="form-control" name="customer[phone]" pattern='^\+?\d{0,10}' required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="register-phone">Address*</label>
+                                                <input type="text" id="register-phone" class="form-control" name="customer[phone]" pattern='^\+?\d{0,10}' required>
+                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label for="register-password">Mật khẩu*</label>
                                                 <input type="password" id="register-password" class="form-control" name="customer[password]" required>
                                             </div>
+
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary hoverOpacity">
+                                                <button type="submit" id="register-customer" data-href="{{route('gaurd-register')}}" class="btn btn-primary hoverOpacity">
                                                     ĐĂNG KÝ
                                                 </button>
                                             </div>
@@ -378,7 +380,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="javascript:void(0);" class="closeModal"><i class="lni lni-close"></i></a>
+                <a href="javascript:void(0);" id="close-modal" class="closeModal"><i class="lni lni-close"></i></a>
             </div>
         </div>
     </div>

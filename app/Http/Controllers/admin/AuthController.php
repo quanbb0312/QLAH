@@ -71,11 +71,11 @@ class AuthController extends Controller
         }
         try {
             $user->save();
-            return redirect()->route('adminLogin')->with('success', 'Đăng ký thành công.');
+            return redirect()->route('adminLogin')->with('success', 'Successful account registration!!!');
         } catch (\Exception $th) {
             $image = 'public/images/' . $user->image;
             Storage::delete($image);
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Account registration failed!!!');
         }
     }
 
@@ -102,7 +102,7 @@ class AuthController extends Controller
 
             $user->password = bcrypt($password);
             $user->save();
-            return redirect()->route('show-change-password');
+            return redirect()->route('show-change-password')->with('success', 'Password sent to your email successfully!!');
         } else {
             return redirect()->back()->with('error', 'email is not correct');
         }
@@ -125,7 +125,7 @@ class AuthController extends Controller
                 if (Hash::check($oldPassword, $user->password)) {
                     $user->password = bcrypt($newPassword);
                     $user->save();
-                    return redirect()->route('adminLogin');
+                    return redirect()->route('adminLogin')->with('success', 'Change password successfully!!');
                 }
             } else {
                 return redirect()->back()->with('error', 'Confirm password is not correct');
