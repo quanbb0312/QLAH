@@ -16,7 +16,7 @@
                         <ul class="menuMainList">
                             @foreach ($listCategory as $category)
                                 <li class=" ">
-                                    <a href="/collections/pc-build-san" title="{{ $category->catName }}">{{ $category->catName }}
+                                    <a href="{{route('shop-product-list', $category->id)}}" title="{{ $category->catName }}">{{ $category->catName }}
                                         <i class="lni lni-chevron-down"></i>
                                     </a>
                                 </li>
@@ -35,7 +35,7 @@
                                 </picture>
                             </a>
                         </div>
-                        
+
                         <div class="slider-main-group-image-item">
                             <a href="https://titekvn.com/collections/pc-build-san" title="Banner" aria-label="Banner 2">
                                 <picture>
@@ -45,15 +45,6 @@
                                 </picture>
                             </a>
                         </div>
-
-
-
-
-
-
-
-
-
 
                         <div class="slider-main-group-image-item">
                             <a href="https://titekvn.com/products/tan-nhiet-khi-deepcool-gamerstorm-assassin-iv-universal-socket-cpu-air-cooler" title="Banner" aria-label="Banner 3">
@@ -65,15 +56,6 @@
                             </a>
                         </div>
 
-
-
-
-
-
-
-
-
-
                         <div class="slider-main-group-image-item">
                             <a href="https://www.facebook.com/messages/t/104093432438257" title="" aria-label="Banner 4">
                                 <picture>
@@ -83,16 +65,6 @@
                                 </picture>
                             </a>
                         </div>
-
-
-
-
-
-
-
-
-
-
 
                     </div>
                 </div>
@@ -104,9 +76,6 @@
     <section id="policy">
         <div class="container">
             <div class="policyMain ">
-
-
-
 
                 <div class="policyItem">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" class="lazyload img-fluid" data-src="https://file.hstatic.net/200000265255/file/static-icons-1_c276878e211c4819b74eef75150bcdab.png" alt="Policy-1" />

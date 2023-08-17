@@ -11,9 +11,4 @@ class ShopController extends Controller
     public function getViewPayment() {
         return view('shop.paymen');
     }
-
-    // public function listCategory() {
-    //     $listCategory = Category::all();
-    //     return
-    // }
 }

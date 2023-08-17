@@ -116,7 +116,48 @@
     <link href="//theme.hstatic.net/200000680123/1001107404/14/styles-no-index.scss.css?v=47" rel='stylesheet' type='text/css'  media='all'/>	
 
     <meta name="google-site-verification" content="K-HvD-MG-MkX8DKJSpDPAtryQJ4q3wNAdFsH-FryVlk" />
-
+        <style>
+        .AddCartLoop {
+            background-color: #F5F5F5;
+            border-radius: 8px;
+            width: 38px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .AddCartLoop svg {
+            fill: #333 !important;
+        }
+        .groupAdd .itemQuantityCart .qtyBtn {
+            background: none;
+            border: 1px solid #ccc;
+            height: 25px;
+            width: 25px;
+        }
+        .groupAdd .itemQuantityCart input {
+            height: 25px;
+            width: 50px;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+            text-align: center;
+        }
+        .groupAdd .itemQuantityCart .qtyBtn {
+            background: none;
+            border: 1px solid #ccc;
+            height: 25px;
+            width: 25px;
+        }
+        .groupAdd .itemQuantityCart {
+            display: flex;
+            width: 50%;
+        }
+        #sidebarAll .sidebarAllMainCart .sidebarAllBody .itemMain .itemAction .removeItemCart {
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        </style>
 </head>
 
 <body id="titek" class="index template-index">
@@ -251,8 +292,6 @@
         }
     </script>
 
-
-
     <script src="//theme.hstatic.net/200000680123/1001107404/14/plugin.js?v=47"></script>
     <script src="//theme.hstatic.net/200000680123/1001107404/14/main.js?v=47"></script>
     <script src='//hstatic.net/0/0/global/option_selection.js' type='text/javascript'></script>
@@ -261,7 +300,156 @@
 
     <script src="//theme.hstatic.net/200000680123/1001107404/14/plugin-no-index.js?v=47"></script>
     <script src="//theme.hstatic.net/200000680123/1001107404/14/main-no-index.js?v=47"></script>
+    <script>
+        ///add to cart
+        $('body').on('click', '.AddCartLoop', function(e){
+			e.preventDefault();
+			let id = $(this).attr('data-id');
+			let urlCart = $(this).attr('data-href');
+			let url = $(this).attr('href');
+            let csrf = '{{ csrf_token() }}';
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: {
+                    id: id,
+                    _token: csrf
+                },
+				success: function(data){
+					$('a[data-type="sidebarAllMainCart"]').trigger('click');
+					getCartSidebar(urlCart); 
+				}, 
+				error: function(){
+					$('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+				}
+			})
+		});
 
+        //get list product in cart
+        function getCartSidebar(urlCart){
+            setTimeout(function(){
+                let csrf = '{{ csrf_token() }}';
+                $.ajax({
+				type: "GET",
+				url: urlCart,
+				data: {
+                    _token: csrf
+                },
+				success: function(data){
+                    showProductCart(data);
+				}, 
+				error: function(){
+					$('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');
+				}})
+            },0)
+	    };
+
+        //show product in cart
+        function showProductCart(data) {
+            let item = '';
+                    let total = 0;
+                    let count = 0;
+                    $.each(data, function(index, value){
+                        total += value.price * value.quantity;
+                        count ++;
+                        item += `
+                        <div class="itemMain" data-id="${value.id}">
+                        <a href="#"><img class="itemImage img-fluid" src="${value.image}"/></a>
+                        <div class="itemInfo">
+                        <a class="itemTitle" href="#">${value.nameVi}</a>
+                        <div class="itemPriceInfo">
+                        <span class="itemPriceMain">${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value.price)}</span>
+                        </div>
+                        <div class="itemAction">
+                        <div class="groupAdd">
+                        <div class="itemQuantityCart">
+                        <button class="qtyBtn minusQuan" data-type="minus">-</button>
+                        <input type="number" data-href="{{ route('shop-cart-update') }}" id="itemQuantityCart" name="quantity" data-id=${value.id} value="${value.quantity}" min="1" max="${value.max}" class="quantitySelector">
+                        <button class="qtyBtn plusQuan" data-type="plus">+</button>
+                        </div>
+                        <div data-href="{{ route('shop-cart-remove') }}" class="removeItemCart">
+                        <i class="lni lni-trash"></i>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        `;
+                    });
+                    $('.sidebarAllMainCart .sidebarAllBody').html('');
+                    $('.sidebarAllMainCart .totalPrice span').last().html(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total))
+                    $('.headerCart .headerCartCount').html(count)
+                    $('.sidebarAllMainCart .sidebarAllBody').html(item);
+                    
+        }
+
+        //update cart
+        function updateQuantitySidebar(that){
+			var idItem = $(that).parent().find('input').attr('data-id');
+			var href = $(that).parent().find('input').attr('data-href');
+			var quanItem =  $(that).parent().find('input').val();
+            let csrf = '{{ csrf_token() }}';
+			$.ajax({
+				type: 'POST',
+				url: href,
+				data:  {
+                    _token: csrf,
+					id: idItem,
+					quantity: quanItem
+				},
+				success: function(cart) {
+                    console.log(cart);
+					$('.headerCartCount').html(cart.count)
+					$('.totalPrice span').last().html(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(cart.TotalAllRefreshAjax))
+				},
+				error: function(XMLHttpRequest, textStatus) {
+					Haravan.onError(XMLHttpRequest, textStatus);
+				}
+			})
+		}
+		$('body').on('click','.sidebarAllMainCart .itemQuantityCart .qtyBtn',function(e){ 
+			e.preventDefault();
+			let type = $(this).data('type');
+			if(type == "plus"){
+				$(this).prev().val(parseInt($(this).prev().val()) + 1);
+			}else{
+				if(parseInt($(this).next().val()) !== 1) 
+					$(this).next().val(parseInt($(this).next().val()) - 1);
+			}
+			updateQuantitySidebar($(this))
+		})
+		$('body').on('change','.sidebarAllMainCart .itemQuantityCart input',function(e){
+			updateQuantitySidebar($(this));
+		})
+
+        //remove product in cart
+        $('body').on('click','.removeItemCart',function(e){ 
+			e.preventDefault();
+			var id = $(this).parents('.itemMain').attr('data-id');
+			var href = $(this).attr('data-href');
+            let csrf = '{{ csrf_token() }}';
+			$.ajax({
+				type: 'POST',
+				url: href,
+				data:  {
+                    _token: csrf,
+					id: id,
+				},
+				success: function(cart) {
+					showProductCart(cart);
+				},
+				error: function(XMLHttpRequest, textStatus) {
+					Haravan.onError(XMLHttpRequest, textStatus);
+				}
+			})
+		});
+
+        // show cart modal
+        $('a[data-type="sidebarAllMainCart"]').on('click', function() {
+            let href = $(this).attr('data-href');
+            getCartSidebar(href);
+        });
+    </script>
 
 
 </body>
