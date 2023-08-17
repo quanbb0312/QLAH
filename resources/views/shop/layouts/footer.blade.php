@@ -356,8 +356,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="register-phone">Address*</label>
-                                                <input type="text" id="register-phone" class="form-control" name="customer[phone]" pattern='^\+?\d{0,10}' required>
+                                                <label for="register-address">Address*</label>
+                                                <input type="text" id="register-address" class="form-control" name="customer[address]" pattern='^\+?\d{0,10}' required>
                                             </div>
                                             
                                             <div class="form-group">
