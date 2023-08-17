@@ -458,7 +458,7 @@
             let name = $('#register-first-name').val();
             let email = $('#register-email').val();
             let phone = $('#register-phone').val();
-            let address = $('#register-phone').val();
+            let address = $('#register-address').val();
             let password = $('#register-password').val();
             let href = $(this).attr('data-href');
 
@@ -502,6 +502,7 @@
 				success: function(res) {
                     if(res == 200) {
                         console.log('login success');
+                        
                         $('.closeModal').trigger('click');
                     } else {
                         $('#message-error').html('Email or passord is not correct!');
@@ -513,8 +514,6 @@
 			})
         })
     </script>
-
-
 </body>
 
 </html>
