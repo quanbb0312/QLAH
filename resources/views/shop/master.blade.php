@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="no-js" lang="vi">
 
@@ -84,21 +83,37 @@
     <link rel="dns-prefetch" href="//static.ak.facebook.com">
     <link rel="dns-prefetch" href="//static.ak.fbcdn.net">
     <link rel="dns-prefetch" href="//s-static.ak.facebook.com">
-    <link rel="preload" href="https://file.hstatic.net/200000680123/file/backtoschool_1050x462_1a12427ed4bb47e7b39b1434059d79ee.jpg" as="image">
-    <link rel="preload" href="https://file.hstatic.net/200000680123/file/cc30411c-e8fe-4454-8350-f66d43b2dac7_5b665ce9e88843159e82f9d15e8ed12d.jpg" as="image">
-    <link rel="preload" href="https://file.hstatic.net/200000265255/file/static-icons-1_c276878e211c4819b74eef75150bcdab.png" as="image">
-    <link rel="preload" href="https://file.hstatic.net/200000680123/file/tt_logo_black_779867cb0507407a8433688e203d4a2e.png" as="image">
-    <link rel="preload" href="https://file.hstatic.net/200000680123/file/banner_900x500_1.1_523c6d1b59a44cbea6768aedc549484b.jpg" as="image">
-    <link rel="preload" href="https://file.hstatic.net/200000680123/file/banner_900x500_1.2_92de1da00d8c4e8eb892273611c39cb8.jpg" as="image">
-    <link rel="preload" href="https://file.hstatic.net/200000680123/file/banner_900x500_1.3_0b52682fe00d43b98ffbc58561a2f20d.jpg" as="image">
+    <link rel="preload"
+        href="https://file.hstatic.net/200000680123/file/backtoschool_1050x462_1a12427ed4bb47e7b39b1434059d79ee.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://file.hstatic.net/200000680123/file/cc30411c-e8fe-4454-8350-f66d43b2dac7_5b665ce9e88843159e82f9d15e8ed12d.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://file.hstatic.net/200000265255/file/static-icons-1_c276878e211c4819b74eef75150bcdab.png"
+        as="image">
+    <link rel="preload"
+        href="https://file.hstatic.net/200000680123/file/tt_logo_black_779867cb0507407a8433688e203d4a2e.png"
+        as="image">
+    <link rel="preload"
+        href="https://file.hstatic.net/200000680123/file/banner_900x500_1.1_523c6d1b59a44cbea6768aedc549484b.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://file.hstatic.net/200000680123/file/banner_900x500_1.2_92de1da00d8c4e8eb892273611c39cb8.jpg"
+        as="image">
+    <link rel="preload"
+        href="https://file.hstatic.net/200000680123/file/banner_900x500_1.3_0b52682fe00d43b98ffbc58561a2f20d.jpg"
+        as="image">
     <link rel="preload" href="//theme.hstatic.net/200000680123/1001107404/14/plugin.css?v=47" as="style">
     <link rel="preload" href="//theme.hstatic.net/200000680123/1001107404/14/styles.scss.css?v=47" as="style">
 
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="TITEK" />
-    <meta property="og:image" content="http://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
-    <meta property="og:image:secure_url" content="https://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
+    <meta property="og:image"
+        content="http://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
+    <meta property="og:image:secure_url"
+        content="https://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
     <meta property="og:url" content="https://titekvn.com/" />
     <meta property="og:site_name" content="TITEK" />
 
@@ -107,17 +122,23 @@
 
 
 
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/plugin.css?v=47" rel='stylesheet' type='text/css' media='all' />
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/styles.scss.css?v=47" rel='stylesheet' type='text/css' media='all' />
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/plugin.css?v=47" rel='stylesheet' type='text/css'
+        media='all' />
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/styles.scss.css?v=47" rel='stylesheet' type='text/css'
+        media='all' />
 
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/plugin.css?v=47" rel='stylesheet' type='text/css'  media='all'/>	
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/styles.scss.css?v=47" rel='stylesheet' type='text/css'  media='all'/>	
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/plugin.css?v=47" rel='stylesheet' type='text/css'
+        media='all' />
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/styles.scss.css?v=47" rel='stylesheet' type='text/css'
+        media='all' />
 
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/plugin-no-index.css?v=47" rel='stylesheet' type='text/css'  media='all'/>	
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/styles-no-index.scss.css?v=47" rel='stylesheet' type='text/css'  media='all'/>	
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/plugin-no-index.css?v=47" rel='stylesheet'
+        type='text/css' media='all' />
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/styles-no-index.scss.css?v=47" rel='stylesheet'
+        type='text/css' media='all' />
 
     <meta name="google-site-verification" content="K-HvD-MG-MkX8DKJSpDPAtryQJ4q3wNAdFsH-FryVlk" />
-        <style>
+    <style>
         .AddCartLoop {
             background-color: #F5F5F5;
             border-radius: 8px;
@@ -126,15 +147,18 @@
             line-height: 30px;
             text-align: center;
         }
+
         .AddCartLoop svg {
             fill: #333 !important;
         }
+
         .groupAdd .itemQuantityCart .qtyBtn {
             background: none;
             border: 1px solid #ccc;
             height: 25px;
             width: 25px;
         }
+
         .groupAdd .itemQuantityCart input {
             height: 25px;
             width: 50px;
@@ -144,21 +168,24 @@
             border-radius: 0;
             text-align: center;
         }
+
         .groupAdd .itemQuantityCart .qtyBtn {
             background: none;
             border: 1px solid #ccc;
             height: 25px;
             width: 25px;
         }
+
         .groupAdd .itemQuantityCart {
             display: flex;
             width: 50%;
         }
+
         #sidebarAll .sidebarAllMainCart .sidebarAllBody .itemMain .itemAction .removeItemCart {
             cursor: pointer;
             margin-left: 20px;
         }
-        </style>
+    </style>
 </head>
 
 <body id="titek" class="index template-index">
@@ -167,18 +194,18 @@
         <div class="container">
             <div class="topbar-main">
                 <p>
-                    TITEK kính chúc quý khách hàng có 1 buổi mua sắm thật vui vẻ! Truy cập ngay <a href="http://titekvn.com/">trang chủ</a> của chúng tôi để nhận nhiều ưu đãi!
-
+                    QLAH Computer kính chúc quý khách hàng có 1 buổi mua sắm thật vui vẻ! Truy cập ngay <a
+                        href="http://titekvn.com/">trang chủ</a> của chúng tôi để nhận nhiều ưu đãi!
                 </p>
             </div>
         </div>
     </div>
-@include('shop.layouts.header')
+    @include('shop.layouts.header')
 
-@yield('content')
+    @yield('content')
 
 
-@include('shop.layouts.footer')
+    @include('shop.layouts.footer')
 
     <script>
         try {
@@ -303,57 +330,60 @@
     <script src="//theme.hstatic.net/200000680123/1001107404/14/main-no-index.js?v=47"></script>
     <script>
         ///add to cart
-        $('body').on('click', '.AddCartLoop', function(e){
-			e.preventDefault();
-			let id = $(this).attr('data-id');
-			let urlCart = $(this).attr('data-href');
-			let url = $(this).attr('href');
+        $('body').on('click', '.AddCartLoop', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-id');
+            let urlCart = $(this).attr('data-href');
+            let url = $(this).attr('href');
             let csrf = '{{ csrf_token() }}';
-			$.ajax({
-				type: "POST",
-				url: url,
-				data: {
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
                     id: id,
                     _token: csrf
                 },
-				success: function(data){
-					$('a[data-type="sidebarAllMainCart"]').trigger('click');
-					getCartSidebar(urlCart); 
-				}, 
-				error: function(){
-					$('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
-				}
-			})
-		});
+                success: function(data) {
+                    $('a[data-type="sidebarAllMainCart"]').trigger('click');
+                    getCartSidebar(urlCart);
+                },
+                error: function() {
+                    $('#alertError').modal('show').find('.modal-body').html(
+                        'Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                }
+            })
+        });
 
         //get list product in cart
-        function getCartSidebar(urlCart){
-            setTimeout(function(){
+        function getCartSidebar(urlCart) {
+            setTimeout(function() {
                 let csrf = '{{ csrf_token() }}';
                 $.ajax({
-				type: "GET",
-				url: urlCart,
-				data: {
-                    _token: csrf
-                },
-				success: function(data){
-                    showProductCart(data);
-				}, 
-				error: function(){
-					$('#alertError').modal('show').find('.modal-body').html('Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');
-				}})
-            },0)
-	    };
+                    type: "GET",
+                    url: urlCart,
+                    data: {
+                        _token: csrf
+                    },
+                    success: function(data) {
+                        showProductCart(data);
+                    },
+                    error: function() {
+                        $('#alertError').modal('show').find('.modal-body').html(
+                            'Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');
+                    }
+                })
+            }, 0)
+        };
 
         //show product in cart
         function showProductCart(data) {
             let item = '';
-                    let total = 0;
-                    let count = 0;
-                    $.each(data, function(index, value){
-                        total += value.price * value.quantity;
-                        count ++;
-                        item += `
+            let total = 0;
+            let count = 0;
+            $.each(data, function(index, value) {
+                total += value.price * value.quantity;
+                count++;
+                item += `
                         <div class="itemMain" data-id="${value.id}">
                         <a href="#"><img class="itemImage img-fluid" src="${value.image}"/></a>
                         <div class="itemInfo">
@@ -376,74 +406,80 @@
                         </div>
                         </div>
                         `;
-                    });
-                    $('.sidebarAllMainCart .sidebarAllBody').html('');
-                    $('.sidebarAllMainCart .totalPrice span').last().html(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total))
-                    $('.headerCart .headerCartCount').html(count)
-                    $('.sidebarAllMainCart .sidebarAllBody').html(item);
-                    
+            });
+            $('.sidebarAllMainCart .sidebarAllBody').html('');
+            $('.sidebarAllMainCart .totalPrice span').last().html(new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(total))
+            $('.headerCart .headerCartCount').html(count)
+            $('.sidebarAllMainCart .sidebarAllBody').html(item);
+
         }
 
         //update cart
-        function updateQuantitySidebar(that){
-			var idItem = $(that).parent().find('input').attr('data-id');
-			var href = $(that).parent().find('input').attr('data-href');
-			var quanItem =  $(that).parent().find('input').val();
+        function updateQuantitySidebar(that) {
+            var idItem = $(that).parent().find('input').attr('data-id');
+            var href = $(that).parent().find('input').attr('data-href');
+            var quanItem = $(that).parent().find('input').val();
             let csrf = '{{ csrf_token() }}';
-			$.ajax({
-				type: 'POST',
-				url: href,
-				data:  {
+            $.ajax({
+                type: 'POST',
+                url: href,
+                data: {
                     _token: csrf,
-					id: idItem,
-					quantity: quanItem
-				},
-				success: function(cart) {
+                    id: idItem,
+                    quantity: quanItem
+                },
+                success: function(cart) {
                     console.log(cart);
-					$('.headerCartCount').html(cart.count)
-					$('.totalPrice span').last().html(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(cart.TotalAllRefreshAjax))
-				},
-				error: function(XMLHttpRequest, textStatus) {
-					Haravan.onError(XMLHttpRequest, textStatus);
-				}
-			})
-		}
-		$('body').on('click','.sidebarAllMainCart .itemQuantityCart .qtyBtn',function(e){ 
-			e.preventDefault();
-			let type = $(this).data('type');
-			if(type == "plus"){
-				$(this).prev().val(parseInt($(this).prev().val()) + 1);
-			}else{
-				if(parseInt($(this).next().val()) !== 1) 
-					$(this).next().val(parseInt($(this).next().val()) - 1);
-			}
-			updateQuantitySidebar($(this))
-		})
-		$('body').on('change','.sidebarAllMainCart .itemQuantityCart input',function(e){
-			updateQuantitySidebar($(this));
-		})
+                    $('.headerCartCount').html(cart.count)
+                    $('.totalPrice span').last().html(new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).format(cart.TotalAllRefreshAjax))
+                },
+                error: function(XMLHttpRequest, textStatus) {
+                    Haravan.onError(XMLHttpRequest, textStatus);
+                }
+            })
+        }
+        $('body').on('click', '.sidebarAllMainCart .itemQuantityCart .qtyBtn', function(e) {
+            e.preventDefault();
+            let type = $(this).data('type');
+            if (type == "plus") {
+                $(this).prev().val(parseInt($(this).prev().val()) + 1);
+            } else {
+                if (parseInt($(this).next().val()) !== 1)
+                    $(this).next().val(parseInt($(this).next().val()) - 1);
+            }
+            updateQuantitySidebar($(this))
+        })
+        $('body').on('change', '.sidebarAllMainCart .itemQuantityCart input', function(e) {
+            updateQuantitySidebar($(this));
+        })
 
         //remove product in cart
-        $('body').on('click','.removeItemCart',function(e){ 
-			e.preventDefault();
-			var id = $(this).parents('.itemMain').attr('data-id');
-			var href = $(this).attr('data-href');
+        $('body').on('click', '.removeItemCart', function(e) {
+            e.preventDefault();
+            var id = $(this).parents('.itemMain').attr('data-id');
+            var href = $(this).attr('data-href');
             let csrf = '{{ csrf_token() }}';
-			$.ajax({
-				type: 'POST',
-				url: href,
-				data:  {
+            $.ajax({
+                type: 'POST',
+                url: href,
+                data: {
                     _token: csrf,
-					id: id,
-				},
-				success: function(cart) {
-					showProductCart(cart);
-				},
-				error: function(XMLHttpRequest, textStatus) {
-					Haravan.onError(XMLHttpRequest, textStatus);
-				}
-			})
-		});
+                    id: id,
+                },
+                success: function(cart) {
+                    showProductCart(cart);
+                },
+                error: function(XMLHttpRequest, textStatus) {
+                    Haravan.onError(XMLHttpRequest, textStatus);
+                }
+            })
+        });
 
         // show cart modal
         $('a[data-type="sidebarAllMainCart"]').on('click', function() {
@@ -463,27 +499,27 @@
             let href = $(this).attr('data-href');
 
             $.ajax({
-				type: 'POST',
-				url: href,
-				data: {
+                type: 'POST',
+                url: href,
+                data: {
                     _token: csrf,
                     name: name,
                     email: email,
                     phone: phone,
                     address: address,
                     password: password,
-				},
-				success: function() {
+                },
+                success: function() {
                     $('#modalLoginTab').trigger('click');
-				},
-				error: function(XMLHttpRequest, textStatus) {
-					Haravan.onError(XMLHttpRequest, textStatus);
-				}
-			})
+                },
+                error: function(XMLHttpRequest, textStatus) {
+                    Haravan.onError(XMLHttpRequest, textStatus);
+                }
+            })
         });
 
         //login-customer
-        $('#login-customer').on('click', function(e){
+        $('#login-customer').on('click', function(e) {
             e.preventDefault();
             $('#message-error').html('');
             let href = $(this).attr('data-href');
@@ -492,25 +528,25 @@
             let csrf = '{{ csrf_token() }}';
 
             $.ajax({
-				type: 'POST',
-				url: href,
-				data: {
+                type: 'POST',
+                url: href,
+                data: {
                     _token: csrf,
                     email: email,
                     password: password,
-				},
-				success: function(res) {
-                    if(res == 200) {
+                },
+                success: function(res) {
+                    if (res == 200) {
                         console.log('login success');
                         $('.closeModal').trigger('click');
                     } else {
                         $('#message-error').html('Email or passord is not correct!');
                     }
-				},
-				error: function(XMLHttpRequest, textStatus) {
-					Haravan.onError(XMLHttpRequest, textStatus);
-				}
-			})
+                },
+                error: function(XMLHttpRequest, textStatus) {
+                    Haravan.onError(XMLHttpRequest, textStatus);
+                }
+            })
         })
     </script>
 

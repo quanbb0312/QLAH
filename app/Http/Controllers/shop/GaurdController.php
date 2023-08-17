@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class GaurdController extends Controller
 {
     //register customer
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->email = $request->email;
@@ -22,7 +23,8 @@ class GaurdController extends Controller
     }
 
     //login customer
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $credentials = $request->only('email', 'password');
         if (Auth::guard('customers')->attempt($credentials)) {
             return response()->json(200);
@@ -32,7 +34,8 @@ class GaurdController extends Controller
     }
 
     //logout customer
-    public function logout() {
+    public function logout()
+    {
         Auth::guard('customers')->logout();
     }
 }

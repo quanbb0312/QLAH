@@ -9,17 +9,20 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     //get view cart
-    public function list() {
+    public function list()
+    {
         return view('shop.cart');
     }
 
-    public function listCart() {
+    public function listCart()
+    {
         $cart = session()->get('cart', []);
         return response()->json($cart);
     }
 
     //add to cart
-    public function storeCart(Request $request) {
+    public function storeCart(Request $request)
+    {
         // session()->forget('cart');
         $id = $request->id;
         $product = Product::findOrFail($id);
@@ -43,11 +46,12 @@ class CartController extends Controller
     }
 
     //update cart
-    public function updateCart(Request $request) {
+    public function updateCart(Request $request)
+    {
         if ($request->id && $request->quantity) {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
-            
+
             $totalAllCart = 0;
             $TotalAllRefreshAjax = 0;
             $count = 0;
@@ -67,7 +71,8 @@ class CartController extends Controller
     }
 
     //remove cart
-    public function removeCart(Request $request) {
+    public function removeCart(Request $request)
+    {
         if ($request->id) {
             $cart = session()->get('cart');
             if (isset($cart[$request->id])) {
@@ -80,12 +85,12 @@ class CartController extends Controller
     }
 
     //get view checkout
-    public function checkout() {
-        
+    public function checkout()
+    {
     }
 
     //checkout
-    public function payment() {
-        
+    public function payment()
+    {
     }
 }
