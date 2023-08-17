@@ -60,7 +60,7 @@
                     </a>
                 </div>
                 <div class="headerCart headerTool">
-                    <a href="/cart" data-type="sidebarAllMainCart">
+                    <a href="/cart" data-href="{{route('shop-list-cart')}}" data-type="sidebarAllMainCart">
                         <i class="lni lni-shopping-basket"></i>
                         <span class="headerCartCount count">0</span>
                     </a>
@@ -87,7 +87,7 @@
                         <ul class="sliderMenu">
                             @foreach ($listCategory as $category)
                                 <li class=" ">
-                                    <a href="/collections/pc-build-san" title="PC">{{ $category->catName }}
+                                    <a href="{{route('shop-product-list', $category->id)}}" title="PC">{{ $category->catName }}
                                         <i class="lni lni-chevron-down"></i>
                                     </a>
                                 </li>

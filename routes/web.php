@@ -79,11 +79,15 @@ Route::prefix('shop')->group(function () {
     Route::get('list', [ShopDashboadController::class, 'index'])->name('dashboad-list');
 
     Route::prefix('product')->group(function () {
-        Route::get('list', [ShopProductController::class, 'listProductOfCategory'])->name('shop-product-list');
+        Route::get('list/{id}', [ShopProductController::class, 'listProductOfCategory'])->name('shop-product-list');
     });
 
     Route::prefix('cart')->group(function () {
         Route::get('list', [CartController::class, 'list'])->name('shop-cart-list');
+        Route::post('add', [CartController::class, 'storeCart'])->name('shop-cart-add');
+        Route::post('update', [CartController::class, 'updateCart'])->name('shop-cart-update');
+        Route::post('remove', [CartController::class, 'removeCart'])->name('shop-cart-remove');
+        Route::get('list-cart', [CartController::class, 'listCart'])->name('shop-list-cart');
     });
 
     Route::prefix('payment')->group(function () {
