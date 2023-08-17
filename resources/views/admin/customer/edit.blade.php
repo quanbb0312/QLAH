@@ -24,6 +24,11 @@
                                 <input type="email" class="form-control" id="email" name="email"
                                     value="{{ $customer->email }}" required>
                             </div>
+                            <div class="form-group">
+                                <label for="email">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    value="{{ $customer->address }}" required>
+                            </div>
                             <!-- Add other fields here as needed -->
                             <button type="submit" class="btn btn-primary mr-2">Update Customer</button>
                             <a href="{{ url('admin/customer-list') }}" class="btn btn-light">Cancel</a>
