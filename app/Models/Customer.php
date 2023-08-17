@@ -2,13 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+
     protected $table = 'customers'; // Tên bảng trong CSDL
 
+    protected $guard = 'customers';
+
     protected $fillable = ['id', 'name', 'phone', 'email', 'password', 'address']; // Các trường cho phép fillable
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 
     // Các phương thức hoặc liên kết đến các đơn hàng (nếu có)
     public function orders()

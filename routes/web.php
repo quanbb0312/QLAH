@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\shop\CartController;
 use App\Http\Controllers\shop\DashboadController as ShopDashboadController;
+use App\Http\Controllers\shop\GaurdController;
 use App\Http\Controllers\shop\ProductController as ShopProductController;
 use App\Http\Controllers\shop\ShopController;
 
@@ -76,7 +77,7 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
 });
 
 Route::prefix('shop')->group(function () {
-    Route::get('list', [ShopDashboadController::class, 'index'])->name('dashboad-list');
+    Route::get('', [ShopDashboadController::class, 'index'])->name('dashboad');
 
     Route::prefix('product')->group(function () {
         Route::get('list/{id}', [ShopProductController::class, 'listProductOfCategory'])->name('shop-product-list');
@@ -92,6 +93,12 @@ Route::prefix('shop')->group(function () {
 
     Route::prefix('payment')->group(function () {
         Route::get('list', [ShopController::class, 'getViewPayment'])->name('shop-cart-list');
+    });
+
+    Route::prefix('gaurd')->group(function () {
+        Route::post('register', [GaurdController::class, 'register'])->name('gaurd-register');
+        Route::post('login', [GaurdController::class, 'login'])->name('gaurd-login');
+        Route::get('logout', [GaurdController::class, 'logout'])->name('gaurd-logout');
     });
 
 });
