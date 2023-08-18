@@ -489,6 +489,7 @@
 
         //register customer
         $('#register-customer').on('click', function(e) {
+            $('#message-login').html('');
             e.preventDefault();
             let csrf = '{{ csrf_token() }}';
             let name = $('#register-first-name').val();
@@ -520,6 +521,7 @@
 
         //login-customer
         $('#login-customer').on('click', function(e) {
+            $('#message-login').html('');
             e.preventDefault();
             $('#message-error').html('');
             let href = $(this).attr('data-href');
@@ -537,11 +539,38 @@
                 },
                 success: function(res) {
                     if (res == 200) {
-                        console.log('login success');
-
-                        $('.closeModal').trigger('click');
+                        location.reload();
                     } else {
                         $('#message-error').html('Email or passord is not correct!');
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus) {
+                    Haravan.onError(XMLHttpRequest, textStatus);
+                }
+            })
+        });
+
+        $('#payment-view').on('click', function(e){
+            $('#message-login').html('');
+            e.preventDefault();
+            let href = $(this).attr('href');
+            let csrf = '{{ csrf_token() }}';
+
+            $.ajax({
+                type: 'POST',
+                url: href,
+                data: {
+                    _token: csrf,
+                },
+                success: function(res) {
+                    if (res == 200) {
+                        console.log('have customer');
+                        $('#payment-get-view').submit();
+                    } else {
+                        console.log('have not customer');
+                        $('.closeSidebar').trigger('click');
+                        $('#customer-setting').trigger('click');
+                        $('#message-login').html('You need to login to access the payment page');
                     }
                 },
                 error: function(XMLHttpRequest, textStatus) {

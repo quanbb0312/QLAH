@@ -1,3 +1,8 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+?>
+
 <footer id="footer">
     <div class="container">
         <div class="footerMain">
@@ -720,6 +725,16 @@
 
 
 
+<<<<<<< HEAD
+                            </div>
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="modalLoginTab" data-toggle="pill" href="#modalLogin" role="tab" aria-controls="modalLogin" aria-selected="true">Đăng nhập</a>
+                                <a class="nav-link" id="modalForgetTab" data-toggle="pill" href="#modalForget" role="tab" aria-controls="modalForget" aria-selected="false">Quên mật khẩu</a>
+                                <a class="nav-link" id="modalRegisterTab" data-toggle="pill" href="#modalRegister" role="tab" aria-controls="modalRegister" aria-selected="false">Đăng ký</a>
+                                @if (Auth::guard('customers')->user() != null)
+                                <a class="nav-link" href="{{route('gaurd-logout')}}">Đăng xuất</a>
+                                @endif
+=======
 
 
 
@@ -1061,13 +1076,46 @@
                                 </div>
 
 
+>>>>>>> 4bde28f2c2bfcfdf4f775c138c709bbeb74dbd1a
                             </div>
                         </div>
                     </li>
 
+<<<<<<< HEAD
+                                        <p id="message-login" style="color:red"></p>
+                                        <form accept-charset='UTF-8' action='/account/login' id='customer_login' method='post'>
+                                            <input name='form_type' type='hidden' value='customer_login'>
+                                            <input name='utf8' type='hidden' value='✓'>
+
+                                            @if (Auth::guard('customers')->user() != null)
+                                                <div class="form-group">
+                                                    <label for="recover-email">Name*</label>
+                                                    <input type="text" id="recover-email" value="{{Auth::guard('customers')->user()->name}}" class="form-control" disabled name="email" required>
+                                                </div>
+                                            @endif
+
+                                            <div class="form-group">
+                                                <label for="login-email">Email*</label>
+                                                <input type="email" id="login-email" value="<?= Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->email : '' ?>"
+                                                  <?= Auth::guard('customers')->user() ? 'disabled' : '' ?> class="form-control" name="customer[email]" required>
+                                            </div>
+                                            @if (!Auth::guard('customers')->user() != null)
+                                                <div class="form-group">
+                                                    <label for="login-password">Mật khẩu*</label>
+                                                    <input type="password" id="login-password" class="form-control" name="customer[password]" required>
+                                                </div>
+                                            @endif
+                                            <p id="message-error" style="color:red"></p>
+                                            <div class="form-group">
+                                                <button <?= Auth::guard('customers')->user() != null ? 'disabled' : '' ?> type="submit" id="login-customer" data-href="{{route('gaurd-login')}}" class="btn btn-primary hoverOpacity">
+                                                    ĐĂNG NHẬP
+                                                </button>
+                                            </div>
+=======
 
 
 
+>>>>>>> 4bde28f2c2bfcfdf4f775c138c709bbeb74dbd1a
 
 
 
@@ -1286,6 +1334,51 @@
                     </li>
 
 
+<<<<<<< HEAD
+    <div id="sidebarAll">
+        <div class="sidebarAllMainCart">
+            <div class="sidebarAllHeader">
+                <span class="closeSidebar"><i class="lni lni-close"></i></span>
+                <span>Giỏ hàng</span>
+            </div>
+            <div class="sidebarAllBody"></div>
+            <div class="sidebarAllFooter">
+                <div class="totalPrice">
+                    <span>Tổng cộng: </span>
+                    <span></span>
+                </div>
+                <form action="{{route('shop-payment')}}" method="get" id="payment-get-view">
+                    @csrf
+                    <a href="{{route('shop-check-guard')}}" id="payment-view" class="mainCartButton hoverOpacity">
+                        THANH TOÁN
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="sidebarAllMainCompare">
+            <div class="sidebarAllHeader">
+                <span class="closeSidebar"><i class="lni lni-close"></i></span>
+                <span>Danh sách so sánh</span>
+            </div>
+            <div class="sidebarAllBody"></div>
+            <div class="sidebarAllFooter">
+                <a href="/pages/so-sanh" class="mainCompareButton hoverOpacity">
+                    So sánh ngay
+                </a>
+            </div>
+        </div>
+        <div class="sidebarAllMainSearch">
+            <div class="sidebarAllHeader">
+                <span class="closeSidebar"><i class="lni lni-close"></i></span>
+                <span>Tìm kiếm</span>
+            </div>
+            <div class="sidebarAllBody">
+                <div class="headerSearchMain">
+                    <form action="/search" class="headerSearch">
+                        <div class="headerSearchMain">
+                            <input type="hidden" name="type" value="product" />
+                            <input required name="q" maxlength="40" autocomplete="off" class="headerSearchInput searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+=======
 
 
 
@@ -1472,6 +1565,7 @@
 
 
                             </div>
+>>>>>>> 4bde28f2c2bfcfdf4f775c138c709bbeb74dbd1a
                         </div>
                     </li>
 
