@@ -28,9 +28,9 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../admin/assets/images/logo.svg">
+                                <img src="{{ asset('logo/logo.png') }}">
                             </div>
-                            <h4>Hello! Let's get started</h4>
+                            <h4>Hello! Wellcome to Admin Manager</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
                             <form class="pt-3" action="{{ route('adminLoginProcess') }}" method="POST">
                                 @if (Session::has('error'))

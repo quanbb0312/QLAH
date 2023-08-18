@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('catName');
             $table->string('catSlug');
+            $table->varchar('catImage');
             $table->string('catDescriptions');
             $table->string('catSubID');
             $table->string('catParentID');

@@ -20,27 +20,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#menu-product" aria-expanded="false"
-                aria-controls="menu-product">
-                <span class="menu-title">Product Manager</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-            </a>
-            <div class="collapse" id="menu-product">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('product-add') }}">Add Product</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('product-list') }}">Show All</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('product-list') }}">Edit/Delete</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#menu-category" aria-expanded="false"
                 aria-controls="menu-category">
                 <span class="menu-title">Category Manager</span>
@@ -62,22 +41,22 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#menu-order" aria-expanded="false"
-                aria-controls="menu-order">
-                <span class="menu-title">Order Manager</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#menu-product" aria-expanded="false"
+                aria-controls="menu-product">
+                <span class="menu-title">Product Manager</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
             </a>
-            <div class="collapse" id="menu-order">
+            <div class="collapse" id="menu-product">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('order-add') }}">Add Order</a>
+                        <a class="nav-link" href="{{ route('product-add') }}">Add Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('order-list') }}">Show all</a>
+                        <a class="nav-link" href="{{ route('product-list') }}">Show All</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('order-list') }}">Edit/Delete</a>
+                        <a class="nav-link" href="{{ route('product-list') }}">Edit/Delete</a>
                     </li>
                 </ul>
             </div>
@@ -99,6 +78,27 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('customer-list') }}">Edit/Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#menu-order" aria-expanded="false"
+                aria-controls="menu-order">
+                <span class="menu-title">Order Manager</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+            </a>
+            <div class="collapse" id="menu-order">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('order-add') }}">Add Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('order-list') }}">Show all</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('order-list') }}">Edit/Delete</a>
                     </li>
                 </ul>
             </div>
