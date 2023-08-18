@@ -5,9 +5,11 @@
             <div class="container mt-3" style="margin-top: 20px">
                 <h2>Add New Category</h2>
                 @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
                 @endif
-                <form action="{{ route('category-save') }}" method="post">
+                <form action="{{ route('category-save') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     {{-- <div class="form-group">
                         <label for="catID">Category ID</label>
@@ -20,6 +22,11 @@
                     <div class="form-group">
                         <label for="catSlug">Category Slug</label>
                         <input type="text" class="form-control" id="catSlug" name="catSlug" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="catImage">Category Image</label>
+                        <input type="file" class="form-control-file" id="catImage" name="catImage" accept="image/*"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="catDescriptions">Category Descriptions</label>

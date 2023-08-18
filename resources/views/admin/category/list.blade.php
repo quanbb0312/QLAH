@@ -10,6 +10,7 @@
                                 <th>Category ID</th>
                                 <th>Category Name</th>
                                 <th>Category Slug</th>
+                                <th>Category Image</th>
                                 <th>Category Descriptions</th>
                                 <th>Category Sub ID</th>
                                 <th>Category Parent ID</th>
@@ -22,6 +23,9 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $category->catName }}</td>
                                     <td>{{ $category->catSlug }}</td>
+                                    <td><img src="{{ asset('storage/categoryImage/' . $category->catImage) }}"
+                                            style="height: 100px; width: 100px;">
+                                    </td>
                                     <td>{{ $category->catDescriptions }}</td>
                                     <td>{{ $category->catSubID }}</td>
                                     <td>{{ $category->catParentID }}</td>

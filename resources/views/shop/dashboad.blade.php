@@ -230,16 +230,10 @@
 
 
                     <div class="categories-main-item">
-                        <a href="https://titekvn.com/collections/pc-build-san">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                class="lazyload img-fluid"
-                                data-src="https://file.hstatic.net/200000680123/file/catalogue_1_5038be2ccf3243c18dd13ca51c1de643.png"
-                                alt="categoriesContent-1" />
+                        <a href="#">
+                            <img src="{{ asset('logo/pc.png') }}" class="lazyload img-fluid" alt="categoriesContent-1" />
                         </a>
-                        <h3>Titek PC Build</h3>
-                        <ul>
-
-                        </ul>
+                        <h3>QLAH PC </h3>
                     </div>
 
 
@@ -251,11 +245,8 @@
 
 
                     <div class="categories-main-item">
-                        <a href="https://titekvn.com/collections/linh-kien-pc">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                class="lazyload img-fluid"
-                                data-src="https://file.hstatic.net/200000680123/file/catalogue_2_9d3aebfec3954241a740f61a382791c6.png"
-                                alt="categoriesContent-2" />
+                        <a href="#">
+                            <img src="{{ asset('logo/linhkien.') }}" class="lazyload img-fluid" alt="categoriesContent-2" />
                         </a>
                         <h3>Linh Kiện PC</h3>
                         <ul>
@@ -278,7 +269,7 @@
                                 data-src="https://file.hstatic.net/200000680123/file/catalogue_3_bf7d5eca25fa42b9bb71af1eec2b67dc.png"
                                 alt="categoriesContent-3" />
                         </a>
-                        <h3>Gear</h3>
+                        <h3>Bàn Phím</h3>
                         <ul>
 
                         </ul>
@@ -2917,9 +2908,7 @@
                 </div>
                 <div class="group-tab-one-main">
                     <a href="#" class="group-tab-one-main-left">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                            class="lazyload img-fluid"
-                            data-src="https://file.hstatic.net/200000680123/file/banner_250x365_3__2__205f35f97fe74b549a644bc683867758.jpg"
+                        <img src="{{ asset('logo/discount1.png') }}" class="img-fluid" alt="Responsive image"
                             alt="groupbanner">
                     </a>
                     <div class="group-tab-one-main-right">
