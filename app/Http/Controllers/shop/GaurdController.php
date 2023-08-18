@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,5 +38,6 @@ class GaurdController extends Controller
     public function logout()
     {
         Auth::guard('customers')->logout();
+        return redirect()->route('dashboad');
     }
 }

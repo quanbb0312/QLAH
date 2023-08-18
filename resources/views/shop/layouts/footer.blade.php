@@ -1,3 +1,8 @@
+<?php
+
+use Illuminate\Support\Facades\Auth;
+?>
+
 <footer id="footer">
         <div class="container">
             <div class="footerMain">
@@ -256,6 +261,9 @@
                                 <a class="nav-link active" id="modalLoginTab" data-toggle="pill" href="#modalLogin" role="tab" aria-controls="modalLogin" aria-selected="true">Đăng nhập</a>
                                 <a class="nav-link" id="modalForgetTab" data-toggle="pill" href="#modalForget" role="tab" aria-controls="modalForget" aria-selected="false">Quên mật khẩu</a>
                                 <a class="nav-link" id="modalRegisterTab" data-toggle="pill" href="#modalRegister" role="tab" aria-controls="modalRegister" aria-selected="false">Đăng ký</a>
+                                @if (Auth::guard('customers')->user() != null)
+                                <a class="nav-link" href="{{route('gaurd-logout')}}">Đăng xuất</a>
+                                @endif
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -266,12 +274,12 @@
                                     </h5>
                                     <div class="login-form-body">
 
-
+                                        <p id="message-login" style="color:red"></p>
                                         <form accept-charset='UTF-8' action='/account/login' id='customer_login' method='post'>
                                             <input name='form_type' type='hidden' value='customer_login'>
                                             <input name='utf8' type='hidden' value='✓'>
 
-                                            @if (Auth::guard('customers')->user())
+                                            @if (Auth::guard('customers')->user() != null)
                                                 <div class="form-group">
                                                     <label for="recover-email">Name*</label>
                                                     <input type="text" id="recover-email" value="{{Auth::guard('customers')->user()->name}}" class="form-control" disabled name="email" required>
@@ -280,10 +288,10 @@
 
                                             <div class="form-group">
                                                 <label for="login-email">Email*</label>
-                                                <input type="email" id="login-email" value="<?= Auth::guard('customers')->user() ? Auth::guard('customers')->user()->email : '' ?>"
+                                                <input type="email" id="login-email" value="<?= Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->email : '' ?>"
                                                   <?= Auth::guard('customers')->user() ? 'disabled' : '' ?> class="form-control" name="customer[email]" required>
                                             </div>
-                                            @if (!Auth::guard('customers')->user())
+                                            @if (!Auth::guard('customers')->user() != null)
                                                 <div class="form-group">
                                                     <label for="login-password">Mật khẩu*</label>
                                                     <input type="password" id="login-password" class="form-control" name="customer[password]" required>
@@ -291,7 +299,7 @@
                                             @endif
                                             <p id="message-error" style="color:red"></p>
                                             <div class="form-group">
-                                                <button <?= Auth::guard('customers')->user() ? 'disabled' : '' ?> type="submit" id="login-customer" data-href="{{route('gaurd-login')}}" class="btn btn-primary hoverOpacity">
+                                                <button <?= Auth::guard('customers')->user() != null ? 'disabled' : '' ?> type="submit" id="login-customer" data-href="{{route('gaurd-login')}}" class="btn btn-primary hoverOpacity">
                                                     ĐĂNG NHẬP
                                                 </button>
                                             </div>
@@ -418,13 +426,12 @@
                     <span>Tổng cộng: </span>
                     <span></span>
                 </div>
-                <a href="/cart" class="mainCartButton continue hoverOpacity">
-                    XEM GIỎ HÀNG
-                </a>
-                <a href="/checkout" class="mainCartButton hoverOpacity">
-                    THANH TOÁN
-                </a>
-
+                <form action="{{route('shop-payment')}}" method="get" id="payment-get-view">
+                    @csrf
+                    <a href="{{route('shop-check-guard')}}" id="payment-view" class="mainCartButton hoverOpacity">
+                        THANH TOÁN
+                    </a>
+                </form>
             </div>
         </div>
         <div class="sidebarAllMainCompare">

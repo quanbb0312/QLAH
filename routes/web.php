@@ -78,6 +78,7 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
 
 Route::prefix('shop')->group(function () {
     Route::get('', [ShopDashboadController::class, 'index'])->name('dashboad');
+    Route::post('check-guard', [ShopDashboadController::class, 'checkGuard'])->name('shop-check-guard');
 
     Route::prefix('product')->group(function () {
         Route::get('list/{id}', [ShopProductController::class, 'listProductOfCategory'])->name('shop-product-list');
@@ -92,7 +93,9 @@ Route::prefix('shop')->group(function () {
     });
 
     Route::prefix('payment')->group(function () {
-        Route::get('list', [ShopController::class, 'getViewPayment'])->name('shop-cart-list');
+        Route::get('list', [ShopController::class, 'getViewPayment'])->name('shop-payment');
+        Route::post('check-out', [ShopController::class, 'checkOut'])->name('shop-check-out');
+        Route::get('history', [ShopController::class, 'history'])->name('payment-history');
     });
 
     Route::prefix('gaurd')->group(function () {

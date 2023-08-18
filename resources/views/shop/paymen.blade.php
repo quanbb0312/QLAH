@@ -3544,11 +3544,11 @@
                                         <div class="field  ">
                                             <div class="field-input-btn-wrapper">
                                                 <div class="field-input-wrapper">
-                                                    <label class="field-label" for="discount.code">Mã giảm giá</label>
-                                                    <input placeholder="Mã giảm giá" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code" name="discount.code" value="">
+                                                    <label class="field-label" for="discount.code">Discount Code</label>
+                                                    <input placeholder="Discount Code" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code" name="discount.code" value="">
                                                 </div>
                                                 <button type="submit" class="field-input-btn btn btn-default btn-disabled">
-                                                    <span class="btn-content">Sử dụng</span>
+                                                    <span class="btn-content">Use</span>
                                                     <i class="btn-spinner icon icon-button-spinner"></i>
                                                 </button>
                                             </div>
@@ -3586,99 +3586,38 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr class="product" data-product-id="1048411865" data-variant-id="1109500956">
-                                            <td class="product-image">
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="TTK FIRE - 3050" src="//product.hstatic.net/200000680123/product/1a7cba9a-8c0b-421d-b661-e5517f2d56bf_8598f3ac7b2c40719121814101a18ab8_small.png">
+                                        @php
+                                            $totalAll = 0;
+                                            $format = new NumberFormatter('vi-VN',  NumberFormatter::CURRENCY);
+                                        @endphp
+                                        @foreach ($carts as $key => $product)
+                                        @php
+                                            $total = $product['price'] * $product['quantity'];
+                                            $totalAll += $total;
+                                        @endphp
+                                            <tr class="product" data-product-id="{{$key}}" data-variant-id="{{$key}}">
+                                                <td class="product-image">
+                                                    <div class="product-thumbnail">
+                                                        <div class="product-thumbnail-wrapper">
+                                                            <img class="product-thumbnail-image" alt="{{$product['nameVi']}}" src="//product.hstatic.net/200000680123/product/1a7cba9a-8c0b-421d-b661-e5517f2d56bf_8598f3ac7b2c40719121814101a18ab8_small.png">
+                                                        </div>
+                                                        <span class="product-thumbnail-quantity" aria-hidden="true">{{$product['quantity']}}</span>
                                                     </div>
-                                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
-                                                </div>
-                                            </td>
-                                            <td class="product-description">
-                                                <span class="product-description-name order-summary-emphasis">TTK FIRE - 3050</span>
+                                                </td>
+                                                <td class="product-description">
+                                                    <span class="product-description-name order-summary-emphasis">{{$product['nameVi']}}</span>
 
-                                                <span class="product-description-variant order-summary-small-text">
-                                                    TTK FIRE - 3050
-                                                </span>
+                                                    <span class="product-description-variant order-summary-small-text">
+                                                        {{$product['nameVi']}}
+                                                    </span>
 
-                                            </td>
-                                            <td class="product-quantity visually-hidden">1</td>
-                                            <td class="product-price">
-                                                <span class="order-summary-emphasis">15,000,000₫</span>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="product" data-product-id="1046864694" data-variant-id="1105772694">
-                                            <td class="product-image">
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="TTK FIRE - 3060" src="//product.hstatic.net/200000680123/product/ttk_fire_3060_24c49abef1dc4f8ca6226069955a953b_small.png">
-                                                    </div>
-                                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
-                                                </div>
-                                            </td>
-                                            <td class="product-description">
-                                                <span class="product-description-name order-summary-emphasis">TTK FIRE - 3060</span>
-
-                                                <span class="product-description-variant order-summary-small-text">
-                                                    TTK FIRE - 3060
-                                                </span>
-
-                                            </td>
-                                            <td class="product-quantity visually-hidden">1</td>
-                                            <td class="product-price">
-                                                <span class="order-summary-emphasis">17,000,000₫</span>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="product" data-product-id="1047732620" data-variant-id="1107597774">
-                                            <td class="product-image">
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="TTK FIRE - 1650" src="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_small.jpg">
-                                                    </div>
-                                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
-                                                </div>
-                                            </td>
-                                            <td class="product-description">
-                                                <span class="product-description-name order-summary-emphasis">TTK FIRE - 1650</span>
-
-                                                <span class="product-description-variant order-summary-small-text">
-                                                    TTK Fire - 1650
-                                                </span>
-
-                                            </td>
-                                            <td class="product-quantity visually-hidden">1</td>
-                                            <td class="product-price">
-                                                <span class="order-summary-emphasis">11,000,000₫</span>
-                                            </td>
-                                        </tr>
-
-                                        <tr class="product" data-product-id="1048411919" data-variant-id="1109501086">
-                                            <td class="product-image">
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="TTK FIRE - 1650 v2" src="//product.hstatic.net/200000680123/product/ttk_fire_1650_matrexx_db7eb0a72b04485e87a6de92f1364ede_small.png">
-                                                    </div>
-                                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
-                                                </div>
-                                            </td>
-                                            <td class="product-description">
-                                                <span class="product-description-name order-summary-emphasis">TTK FIRE - 1650 v2</span>
-
-                                                <span class="product-description-variant order-summary-small-text">
-                                                    TTK FIRE - 1650 v2
-                                                </span>
-
-                                            </td>
-                                            <td class="product-quantity visually-hidden">1</td>
-                                            <td class="product-price">
-                                                <span class="order-summary-emphasis">12,500,000₫</span>
-                                            </td>
-                                        </tr>
-
+                                                </td>
+                                                <td class="product-quantity visually-hidden">{{$product['quantity']}}</td>
+                                                <td class="product-price">
+                                                    <span class="order-summary-emphasis">{{$format->formatCurrency($total, 'VND')}}</span>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -3690,11 +3629,11 @@
                                         <div class="field  ">
                                             <div class="field-input-btn-wrapper">
                                                 <div class="field-input-wrapper">
-                                                    <label class="field-label" for="discount.code">Mã giảm giá</label>
-                                                    <input placeholder="Mã giảm giá" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code" name="discount.code" value="">
+                                                    <label class="field-label" for="discount.code">Discount Code</label>
+                                                    <input placeholder="Discount Code" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code" name="discount.code" value="">
                                                 </div>
                                                 <button type="submit" class="field-input-btn btn btn-default btn-disabled">
-                                                    <span class="btn-content">Sử dụng</span>
+                                                    <span class="btn-content">Use</span>
                                                     <i class="btn-spinner icon icon-button-spinner"></i>
                                                 </button>
                                             </div>
@@ -3716,17 +3655,17 @@
                                     </thead>
                                     <tbody>
                                         <tr class="total-line total-line-subtotal">
-                                            <td class="total-line-name">Tạm tính</td>
+                                            <td class="total-line-name">Provisional</td>
                                             <td class="total-line-price">
-                                                <span class="order-summary-emphasis" data-checkout-subtotal-price-target="5550000000">
-                                                    55,500,000₫
+                                                <span class="order-summary-emphasis" data-checkout-subtotal-price-target="{{$totalAll}}">
+                                                    {{$format->formatCurrency($totalAll, 'VND')}}
                                                 </span>
                                             </td>
                                         </tr>
 
 
                                         <tr class="total-line total-line-shipping">
-                                            <td class="total-line-name">Phí vận chuyển</td>
+                                            <td class="total-line-name">Transport fee</td>
                                             <td class="total-line-price">
                                                 <span class="order-summary-emphasis" data-checkout-total-shipping-target="0">
 
@@ -3739,12 +3678,12 @@
                                     <tfoot class="total-line-table-footer">
                                         <tr class="total-line">
                                             <td class="total-line-name payment-due-label">
-                                                <span class="payment-due-label-total">Tổng cộng</span>
+                                                <span class="payment-due-label-total">Total</span>
                                             </td>
                                             <td class="total-line-name payment-due">
                                                 <span class="payment-due-currency">VND</span>
-                                                <span class="payment-due-price" data-checkout-payment-due-target="5550000000">
-                                                    55,500,000₫
+                                                <span class="payment-due-price" data-checkout-payment-due-target="{{$totalAll}}">
+                                                {{number_format($totalAll)}}
                                                 </span>
                                                 <span class="checkout_version" display:none="" data_checkout_version="0">
                                                 </span>
@@ -3760,7 +3699,7 @@
             <div class="main">
                 <div class="main-header">
 
-                    <a href="/" class="logo">
+                    <a href="{{route('dashboad')}}" class="logo">
 
                         <h1 class="logo-text">TITEK</h1>
 
@@ -3784,6 +3723,21 @@
                         .logo-text {
                             text-align: "";
                         }
+                        #form_update_location_customer_shipping {
+                            background-color: white !important;
+                        }
+
+                        .section .section-content .content-box {
+                            box-shadow: none !important;
+                            border-radius: none !important;
+                        }
+                        .content-box-row-secondary {
+                            padding: 0 !important;
+                        }
+
+                        .main .main-content {
+                            padding-bottom: 0px !important;
+                        }
 
                         @media (max-width: 767px) {
                             .banner a {
@@ -3791,25 +3745,6 @@
                             }
                         }
                     </style>
-
-
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="/cart">Giỏ hàng</a>
-                        </li>
-
-                        <li class="breadcrumb-item breadcrumb-item-current">
-
-                            Thông tin giao hàng
-
-                        </li>
-                        <li class="breadcrumb-item ">
-
-                            Phương thức thanh toán
-
-                        </li>
-
-                    </ul>
 
                 </div>
                 <div class="main-content">
@@ -3851,71 +3786,50 @@
                         $("html, body").animate({
                             scrollTop: 0
                         }, "slow");
+                    
                     </script>
 
 
-                    <div class="step">
-
-                        <div class="step-sections " step="1">
-
-
-
-                            <div class="section">
-                                <div class="section-header">
-                                    <h2 class="section-title">Thông tin giao hàng</h2>
-                                </div>
-                                <div class="section-content section-customer-information no-mb">
-
-                                    <input name="utf8" type="hidden" value="✓">
-                                    <div class="inventory_location_data">
-
-                                        <input name="customer_shipping_country" type="hidden" value="241">
-                                        <input name="customer_shipping_province" type="hidden" value="">
-                                        <input name="customer_shipping_district" type="hidden" value="">
-                                        <input name="customer_shipping_ward" type="hidden" value="">
-
+                    <form action="{{route('shop-check-out')}}" id="shop-check-out" method="post">
+                    @csrf
+                        <div class="step">
+                            <div class="step-sections " step="1">
+                                <div class="section">
+                                    <div class="section-header">
+                                        <h2 class="section-title">Shipment Details</h2>
                                     </div>
+                                    <div class="section-content section-customer-information no-mb">
 
-
-
-                                    <div class="fieldset">
-
-
-                                        <div class="field field-required  ">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label" for="billing_address_full_name">Họ và tên</label>
-                                                <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_full_name" name="billing_address[full_name]" value="" autocomplete="false">
-                                            </div>
-
+                                        <input name="utf8" type="hidden" value="✓">
+                                        <div class="inventory_location_data">
+                                            <input name="customer_shipping_country" type="hidden" value="241">
+                                            <input name="customer_shipping_province" type="hidden" value="">
+                                            <input name="customer_shipping_district" type="hidden" value="">
+                                            <input name="customer_shipping_ward" type="hidden" value="">
                                         </div>
-
-
-
-                                        <div class="field  field-two-thirds  ">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label" for="checkout_user_email">Email</label>
-                                                <input autocomplete="false" placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="checkout_user_email" name="checkout_user[email]" value="">
+                                        <div class="fieldset">
+                                            <div class="field field-required  ">
+                                                <div class="field-input-wrapper">
+                                                    <label class="field-label" for="billing_address_full_name">Name</label>
+                                                    <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->name : ''}}" placeholder="Name" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_full_name" name="name" value="" autocomplete="false" required>
+                                                </div>
                                             </div>
-
-                                        </div>
-
-
-
-                                        <div class="field field-required field-third  ">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label" for="billing_address_phone">Số điện thoại</label>
-                                                <input autocomplete="false" placeholder="Số điện thoại" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="15" type="tel" id="billing_address_phone" name="billing_address[phone]" value="">
+                                            <div class="field  field-two-thirds  ">
+                                                <div class="field-input-wrapper">
+                                                    <label class="field-label" for="checkout_user_email">Email</label>
+                                                    <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->email : ''}}"  autocomplete="false" placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="checkout_user_email" name="email" value="" required>
+                                                </div>
                                             </div>
-
+                                            <div class="field field-required field-third  ">
+                                                <div class="field-input-wrapper">
+                                                    <label class="field-label" for="billing_address_phone">Phone</label>
+                                                    <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->phone : ''}}"  autocomplete="false" placeholder="Phone" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="15" type="tel" id="billing_address_phone" name="phone" value="" required>
+                                                </div>
+                                            </div>
                                         </div>
-
-
                                     </div>
-                                </div>
-                                <div class="section-content">
-                                    <div class="fieldset">
-
-                                        <form autocomplete="off" id="form_update_shipping_method" class="field default" accept-charset="UTF-8" method="post">
+                                    <div class="section-content">
+                                        <div class="fieldset">
                                             <input name="utf8" type="hidden" value="✓">
                                             <div class="content-box mt0">
 
@@ -3927,363 +3841,41 @@
 
                                                     <div class="field field-required  ">
                                                         <div class="field-input-wrapper">
-                                                            <label class="field-label" for="billing_address_address1">Địa chỉ</label>
-                                                            <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_address1" name="billing_address[address1]" value="">
+                                                            <label class="field-label" for="billing_address_address1">Address</label>
+                                                            <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->address : ''}}" placeholder="Address" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_address" name="address" value="" required>
                                                         </div>
-
                                                     </div>
 
-
-
-                                                    <input name="selected_customer_shipping_country" type="hidden" value="">
-                                                    <input name="selected_customer_shipping_province" type="hidden" value="">
-                                                    <input name="selected_customer_shipping_district" type="hidden" value="">
-                                                    <input name="selected_customer_shipping_ward" type="hidden" value="">
-
-                                                    <div class="field field-show-floating-label field-required field-third ">
-                                                        <div class="field-input-wrapper field-input-wrapper-select">
-                                                            <label class="field-label" for="customer_shipping_province"> Tỉnh / thành </label>
-                                                            <select class="field-input" id="customer_shipping_province" name="customer_shipping_province">
-                                                                <option data-code="null" value="null" selected="">
-
-                                                                    Chọn tỉnh / thành </option>
-
-
-
-                                                                <option data-code="HC" value="50">Hồ Chí Minh</option>
-
-
-
-                                                                <option data-code="HI" value="1">Hà Nội</option>
-
-
-
-                                                                <option data-code="DA" value="32">Đà Nẵng</option>
-
-
-
-                                                                <option data-code="AG" value="57">An Giang</option>
-
-
-
-                                                                <option data-code="BV" value="49">Bà Rịa - Vũng Tàu</option>
-
-
-
-                                                                <option data-code="BI" value="47">Bình Dương</option>
-
-
-
-                                                                <option data-code="BP" value="45">Bình Phước</option>
-
-
-
-                                                                <option data-code="BU" value="39">Bình Thuận</option>
-
-
-
-                                                                <option data-code="BD" value="35">Bình Định</option>
-
-
-
-                                                                <option data-code="BL" value="62">Bạc Liêu</option>
-
-
-
-                                                                <option data-code="BG" value="15">Bắc Giang</option>
-
-
-
-                                                                <option data-code="BK" value="4">Bắc Kạn</option>
-
-
-
-                                                                <option data-code="BN" value="18">Bắc Ninh</option>
-
-
-
-                                                                <option data-code="BT" value="53">Bến Tre</option>
-
-
-
-                                                                <option data-code="CB" value="3">Cao Bằng</option>
-
-
-
-                                                                <option data-code="CM" value="63">Cà Mau</option>
-
-
-
-                                                                <option data-code="CN" value="59">Cần Thơ</option>
-
-
-
-                                                                <option data-code="GL" value="41">Gia Lai</option>
-
-
-
-                                                                <option data-code="HG" value="2">Hà Giang</option>
-
-
-
-                                                                <option data-code="HM" value="23">Hà Nam</option>
-
-
-
-                                                                <option data-code="HT" value="28">Hà Tĩnh</option>
-
-
-
-                                                                <option data-code="HO" value="11">Hòa Bình</option>
-
-
-
-                                                                <option data-code="HY" value="21">Hưng Yên</option>
-
-
-
-                                                                <option data-code="HD" value="19">Hải Dương</option>
-
-
-
-                                                                <option data-code="HP" value="20">Hải Phòng</option>
-
-
-
-                                                                <option data-code="HU" value="60">Hậu Giang</option>
-
-
-
-                                                                <option data-code="KH" value="37">Khánh Hòa</option>
-
-
-
-                                                                <option data-code="KG" value="58">Kiên Giang</option>
-
-
-
-                                                                <option data-code="KT" value="40">Kon Tum</option>
-
-
-
-                                                                <option data-code="LI" value="8">Lai Châu</option>
-
-
-
-                                                                <option data-code="LA" value="51">Long An</option>
-
-
-
-                                                                <option data-code="LO" value="6">Lào Cai</option>
-
-
-
-                                                                <option data-code="LD" value="44">Lâm Đồng</option>
-
-
-
-                                                                <option data-code="LS" value="13">Lạng Sơn</option>
-
-
-
-                                                                <option data-code="ND" value="24">Nam Định</option>
-
-
-
-                                                                <option data-code="NA" value="27">Nghệ An</option>
-
-
-
-                                                                <option data-code="NB" value="25">Ninh Bình</option>
-
-
-
-                                                                <option data-code="NT" value="38">Ninh Thuận</option>
-
-
-
-                                                                <option data-code="PT" value="16">Phú Thọ</option>
-
-
-
-                                                                <option data-code="PY" value="36">Phú Yên</option>
-
-
-
-                                                                <option data-code="QB" value="29">Quảng Bình</option>
-
-
-
-                                                                <option data-code="QM" value="33">Quảng Nam</option>
-
-
-
-                                                                <option data-code="QG" value="34">Quảng Ngãi</option>
-
-
-
-                                                                <option data-code="QN" value="14">Quảng Ninh</option>
-
-
-
-                                                                <option data-code="QT" value="30">Quảng Trị</option>
-
-
-
-                                                                <option data-code="ST" value="61">Sóc Trăng</option>
-
-
-
-                                                                <option data-code="SL" value="9">Sơn La</option>
-
-
-
-                                                                <option data-code="TH" value="26">Thanh Hóa</option>
-
-
-
-                                                                <option data-code="TB" value="22">Thái Bình</option>
-
-
-
-                                                                <option data-code="TY" value="12">Thái Nguyên</option>
-
-
-
-                                                                <option data-code="TT" value="31">Thừa Thiên Huế</option>
-
-
-
-                                                                <option data-code="TG" value="52">Tiền Giang</option>
-
-
-
-                                                                <option data-code="TV" value="54">Trà Vinh</option>
-
-
-
-                                                                <option data-code="TQ" value="5">Tuyên Quang</option>
-
-
-
-                                                                <option data-code="TN" value="46">Tây Ninh</option>
-
-
-
-                                                                <option data-code="VL" value="55">Vĩnh Long</option>
-
-
-
-                                                                <option data-code="VT" value="17">Vĩnh Phúc</option>
-
-
-
-                                                                <option data-code="YB" value="10">Yên Bái</option>
-
-
-
-                                                                <option data-code="DB" value="7">Điện Biên</option>
-
-
-
-                                                                <option data-code="DC" value="42">Đắk Lắk</option>
-
-
-
-                                                                <option data-code="DO" value="43">Đắk Nông</option>
-
-
-
-                                                                <option data-code="DN" value="48">Đồng Nai</option>
-
-
-
-                                                                <option data-code="DT" value="56">Đồng Tháp</option>
-
-
-
-                                                            </select>
-                                                        </div>
-
-
-                                                    </div>
-
-
-                                                    <div class="field field-show-floating-label field-required field-third ">
-                                                        <div class="field-input-wrapper field-input-wrapper-select">
-                                                            <label class="field-label" for="customer_shipping_district">Quận / huyện</label>
-                                                            <select class="field-input" id="customer_shipping_district" name="customer_shipping_district">
-                                                                <option data-code="null" value="null" selected="">Chọn quận / huyện</option>
-
-                                                            </select>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="field field-show-floating-label field-required  field-third  ">
-                                                        <div class="field-input-wrapper field-input-wrapper-select">
-                                                            <label class="field-label" for="customer_shipping_ward">Phường / xã</label>
-                                                            <select class="field-input" id="customer_shipping_ward" name="customer_shipping_ward">
-                                                                <option data-code="null" value="null" selected="">Chọn phường / xã</option>
-
-                                                            </select>
-                                                        </div>
-
-                                                    </div>
-
-
-
-                                                    <div id="div_location_country_not_vietnam" class="section-customer-information " style="display: none;">
-                                                        <div class="field field-two-thirds">
-                                                            <div class="field-input-wrapper">
-                                                                <label class="field-label" for="billing_address_city">Thành phố</label>
-                                                                <input placeholder="Thành phố" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_city" name="billing_address[city]" value="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="field field-third">
-                                                            <div class="field-input-wrapper">
-                                                                <label class="field-label" for="billing_address_zip">Mã bưu chính</label>
-                                                                <input placeholder="Mã bưu chính" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_zip" name="billing_address[zip]" value="">
-                                                            </div>
+                                                    <div class="field field-required  ">
+                                                        <div class="field-input-wrapper">
+                                                            <label class="field-label" for="billing_note">Note</label>
+                                                            <input placeholder="Note" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_note" name="note" value="">
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
-                                        </form>
-
+                                        </div>
                                     </div>
-
-                                </div>
-                                <div id="change_pick_location_or_shipping">
-
-
-
-
+                                    <div id="change_pick_location_or_shipping">
+                                    </div>
                                 </div>
                             </div>
-
-
-
-                        </div>
-                        <div class="step-footer" id="step-footer-checkout">
-
-
-                            <form id="form_next_step" accept-charset="UTF-8" method="post">
-                                <input name="utf8" type="hidden" value="✓">
-                                <button type="submit" class="step-footer-continue-btn btn">
-                                    <span class="btn-content">Tiếp tục đến phương thức thanh toán</span>
-                                    <i class="btn-spinner icon icon-button-spinner"></i>
+                            <div class="step-footer" id="step-footer-checkout">
+                                <button data-href="{{route('shop-check-out')}}" type="submit" id="button-checkout" class="step-footer-continue-btn btn">
+                                    <span class="btn-content">Check Out</span>
                                 </button>
-                            </form>
-                            <a class="step-footer-previous-link" href="/cart">
-                                Giỏ hàng
-                            </a>
-
-
+                                <a class="step-footer-previous-link" href="{{route('payment-history')}}">
+                                    Order History
+                                </a>
+                            </div>
                         </div>
+                    </form>
+                    <div style="margin:20px; color: #0b5348; background-color: #d1f5f0; border-color: #bbf1e9">
+                        <p id="message-checkout"></p>
                     </div>
-
+                    <div style="margin:20px; color: crimson; background-color: #f1f1f1; border-color: #bbf1e9">
+                        <p id="message-error"></p>
+                    </div>
                 </div>
                 <div class="hrv-coupons-popup">
                     <div class="hrv-title-coupons-popup">
@@ -4295,7 +3887,7 @@
                         </div>
                     </div>
                     <div class="hrv-content-coupons-code">
-                        <h3 class="coupon_heading">Mã giảm giá của shop</h3>
+                        <h3 class="coupon_heading">Discount Code</h3>
                         <div class="hrv-discount-code-web">
                         </div>
                         <div class="hrv-discount-code-external">
@@ -4312,8 +3904,57 @@
 
     <script>
         $(document).ready(function() {
+            checkPayment();
+            function checkPayment() {
+                let check = localStorage.getItem('checkout');
+                if (check) {
+                    localStorage.removeItem('checkout');
+                    $('#message-checkout').attr('style', 'padding:5px');
+                    $('#message-checkout').html("You have successfully placed an order. Go to <a style='color:red' href='{{route('payment-history')}}'>Order History</a> to review your order history");
+                }
+            }
 
+            $('#button-checkout').on('click', function(e){
+                $('#message-checkout').html('');
+                $('#message-error').html('');
+                e.preventDefault();
+                let href = $(this).attr('data-href');
+                let csrf = '{{ csrf_token() }}';
+                let name = $('#billing_address_full_name').val();
+                let email = $('#checkout_user_email').val();
+                let phone = $('#billing_address_phone').val();
+                let address = $('#billing_address_address').val();
+                let note = $('#billing_note').val();
+                console.log(href);
 
+                $.ajax({
+                    type: 'POST',
+                    url: href,
+                    data: {
+                        _token: csrf,
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        address: address,
+                        note: note,
+                    },
+                    success: function(res) {
+                        if (res == 200) {
+                            location.reload();
+                            localStorage.setItem('checkout', 'true');
+                        } else if (res == 401) {
+                            $('#message-error').attr('style', 'padding:5px');
+                            $('#message-error').html("Please add product to cart before checkout!!! Back to <a href='{{route('dashboad')}}'>Home</a>");
+                        } else {
+                            $('#message-error').attr('style', 'padding:5px');
+                            $('#message-error').html("Please login before checkout!!! Go to <a href='{{route('dashboad')}}'>Login</a>");
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus) {
+                        Haravan.onError(XMLHttpRequest, textStatus);
+                    }
+                })
+            })
 
             var dataDiscount = {
                 "data": []

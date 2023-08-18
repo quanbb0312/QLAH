@@ -56,7 +56,7 @@
 
                 </div>
                 <div class="headerUser">
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#accountLogin"
+                    <a href="javascript:void(0)" id="customer-setting" data-toggle="modal" data-target="#accountLogin"
                         data-whatever="@accountLogin">
                         <i class="lni lni-user"></i>
                     </a>
