@@ -11,7 +11,7 @@ use App\Models\OrderDetail;
 
 class OrderController extends Controller
 {
-    protected $paginate = 5;
+    protected $paginate = 8;
 
     public function list()
     {
@@ -22,7 +22,7 @@ class OrderController extends Controller
 
     public function add()
     {
-        $products = Product::all(); 
+        $products = Product::all();
         $customers = Customer::all();
         // Hiển thị view để thêm đơn hàng mới
         return view('admin.order.add', compact('products', 'customers'));
@@ -33,7 +33,7 @@ class OrderController extends Controller
         $product = Product::find($request->product_id);
         //save order
         $order = new Order();
-        $order->customer_id   = $request->customer_id ;
+        $order->customer_id   = $request->customer_id;
         $order->total = $request->quantity * $product->productPrice;
         $order->date_at = $request->date_at;
         $order->note = $request->note;
@@ -51,7 +51,8 @@ class OrderController extends Controller
         return redirect()->route('order-list')->with('success', 'Order added successfully!');
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $orderDetail = OrderDetail::where('order_id', $id)->get();
         return view('admin.order.detail', compact('orderDetail'));
     }

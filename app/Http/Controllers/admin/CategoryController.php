@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    protected $paginate = 5;
+    protected $paginate = 8;
 
     public function add()
     {

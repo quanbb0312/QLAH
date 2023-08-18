@@ -8,7 +8,7 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    protected $paginate = 5;
+    protected $paginate = 8;
 
     public function list()
     {

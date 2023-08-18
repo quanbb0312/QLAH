@@ -11,14 +11,14 @@
     <title>
         QLAH
     </title>
-    <link rel="canonical" href="https://titekvn.com/" />
-    <link rel="alternate" href="https://titekvn.com/" hreflang="vi-vn" />
+    <link rel="canonical" href="http://127.0.0.1:8000/shop/" />
+    <link rel="alternate" href="http://127.0.0.1:8000/shop/" hreflang="vi-vn" />
     <meta name="keywords" content="QLAH">
 
     <meta name="robots" content="index,follow,noodp">
 
     <meta name="revisit-after" content="1 day" />
-    <script type='text/javascript'>
+    {{-- <script type='text/javascript'>
         //<![CDATA[
         if ((typeof Haravan) === 'undefined') {
             Haravan = {};
@@ -32,7 +32,7 @@
         };
         Haravan.domain = 'titekvn.com';
         //]]>
-    </script>
+    </script> --}}
     <script defer src='https://stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000680123'></script>
     <style>
         .grecaptcha-badge {
@@ -71,7 +71,7 @@
     <!-- SEO PAGI -->
     <!-- END SEO PAGI -->
 
-    <link rel="dns-prefetch" href="https://titekvn.com">
+    <link rel="dns-prefetch" href="http://127.0.0.1:8000/shop/">
     <link rel="dns-prefetch" href="//hstatic.net">
     <link rel="dns-prefetch" href="//theme.hstatic.net">
     <link rel="dns-prefetch" href="//file.hstatic.net">
@@ -114,7 +114,7 @@
         content="http://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
     <meta property="og:image:secure_url"
         content="https://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
-    <meta property="og:url" content="https://titekvn.com/" />
+    <meta property="og:url" content="http://127.0.0.1:8000/shop/" />
     <meta property="og:site_name" content="TITEK" />
 
 
@@ -550,7 +550,7 @@
             })
         });
 
-        $('#payment-view').on('click', function(e){
+        $('#payment-view').on('click', function(e) {
             $('#message-login').html('');
             e.preventDefault();
             let href = $(this).attr('href');

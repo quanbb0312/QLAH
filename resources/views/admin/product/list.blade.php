@@ -58,15 +58,16 @@
                                                             </p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Cancel</button>
-                                                        <form action="{{ route('product-delete', $product->id) }}"
-                                                            method="POST">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                                        </form>
-                                                    </div>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cancel</button>
+                                                            <form action="{{ route('product-delete', $product->id) }}"
+                                                                method="POST">
+                                                                @method('DELETE')
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -81,8 +82,8 @@
                             </tbody>
                         </table>
                         <div style="float: right; margin:20px">
-                        {{ $products->appends(request()->all())->links() }}
-                    </div>
+                            {{ $products->appends(request()->all())->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

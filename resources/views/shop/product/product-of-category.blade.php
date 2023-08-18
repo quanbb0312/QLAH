@@ -2,12 +2,15 @@
 @section('content')
     <main>
         <div id="collection">
-
             <div class="breadcrumb-shop">
                 <div class="breadcrumb-wrap container container-xl">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                        <li class="breadcrumb-item active"><span>QLAH PC </span></li>
+                        <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/shop">Trang chủ</a></li>
+                        @foreach ($listProduct as $product)
+                            <li class="breadcrumb-item active">
+                                <p>{{ $product->category->catName }}</p>
+                            </li>
+                        @endforeach
                     </ol>
                 </div>
             </div>
@@ -17,7 +20,7 @@
 
                         <div class="collectionMainContentLeft">
                             <h1 class="title">
-                                QLAH PC
+                                {{ $listProduct->first()->category->catName }}
                             </h1>
                             <div class="collectionFilter">
                                 <div class="collectionFilterMobileAction">
@@ -133,11 +136,9 @@
                         </div>
 
                         <div class="collectionMainContentRight ">
-                            <div class="">
-
+                            {{-- <div class="">
                                 <div class="collectionHeader 	">
                                     <div class="row">
-
                                         <div class="col-md-4 col-sm-12 col-4">
                                             <div class="filterMobile headerTool"><a href=""
                                                     data-type="sidebarAllFilter"><i class="lni lni-funnel"></i> Bộ lọc</a>
@@ -177,7 +178,7 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> --}}
                             <div class="collectionBody">
                                 <div class="collectionListProduct">
                                     @foreach ($listProduct as $product)
@@ -191,12 +192,11 @@
                                                                 srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
                                                                 data-srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
                                                                 media="(max-width: 767px)">
-                                                            <img data-src="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_grande.jpg"
-                                                                src="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_grande.jpg"
+                                                            <img src="{{ asset('storage/products/' . $product->productImage) }}"
                                                                 class="img-fluid lazyloaded"
                                                                 alt=" {{ $product->productName }} ">
                                                         </picture>
-                                                        <picture>
+                                                        {{-- <picture>
                                                             <source
                                                                 srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
                                                                 data-srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
@@ -205,7 +205,7 @@
                                                                 src="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_large.jpg"
                                                                 class="img-fluid ls-is-cached lazyloaded"
                                                                 alt=" {{ $product->productName }} ">
-                                                        </picture>
+                                                        </picture> --}}
                                                     </a>
                                                 </div>
                                                 <h3 class="productName">
@@ -236,7 +236,6 @@
                                                     </a>
                                                 </div>
                                                 <div class="productAction">
-
                                                     <a href="javascript:void:0" class="setQuickview"
                                                         data-handle="ttk-fire-1650" data-toggle="modal"
                                                         data-target="#quickviewLogin" data-whatever="@quickviewLogin"><i
@@ -247,19 +246,18 @@
                                             </div>
                                         </div>
                                     @endforeach
-
                                     <div class="text-center">
                                         <div id="pagination" class="clearfix">
-
                                         </div>
-
                                     </div>
+                                </div>
+                                <div style="float: right; margin:20px">
+                                    {{ $listProduct->appends(request()->all())->links() }}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
     </main>
 @endsection

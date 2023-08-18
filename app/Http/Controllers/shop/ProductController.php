@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function listProductOfCategory($id) {
+    protected $paginate = 8;
+    public function listProductOfCategory($id)
+    {
         $listCategory = Category::all();
-        $listProduct = Product::where('category_id', $id)->get();
+        $listProduct = Product::where('category_id', $id)->paginate($this->paginate);
         return view('shop.product.product-of-category', compact('listProduct', 'listCategory'));
     }
 }
