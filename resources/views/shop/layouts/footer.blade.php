@@ -290,10 +290,7 @@
                         <div class="modalLogo">
 
                             <a href="https://titekvn.com">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                    class="lazyload img-fluid"
-                                    data-src="https://file.hstatic.net/200000680123/file/tt_logo_black_779867cb0507407a8433688e203d4a2e.png"
-                                    alt="TITEK" />
+                                <img src="{{ asset('logo/logo.png') }}" class="lazyload img-fluid" alt="QLAH" />
                             </a>
 
                         </div>
@@ -2068,7 +2065,7 @@
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 
-<div class="modal modal-popupContact popupBanner" tabindex="-1" role="dialog" id="popup-contact">
+{{-- <div class="modal modal-popupContact popupBanner" tabindex="-1" role="dialog" id="popup-contact">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
 
@@ -2095,10 +2092,7 @@
 
         </div>
     </div>
-</div>
-
-
-
+</div> --}}
 
 
 <div class="addThis_listSharing">
@@ -2118,32 +2112,29 @@
         </button>
         <ul class="addThis_listing">
             <li class="addThis_item">
-                <a class="addThis_item--icon"
-                    href="https://zalo.me/3339633121405103490?gidzl=CexR0E5Oq7Spbjm3xaRGTJwHtm_rGOHqSv2A3wL0Woznn8rSentIAtB4YLlpHOryTyE62ZFbu3r2vbhNS0&fbclid=IwAR24gmkESNVtl1Oh1FIxX5fZrhb43t7vJiintkyM15LZDFdyarI3lZjuHB0"
-                    rel="nofollow" aria-label="zalo" target="_blank">
+                <a class="addThis_item--icon" href="#" rel="nofollow" aria-label="zalo" target="_blank">
                     <img width="22" class="" alt="Icon-Zalo"
                         src="https://file.hstatic.net/200000259495/file/zalo_d9dc3417eb744b91a44643f29b8c7161.svg" />
                     <span class="tooltip-text">Zalo</span>
                 </a>
             </li>
             <li class="addThis_item">
-                <a class="addThis_item--icon" href="https://www.facebook.com/messages/t/104093432438257"
-                    target="_blank" rel="nofollow noreferrer" aria-label="zalo">
+                <a class="addThis_item--icon" href="#" target="_blank" rel="nofollow noreferrer"
+                    aria-label="zalo">
                     <img width="22" class="" alt="Icon-Messager"
                         src="https://file.hstatic.net/200000259495/file/messager_208d7389c4ac46b5a01afad457684cd6.svg" />
                     <span class="tooltip-text">Messenger</span>
                 </a>
             </li>
             <li class="addThis_item">
-                <a class="addThis_item--icon" href="https://www.youtube.com/channel/UC1ttcVA1uIY6fE-K0hMjYHQ"
-                    aria-label="Youtube">
+                <a class="addThis_item--icon" href="#" aria-label="Youtube">
                     <img width="22" class="" alt="Icon-Youtube"
                         src="https://file.hstatic.net/200000259495/file/youtube_479e81022bcb432f89376b2fea8f08ef.svg" />
                     <span class="tooltip-text">Youtube</span>
                 </a>
             </li>
             <li class="addThis_item">
-                <a class="addThis_item--icon" href="https://www.tiktok.com/@titeksg" aria-label="Tiktok">
+                <a class="addThis_item--icon" href="#">
                     <img width="22" class="" alt="Icon-Tiktok"
                         src="https://file.hstatic.net/200000259495/file/tik-tok_b5d2fcfc430f4022b3af5051c2f54cfd.svg" />
                     <span class="tooltip-text">Tiktok</span>
