@@ -4,7 +4,7 @@
             <div class="headerLeft">
                 <div class="headerLogo">
 
-                    <a href="https://titekvn.com">
+                    <a href="#">
                         <img src="{{ asset('logo/logo.png') }}" alt="QLAH" class="img-fluid logoimg" />
                     </a>
 
@@ -51,7 +51,7 @@
                         <a href="tel:0835627365 ">Hotline: Sale / Hỗ trợ tư vấn
 
                         </a>
-                        <a href="tel:0835627365 ">0835627365 </a>
+                        <a href="tel:0835627365 ">0898406358 </a>
                     </div>
 
                 </div>

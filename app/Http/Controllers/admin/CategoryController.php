@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -27,10 +28,30 @@ class CategoryController extends Controller
         $category->catDescriptions = $request->catDescriptions;
         $category->catSubID = $request->catSubID;
         $category->catParentID = $request->catParentID;
-        $category->save();
+        $file = $request->catImage;
+        if ($request->hasFile('catImage')) {
+            $fileExtension = $file->getClientOriginalExtension(); // Lấy phần mở rộng của file (vd: jpg, png)
+            $fileName = time(); // Tạo tên file dựa trên thời gian
+            $newFileName = $fileName . '.' . $fileExtension; // Tên file mới
+            // Lưu file vào thư mục storage/app/public/categoryImage với tên mới
+            $request->file('catImage')->storeAs('public/categoryImage', $newFileName);
+            // Gán trường catImage của đối tượng category với tên mới
+            $category->catImage = $newFileName;
+        }
 
-        return redirect()->back()->with('success', 'Category added successfully!');
+        try {
+            $category->save();
+            return redirect()->back()->with('success', 'Category added successfully!');
+        } catch (\Exception $th) {
+            $image = 'public/categoryImage/' . $category->catImage;
+            Storage::delete($image);
+            return redirect()->back()->with('error', 'An error occurred while adding category.');
+        }
     }
+
+
+
+
 
     public function delete($id)
     {

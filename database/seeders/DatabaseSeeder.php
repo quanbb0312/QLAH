@@ -50,10 +50,12 @@ class DatabaseSeeder extends Seeder
         $user->save();
     }
 
-    public function CategorySeeder() {
+    public function CategorySeeder()
+    {
         $cate = new Category();
         $cate->catName = 'PC';
         $cate->catSlug = '1';
+        $cate->catImage = '';
         $cate->catDescriptions = 'PC SHOP';
         $cate->catSubID = '1';
         $cate->catParentID = '1';
@@ -62,6 +64,7 @@ class DatabaseSeeder extends Seeder
         $cate = new Category();
         $cate->catName = 'Linh Kiện PC';
         $cate->catSlug = '1';
+        $cate->catImage = '';
         $cate->catDescriptions = 'Linh Kiện PC SHOP';
         $cate->catSubID = '1';
         $cate->catParentID = '1';
@@ -70,6 +73,7 @@ class DatabaseSeeder extends Seeder
         $cate = new Category();
         $cate->catName = 'Màn Hình';
         $cate->catSlug = '1';
+        $cate->catImage = '';
         $cate->catDescriptions = 'Màn Hình SHOP';
         $cate->catSubID = '1';
         $cate->catParentID = '1';
@@ -78,6 +82,7 @@ class DatabaseSeeder extends Seeder
         $cate = new Category();
         $cate->catName = 'Bàn Phím';
         $cate->catSlug = '1';
+        $cate->catImage = '';
         $cate->catDescriptions = 'Bàn Phím SHOP';
         $cate->catSubID = '1';
         $cate->catParentID = '1';
@@ -86,6 +91,7 @@ class DatabaseSeeder extends Seeder
         $cate = new Category();
         $cate->catName = 'Chuột - Lót Chuột';
         $cate->catSlug = '1';
+        $cate->catImage = '';
         $cate->catDescriptions = 'Chuột - Lót Chuột SHOP';
         $cate->catSubID = '1';
         $cate->catParentID = '1';
@@ -94,6 +100,7 @@ class DatabaseSeeder extends Seeder
         $cate = new Category();
         $cate->catName = 'Tai Nghe - Loa';
         $cate->catSlug = '1';
+        $cate->catImage = '';
         $cate->catDescriptions = 'Tai Nghe - Loa SHOP';
         $cate->catSubID = '1';
         $cate->catParentID = '1';
@@ -102,13 +109,15 @@ class DatabaseSeeder extends Seeder
         $cate = new Category();
         $cate->catName = 'LAPTOP';
         $cate->catSlug = '1';
+        $cate->catImage = '';
         $cate->catDescriptions = 'LAPTOP SHOP';
         $cate->catSubID = '1';
         $cate->catParentID = '1';
         $cate->save();
     }
 
-    public function CustomerSeeder() {
+    public function CustomerSeeder()
+    {
         $customer = new Customer();
         $customer->name = 'Phi';
         $customer->email = 'phi@gmail.com';
@@ -126,7 +135,8 @@ class DatabaseSeeder extends Seeder
         $customer->save();
     }
 
-    public function ProductSeeder() {
+    public function ProductSeeder()
+    {
         $product = new Product();
         $product->productName = 'bàn phím cơ';
         $product->productSlug = 'bàn phím cơ';
