@@ -9,11 +9,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
-    {
-        $category = Category::get();
-        return view('admin.category.list', compact('cate'));
-    }
+    protected $paginate = 5;
 
     public function add()
     {
@@ -88,7 +84,7 @@ class CategoryController extends Controller
     }
     public function list()
     {
-        $category = Category::all();
-        return view('admin.category.list', compact('category'));
+        $categories = Category::paginate($this->paginate);
+        return view('admin.category.list', compact('categories'));
     }
 }

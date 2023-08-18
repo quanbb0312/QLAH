@@ -10,15 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        $pro = Product::get();
-        return view('admin.product.list', compact('pro'));
-    }
+    protected $paginate = 5;
+
     public function list()
     {
-        $pro = Product::get();
-        return view('admin.product.list', compact('pro'));
+        $products = Product::paginate($this->paginate);
+        return view('admin.product.list', compact('products'));
     }
 
     public function add()

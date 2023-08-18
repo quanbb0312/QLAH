@@ -36,7 +36,7 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
 
     //product
     Route::prefix('product')->group(function () {
-        Route::get('list', [ProductController::class, 'index'])->name('product-list');
+        Route::get('list', [ProductController::class, 'list'])->name('product-list');
         Route::get('add', [ProductController::class, 'add'])->name('product-add');
         Route::post('save', [ProductController::class, 'save'])->name('product-save');
         Route::delete('delete/{id}', [ProductController::class, 'delete'])->name('product-delete');

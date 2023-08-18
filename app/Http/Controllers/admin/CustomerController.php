@@ -8,10 +8,12 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
+    protected $paginate = 5;
+
     public function list()
     {
         // Lấy danh sách khách hàng từ CSDL và trả về view để hiển thị
-        $customers = Customer::all();
+        $customers = Customer::paginate($this->paginate);
         return view('admin.customer.list', compact('customers'));
     }
 
