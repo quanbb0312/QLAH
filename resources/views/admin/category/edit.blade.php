@@ -11,7 +11,9 @@
                                 {{ Session::get('success') }}
                             </div>
                         @endif
-                        <form action="{{ route('category-update', $category->id) }}" method="POST">
+                        <form action="{{ route('category-update', $category->id) }}" method="POST"
+                            enctype="multipart/form-data">
+
                             @csrf
                             @method('PUT')
                             <div class="mb-3 mt-3">
@@ -21,8 +23,7 @@
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="image">Category Image:</label>
-                                <input type="hidden" value="{{ $category->cateImage }}" id="old_image"
-                                    name="old_image"><br>
+                                <input type="hidden" value="{{ $category->catImage }}" id="old_image" name="old_image"><br>
                                 <img src="{{ asset('storage/categoryImage/' . $category->catImage) }}"
                                     style="height: 100px; width: 100px;"><br>
                                 <input type="file" class="form-control" id="new_image" name="new_image">

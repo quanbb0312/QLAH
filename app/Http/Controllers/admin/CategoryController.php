@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -60,7 +61,11 @@ class CategoryController extends Controller
         $category = Category::where('id', '=', $id)->first();
         return view('admin.category.edit', compact('category'));
     }
-
+    public function showCategories()
+    {
+        $categories = Category::all();
+        return view('category-list', compact('categories'));
+    }
 
     public function update($id, Request $request)
     {
@@ -71,16 +76,29 @@ class CategoryController extends Controller
         $category->catDescriptions =  $request->catDescriptions;
         $category->catSubID =  $request->catSubID;
         $category->catParentID =  $request->catParentID;
-        $category->save();
-        // Category::where('catID', '=', $request->id)->update([
-        //     'catName' => $request->catName,
-        //     'catSlug' => $request->catSlug,
-        //     'catDescriptions' => $request->catDetail,
-        //     'catSubID' => $request->catSubID,
-        //     'catParentID' => $request->catParentID
-        // ]);
-
-        return redirect()->back()->with('success', 'Category updated successfully!');
+        $oldImg = $category->catImage;
+        $file = $request->new_image;
+        if ($request->hasFile('new_image')) {
+            $fileExtension = $file->getClientOriginalName();
+            $fileName = time();
+            $newFileName = $fileName . '.' . $fileExtension;
+            $request->file('new_image')->storeAs('public/categoryImage', $newFileName);
+            $category->catImage = $newFileName;
+        }
+        try {
+            $category->save();
+            if ($request->hasFile('new_image')) {
+                $image = 'public/categoryImage/' . $oldImg;
+                Storage::delete($image);
+            }
+            return redirect()->back()->with('success', 'Category updated successfully!');
+        } catch (\Exception $th) {
+            if ($request->hasFile('new_image')) {
+                $image = 'public/categoryImage/' . $newFileName;
+                Storage::delete($image);
+            }
+            return redirect()->back();
+        }
     }
     public function list()
     {

@@ -9,12 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboadController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $listCategory = Category::all();
-        return view('shop.dashboad', compact('listCategory'));
+
+        $keyboards = Category::where('id', 4)->with('products')->first();
+        return view('shop.dashboad', compact('listCategory', 'keyboards'));
     }
-    
-    public function checkGuard() {
+
+    public function checkGuard()
+    {
         if (Auth::guard('customers')->user() != null) {
             return response()->json(200);
         }
