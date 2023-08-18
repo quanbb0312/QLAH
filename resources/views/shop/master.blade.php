@@ -7,13 +7,13 @@
     <meta name="revisit-after" content="1 day" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="HandheldFriendly" content="true">
-    <link rel="shortcut icon" href="//theme.hstatic.net/200000680123/1001107404/14/favicon.png?v=47" type="image/png" />
+    <link rel="shortcut icon" href="#" type="image/png" />
     <title>
-        TITEK
+        QLAH
     </title>
     <link rel="canonical" href="https://titekvn.com/" />
     <link rel="alternate" href="https://titekvn.com/" hreflang="vi-vn" />
-    <meta name="keywords" content="TITEK">
+    <meta name="keywords" content="QLAH">
 
     <meta name="robots" content="index,follow,noodp">
 
@@ -538,7 +538,7 @@
                 success: function(res) {
                     if (res == 200) {
                         console.log('login success');
-                        
+
                         $('.closeModal').trigger('click');
                     } else {
                         $('#message-error').html('Email or passord is not correct!');
