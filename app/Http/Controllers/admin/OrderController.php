@@ -11,11 +11,13 @@ use App\Models\OrderDetail;
 
 class OrderController extends Controller
 {
+    protected $paginate = 5;
+
     public function list()
     {
         // Lấy danh sách đơn hàng từ CSDL và trả về view để hiển thị
-        $order = Order::all();
-        return view('admin.order.list', compact('order'));
+        $orders = Order::paginate($this->paginate);
+        return view('admin.order.list', compact('orders'));
     }
 
     public function add()

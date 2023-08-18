@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\admin;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
-    {
-        $category = Category::get();
-        return view('admin.category.list', compact('cate'));
-    }
+    protected $paginate = 5;
 
     public function add()
     {
@@ -27,10 +25,30 @@ class CategoryController extends Controller
         $category->catDescriptions = $request->catDescriptions;
         $category->catSubID = $request->catSubID;
         $category->catParentID = $request->catParentID;
-        $category->save();
+        $file = $request->catImage;
+        if ($request->hasFile('catImage')) {
+            $fileExtension = $file->getClientOriginalExtension(); // Lấy phần mở rộng của file (vd: jpg, png)
+            $fileName = time(); // Tạo tên file dựa trên thời gian
+            $newFileName = $fileName . '.' . $fileExtension; // Tên file mới
+            // Lưu file vào thư mục storage/app/public/categoryImage với tên mới
+            $request->file('catImage')->storeAs('public/categoryImage', $newFileName);
+            // Gán trường catImage của đối tượng category với tên mới
+            $category->catImage = $newFileName;
+        }
 
-        return redirect()->back()->with('success', 'Category added successfully!');
+        try {
+            $category->save();
+            return redirect()->back()->with('success', 'Category added successfully!');
+        } catch (\Exception $th) {
+            $image = 'public/categoryImage/' . $category->catImage;
+            Storage::delete($image);
+            return redirect()->back()->with('error', 'An error occurred while adding category.');
+        }
     }
+
+
+
+
 
     public function delete($id)
     {
@@ -43,7 +61,11 @@ class CategoryController extends Controller
         $category = Category::where('id', '=', $id)->first();
         return view('admin.category.edit', compact('category'));
     }
-
+    public function showCategories()
+    {
+        $categories = Category::all();
+        return view('category-list', compact('categories'));
+    }
 
     public function update($id, Request $request)
     {
@@ -54,20 +76,33 @@ class CategoryController extends Controller
         $category->catDescriptions =  $request->catDescriptions;
         $category->catSubID =  $request->catSubID;
         $category->catParentID =  $request->catParentID;
-        $category->save();
-        // Category::where('catID', '=', $request->id)->update([
-        //     'catName' => $request->catName,
-        //     'catSlug' => $request->catSlug,
-        //     'catDescriptions' => $request->catDetail,
-        //     'catSubID' => $request->catSubID,
-        //     'catParentID' => $request->catParentID
-        // ]);
-
-        return redirect()->back()->with('success', 'Category updated successfully!');
+        $oldImg = $category->catImage;
+        $file = $request->new_image;
+        if ($request->hasFile('new_image')) {
+            $fileExtension = $file->getClientOriginalName();
+            $fileName = time();
+            $newFileName = $fileName . '.' . $fileExtension;
+            $request->file('new_image')->storeAs('public/categoryImage', $newFileName);
+            $category->catImage = $newFileName;
+        }
+        try {
+            $category->save();
+            if ($request->hasFile('new_image')) {
+                $image = 'public/categoryImage/' . $oldImg;
+                Storage::delete($image);
+            }
+            return redirect()->back()->with('success', 'Category updated successfully!');
+        } catch (\Exception $th) {
+            if ($request->hasFile('new_image')) {
+                $image = 'public/categoryImage/' . $newFileName;
+                Storage::delete($image);
+            }
+            return redirect()->back();
+        }
     }
     public function list()
     {
-        $category = Category::all();
-        return view('admin.category.list', compact('category'));
+        $categories = Category::paginate($this->paginate);
+        return view('admin.category.list', compact('categories'));
     }
 }

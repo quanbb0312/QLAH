@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
+    <title>QLAH Login</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../admin/assets/vendors/css/vendor.bundle.base.css">
@@ -39,7 +39,7 @@
                                     </div>
                                 @endif
                                 @if (Session::has('success'))
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-success">
                                         {{ Session::get('success') }}
                                     </div>
                                 @endif

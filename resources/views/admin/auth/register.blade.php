@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>QLAH Register</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../admin/assets/vendors/css/vendor.bundle.base.css">
@@ -29,8 +28,9 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../admin/assets/images/logo.svg">
+                                <img src="{{ asset('logo/logo.png') }}">
                             </div>
+                            <h4>Hello! Wellcome to Admin Manager</h4>
                             <h4>Create an Account</h4>
                             <form class="pt-3" method="post" action="{{ route('adminRegisterProcess') }}"
                                 enctype="multipart/form-data">

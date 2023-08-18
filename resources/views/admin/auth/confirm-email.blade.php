@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login</title>
+    <title>QLAH Login</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../admin/assets/vendors/css/vendor.bundle.base.css">
@@ -28,14 +28,19 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../admin/assets/images/logo.svg">
+                                <img src="{{ asset('logo/logo.png') }}">
                             </div>
-                            <h4>Hello! Let's get started</h4>
+                            <h4>Hello! Wellcome to Admin Manager</h4>
                             <h6 class="font-weight-light">Enter your account's email to continue.</h6>
                             <form class="pt-3" action="{{ route('send-email') }}" method="POST">
                                 @if (Session::has('error'))
                                     <div class="alert alert-danger">
                                         {{ Session::get('error') }}
+                                    </div>
+                                @endif
+                                @if (Session::has('success'))
+                                    <div class="alert alert-success">
+                                        {{ Session::get('success') }}
                                     </div>
                                 @endif
                                 @csrf
