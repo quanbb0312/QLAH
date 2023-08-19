@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
-use Illuminate\Contracts\Cache\Store;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -45,10 +43,6 @@ class CategoryController extends Controller
             return redirect()->back()->with('error', 'An error occurred while adding category.');
         }
     }
-
-
-
-
 
     public function delete($id)
     {
@@ -100,7 +94,7 @@ class CategoryController extends Controller
     }
     public function list()
     {
-        $categories = Category::paginate($this->paginate);
+        $categories = Category::search()->paginate($this->paginate);
         return view('admin.category.list', compact('categories'));
     }
 }

@@ -535,6 +535,7 @@
         //register customer
         $('#register-customer').on('click', function(e) {
             $('#message-login').html('');
+            $('#message-error-create').html('');
             e.preventDefault();
             let csrf = '{{ csrf_token() }}';
             let name = $('#register-first-name').val();
@@ -555,20 +556,21 @@
                     address: address,
                     password: password,
                 },
-                success: function() {
+                success: function(res) {
                     $('#modalLoginTab').trigger('click');
                 },
                 error: function(XMLHttpRequest, textStatus) {
-                    Haravan.onError(XMLHttpRequest, textStatus);
+                    console.log(XMLHttpRequest.responseJSON.message);
+                    $('#message-error-create').html(XMLHttpRequest.responseJSON.message);
                 }
             })
         });
 
         //login-customer
         $('#login-customer').on('click', function(e) {
-            $('#message-login').html('');
+            $('#message-error-login').html('');
+            $('#message-success-login').html('');
             e.preventDefault();
-            $('#message-error').html('');
             let href = $(this).attr('data-href');
             let email = $('#login-email').val();
             let password = $('#login-password').val();
@@ -586,11 +588,11 @@
                     if (res == 200) {
                         location.reload();
                     } else {
-                        $('#message-error').html('Email or passord is not correct!');
+                        $('#message-error-login').html('Email or passord is not correct!');
                     }
                 },
                 error: function(XMLHttpRequest, textStatus) {
-                    Haravan.onError(XMLHttpRequest, textStatus);
+                    $('#message-error-login').html(XMLHttpRequest.responseJSON.message);
                 }
             })
         });
@@ -620,6 +622,37 @@
                 },
                 error: function(XMLHttpRequest, textStatus) {
                     Haravan.onError(XMLHttpRequest, textStatus);
+                }
+            })
+        })
+
+        //forget password
+        $('#check_forget_password').on('click', function(e){
+            e.preventDefault();
+            $('#message-success-login').html('');
+            $('#message-error-email').html('');
+            let email = $('#recover-email').val();
+            let csrf = '{{ csrf_token() }}';
+            let href = $(this).attr('data-href');
+
+            $.ajax({
+                type: 'POST',
+                url: href,
+                data: {
+                    _token: csrf,
+                    email: email,
+                },
+                success: function(res) {
+                    if (res == 200) {
+                        $('#modalLoginTab').trigger('click');
+                        $('#message-success-login').html('New password has been sent to your email');
+                        console.log('success');
+                    } else {
+                        $('#message-error-email').html('Email is not registered!');
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus) {
+                    $('#message-error-email').html(XMLHttpRequest.responseJSON.message);
                 }
             })
         })
