@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\shop;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CustomerLoginRequest;
+use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class GaurdController extends Controller
 {
     //register customer
-    public function register(Request $request)
+    public function register(CustomerStoreRequest $request)
     {
         $customer = new Customer();
         $customer->name = $request->name;
@@ -24,7 +26,7 @@ class GaurdController extends Controller
     }
 
     //login customer
-    public function login(Request $request)
+    public function login(CustomerLoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
         if (Auth::guard('customers')->attempt($credentials)) {

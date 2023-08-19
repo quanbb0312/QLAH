@@ -10,28 +10,43 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Name"
                                     required>
+                                    @error('name')
+                                    <div class="text text-danger">{{ $message }}</div>
+                                    @enderror<br>
                             </div>
                             <div class="form-group">
                                 <label for="name">Phone</label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone"
+                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Phone"
                                     required>
+                                    @error('phone')
+                                    <div class="text text-danger">{{ $message }}</div>
+                                    @enderror<br>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email"
                                     required>
+                                    @error('email')
+                                    <div class="text text-danger">{{ $message }}</div>
+                                    @enderror<br>
                             </div>
                             <div class="form-group">
                                 <label for="email">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="address"
+                                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" placeholder="address"
                                     required>
+                                    @error('address')
+                                    <div class="text text-danger">{{ $message }}</div>
+                                    @enderror<br>
                             </div>
                             <div class="form-group">
                                 <label for="name">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password"
                                     required>
+                                    @error('password')
+                                    <div class="text text-danger">{{ $message }}</div>
+                                    @enderror<br>
                             </div>
                             <!-- Add other fields here as needed -->
                             <button type="submit" class="btn btn-primary mr-2">Add Customer</button>

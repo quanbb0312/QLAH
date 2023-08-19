@@ -18,8 +18,11 @@
                             @method('PUT')
                             <div class="mb-3 mt-3">
                                 <label for="name">Category Name:</label>
-                                <input type="text" class="form-control" id="name" name="catName"
+                                <input type="text" class="form-control @error('catName') is-invalid @enderror" id="name" name="catName"
                                     value="{{ $category->catName }}">
+                                @error('catName')
+                                <div class="text text-danger">{{ $message }}</div>
+                                @enderror<br>
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="image">Category Image:</label>
@@ -30,22 +33,18 @@
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="slug">Category Slug:</label>
-                                <input type="text" class="form-control" id="slug" name="catSlug"
+                                <input type="text" class="form-control @error('catSlug') is-invalid @enderror" id="slug" name="catSlug"
                                     value="{{ $category->catSlug }}">
+                                @error('catSlug')
+                                <div class="text text-danger">{{ $message }}</div>
+                                @enderror<br>
                             </div>
                             <div class="mb-3 mt-3">
                                 <label for="descriptions">Category Descriptions:</label>
-                                <textarea class="form-control" rows="5" id="descriptions" name="catDescriptions">{{ $category->catDescriptions }}</textarea>
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <label for="sub_id">Category Sub ID:</label>
-                                <input type="number" class="form-control" id="sub_id" name="catSubID"
-                                    value="{{ $category->catSubID }}">
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <label for="parent_id">Category Parent ID:</label>
-                                <input type="number" class="form-control" id="parent_id" name="catParentID"
-                                    value="{{ $category->catParentID }}">
+                                <textarea class="form-control @error('catDescriptions') is-invalid @enderror" rows="5" id="descriptions" name="catDescriptions">{{ $category->catDescriptions }}</textarea>
+                                @error('catDescriptions')
+                                <div class="text text-danger">{{ $message }}</div>
+                                @enderror<br>
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
                             <a href="{{ route('category-list') }}" class="btn btn-danger">Back</a>

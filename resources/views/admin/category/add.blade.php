@@ -11,34 +11,34 @@
                 @endif
                 <form action="{{ route('category-save') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    {{-- <div class="form-group">
-                        <label for="catID">Category ID</label>
-                        <input type="text" class="form-control" id="catID" name="catID" required>
-                    </div> --}}
                     <div class="form-group">
                         <label for="catName">Category Name</label>
-                        <input type="text" class="form-control" id="catName" name="catName" required>
+                        <input type="text" class="form-control @error('catName') is-invalid @enderror" id="catName" name="catName" required>
+                        @error('catName')
+                        <div class="text text-danger">{{ $message }}</div>
+                        @enderror<br>
                     </div>
                     <div class="form-group">
                         <label for="catSlug">Category Slug</label>
-                        <input type="text" class="form-control" id="catSlug" name="catSlug" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="catImage">Category Image</label>
-                        <input type="file" class="form-control-file" id="catImage" name="catImage" accept="image/*"
-                            required>
+                        <input type="text" class="form-control @error('catSlug') is-invalid @enderror" id="catSlug" name="catSlug" required>
+                        @error('catSlug')
+                            <div class="text text-danger">{{ $message }}</div>
+                        @enderror<br>
                     </div>
                     <div class="form-group">
                         <label for="catDescriptions">Category Descriptions</label>
-                        <input type="text" class="form-control" id="catDescriptions" name="catDescriptions" required>
+                        <input type="text" class="form-control @error('catDescriptions') is-invalid @enderror" id="catDescriptions" name="catDescriptions" required>
+                        @error('catDescriptions')
+                            <div class="text text-danger">{{ $message }}</div>
+                        @enderror<br>
                     </div>
                     <div class="form-group">
-                        <label for="catSubID">Category Sub ID</label>
-                        <input type="text" class="form-control" id="catSubID" name="catSubID" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="catParentID">Category Parent ID</label>
-                        <input type="text" class="form-control" id="catParentID" name="catParentID" required>
+                        <label for="catImage">Category Image</label>
+                        <input type="file" class="form-control-file @error('catImage') is-invalid @enderror" id="catImage" name="catImage" accept="image/*"
+                            required>
+                        @error('catImage')
+                            <div class="text text-danger">{{ $message }}</div>
+                        @enderror<br>
                     </div>
                     <!-- Add other fields here as needed -->
                     <button type="submit" class="btn btn-primary">Add Category</button>

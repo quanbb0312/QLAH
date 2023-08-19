@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderStoreRequest;
 use App\Models\Product;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class OrderController extends Controller
         return view('admin.order.add', compact('products', 'customers'));
     }
 
-    public function save(Request $request)
+    public function save(OrderStoreRequest $request)
     {
         $product = Product::find($request->product_id);
         //save order

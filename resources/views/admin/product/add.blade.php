@@ -14,39 +14,60 @@
                         @csrf
                         <div class="mb-3 mt-3">
                             <label for="name">Product Name:</label>
-                            <input type="text" class="form-control" id="name" name="productName"
+                            <input type="text" class="form-control @error('productName') is-invalid @enderror" id="name" name="productName"
                                 placeholder="Enter product name" required>
+                            @error('productName')
+                            <div class="text text-danger">{{ $message }}</div>
+                            @enderror<br>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="name">Product Slug:</label>
-                            <input type="text" class="form-control" id="name" name="productSlug"
+                            <input type="text" class="form-control @error('productSlug') is-invalid @enderror" id="name" name="productSlug"
                                 placeholder="Enter product Slug" required>
+                                @error('productSlug')
+                                <div class="text text-danger">{{ $message }}</div>
+                                @enderror<br>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="price">Product Price:</label>
-                            <input type="number" class="form-control" id="price" name="productPrice"
+                            <input type="number" class="form-control @error('productPrice') is-invalid @enderror" id="price" name="productPrice"
                                 placeholder="Enter product price" required>
+                                @error('productPrice')
+                                <div class="text text-danger">{{ $message }}</div>
+                                @enderror<br>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="price">Product Quantity:</label>
-                            <input type="number" class="form-control" id="price" name="productQuantity"
+                            <input type="number" class="form-control @error('productQuantity') is-invalid @enderror" id="price" name="productQuantity"
                                 placeholder="Enter product quantity" required>
+                                @error('productQuantity')
+                                <div class="text text-danger">{{ $message }}</div>
+                                @enderror<br>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="image">Product Image:</label>
-                            <input type="file" class="form-control" id="image" name="image" required>
+                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" required>
+                            @error('image')
+                            <div class="text text-danger">{{ $message }}</div>
+                            @enderror<br>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="details">Details:</label>
-                            <textarea class="form-control" rows="5" id="details" name="productDetails"></textarea>
+                            <textarea class="form-control @error('productDetails') is-invalid @enderror" rows="5" id="details" name="productDetails"></textarea>
+                            @error('productDetails')
+                            <div class="text text-danger">{{ $message }}</div>
+                            @enderror<br>
                         </div>
                         <div class="mb-3 mt-6">
                             <label for="category">Category:</label>
-                            <select name="category_id" id="category" class="form-control">
+                            <select name="category_id" id="category" class="form-control @error('category_id') is-invalid @enderror">
                                 @foreach ($cat as $c)
                                     <option value="{{ $c->id }}">{{ $c->catName }}</option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                            <div class="text text-danger">{{ $message }}</div>
+                            @enderror<br>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="{{ route('product-list') }}" class="btn btn-danger">Back</a>

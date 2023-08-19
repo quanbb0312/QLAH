@@ -11,7 +11,7 @@ class AdminChangePasswordRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class AdminChangePasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => ['required', 'email','min:11','max:50'],
+            'oldPassword' => ['required', 'min:3', 'max:200'],
+            'newPassword' => ['required', 'min:3', 'max:200'],
+            'confirmPassword' => ['required', 'min:3', 'max:200']
         ];
     }
 }

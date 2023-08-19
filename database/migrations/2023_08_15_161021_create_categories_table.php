@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('catSlug');
             $table->string('catImage');
             $table->string('catDescriptions');
-            $table->string('catSubID');
-            $table->string('catParentID');
             $table->timestamps();
         });
     }

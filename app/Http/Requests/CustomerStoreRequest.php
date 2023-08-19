@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CustomerStoreRequest extends FormRequest
@@ -11,7 +12,7 @@ class CustomerStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,11 @@ class CustomerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'min:5', 'max:50',],
+            'phone' => ['required', 'min:10', 'max:11', 'unique:customers',],
+            'email' => ['required', 'email','min:11','max:50','unique:customers'],
+            'address' => ['required', 'min:3', 'max:200'],
+            'password' => ['required', 'min:3', 'max:200'],
         ];
     }
 }
