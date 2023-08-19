@@ -18,6 +18,51 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.ico') }}" />
+    <style>
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pagination li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .pagination a {
+            color: #333;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            margin: 0 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .pagination .active a {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+
+        .pagination .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
 </head>
 
 <body>

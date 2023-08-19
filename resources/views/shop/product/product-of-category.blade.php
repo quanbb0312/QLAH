@@ -251,7 +251,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="float: right; margin:20px">
+                                <div class="pagination-wrapper">
                                     {{ $listProduct->appends(request()->all())->links() }}
                                 </div>
                             </div>

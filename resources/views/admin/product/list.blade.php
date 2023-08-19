@@ -81,7 +81,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div style="float: right; margin:20px">
+                        <div class="pagination-wrapper">
                             {{ $products->appends(request()->all())->links() }}
                         </div>
                     </div>

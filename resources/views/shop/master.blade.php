@@ -185,7 +185,52 @@
             cursor: pointer;
             margin-left: 20px;
         }
+
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pagination li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .pagination a {
+            color: #333;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            margin: 0 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .pagination .active a {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+
+        .pagination .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
     </style>
+
 </head>
 
 <body id="titek" class="index template-index">
@@ -195,7 +240,7 @@
             <div class="topbar-main">
                 <p>
                     QLAH Computer kính chúc quý khách hàng có 1 buổi mua sắm thật vui vẻ! Truy cập ngay <a
-                        href="http://titekvn.com/">trang chủ</a> của chúng tôi để nhận nhiều ưu đãi!
+                        href="http://127.0.0.1:8000/shop/">trang chủ</a> của chúng tôi để nhận nhiều ưu đãi!
                 </p>
             </div>
         </div>

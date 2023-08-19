@@ -1,9 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="flexbox">
+
 <head>
     <link rel="shortcut icon" href="//theme.hstatic.net/200000680123/1001107404/14/favicon.png?v=47" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>
-        TITEK - Lịch sử đơn hàng
+        QLAH- Lịch sử đơn hàng
     </title>
     <meta name="description" content="TITEK - Lịch sử đơn hàng">
     <style>
@@ -2177,7 +2178,7 @@
 
         #show_all_coupon {
             /*-webkit-animation: pulse 1s infinite;
-	animation: pulse 2s infinite;*/
+ animation: pulse 2s infinite;*/
             height: 40px;
             width: 100%;
             color: #338dbc;
@@ -2263,7 +2264,7 @@
             display: flex;
             align-items: center;
             /* margin-bottom: 10px;
-	position: relative;*/
+ position: relative;*/
         }
 
         .coupon_layer {
@@ -2437,6 +2438,7 @@
         .order-summary-section.order-summary-section-total-lines.payment-lines[data-order-summary-section="payment-lines"] {
             padding-top: 1em !important;
         }
+
         a.logo {
             display: block;
         }
@@ -2454,6 +2456,7 @@
         .logo-text {
             text-align: "";
         }
+
         #form_update_location_customer_shipping {
             background-color: white !important;
         }
@@ -2462,6 +2465,7 @@
             box-shadow: none !important;
             border-radius: none !important;
         }
+
         .content-box-row-secondary {
             padding: 0 !important;
         }
@@ -2476,7 +2480,8 @@
             }
         }
     </style>
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/check_out.css?v=47" rel="stylesheet" type="text/css" media="all">
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/check_out.css?v=47" rel="stylesheet" type="text/css"
+        media="all">
     <script src="//hstatic.net/0/0/global/jquery.min.js" type="text/javascript"></script>
     <script src="//hstatic.net/0/0/global/api.jquery.js" type="text/javascript"></script>
     <script src="//hstatic.net/0/0/global/jquery.validate.js" type="text/javascript"></script>
@@ -2489,6 +2494,7 @@
     </style>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-24C1XZ9BDQ"></script>
 </head>
+
 <body style="">
     <input id="reloadValue" type="hidden" name="reloadValue" value="">
     <input id="is_vietnam" type="hidden" value="true">
@@ -2497,20 +2503,21 @@
     <div class="content">
 
         <div class="wrap">
-           
+
             <div class="main">
                 <div class="main-header">
-                    <a href="{{route('dashboad')}}" class="logo">
+                    <a href="{{ route('dashboad') }}" class="logo">
                         <h1 class="logo-text">TITEK</h1>
                     </a>
                     <style>
                     </style>
                 </div>
                 <div class="main-content">
-                    <div id="checkout_order_information_changed_error_message" class="hidden" style="margin-bottom:15px">
+                    <div id="checkout_order_information_changed_error_message" class="hidden"
+                        style="margin-bottom:15px">
                     </div>
-                    <form action="{{route('shop-check-out')}}" id="shop-check-out" method="post">
-                    @csrf
+                    <form action="{{ route('shop-check-out') }}" id="shop-check-out" method="post">
+                        @csrf
                         <div class="step">
                             <div class="step-sections " step="1">
                                 <div class="section">
@@ -2521,31 +2528,32 @@
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Image</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Date</th>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Total</th>
+                                                    <th scope="col">Date</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @php
-                                                    $format = new NumberFormatter('vi-VN',  NumberFormatter::CURRENCY);
+                                                    $format = new NumberFormatter('vi-VN', NumberFormatter::CURRENCY);
                                                 @endphp
                                                 @foreach ($data as $key => $product)
-                                                <tr>
-                                                    <th scope="row">{{$key + 1}}</th>
-                                                    <td>{{$product->productName}}</td>
-                                                    <td>{{$format->formatCurrency($product->productPrice, 'VND')}}</td>
-                                                    <td><img src="{{ asset('storage/products/' . $product->productImage) }}"
-                                                        style="height: 100px; width: 100px;">
-                                                    </td>
-                                                    <td>{{$product->quantity}}</td>
-                                                    <td>{{$format->formatCurrency($product->total, 'VND')}}</td>
-                                                    <td>{{$product->created_at}}</td>
-                                                </tr>
+                                                    <tr>
+                                                        <th scope="row">{{ $key + 1 }}</th>
+                                                        <td>{{ $product->productName }}</td>
+                                                        <td>{{ $format->formatCurrency($product->productPrice, 'VND') }}
+                                                        </td>
+                                                        <td><img src="{{ asset('storage/products/' . $product->productImage) }}"
+                                                                style="height: 100px; width: 100px;">
+                                                        </td>
+                                                        <td>{{ $product->quantity }}</td>
+                                                        <td>{{ $format->formatCurrency($product->total, 'VND') }}</td>
+                                                        <td>{{ $product->created_at }}</td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
