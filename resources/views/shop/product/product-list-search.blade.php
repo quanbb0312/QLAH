@@ -7,9 +7,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/shop">Trang chủ</a></li>
                         <li class="breadcrumb-item active">
-                            @if (count($listProduct) > 0)
-                                <p>{{ $listProduct[0]->category->catName }}</p>
-                            @endif
+                            <p>Tìm kiếm</p>
                         </li>
                     </ol>
                 </div>
@@ -19,9 +17,6 @@
                     <div class="collectionMainContent">
 
                         <div class="collectionMainContentLeft">
-                            {{-- <h1 class="title">
-                                {{ $listProduct->first()->category->catName }}
-                            </h1> --}}
                             <div class="collectionFilter">
                                 <div class="collectionFilterMobileAction">
                                     <span>BỘ LỌC</span>
@@ -139,51 +134,30 @@
                                                     data-type="sidebarAllFilter"><i class="lni lni-funnel"></i> Bộ lọc</a>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-md-8 col-8 text-right filterMobileFlex">
-                                            <form id="sortForm" method="get" action="/your-data-url">
-                                                <div class="sortByMain">
-                                                    <label class="" for="sortBy">Sắp xếp theo:</label>
-                                                    <select id="sortBy" class="form-control" name="sortby">
-                                                        <option value="manual">Sản phẩm nổi bật</option>
-                                                        <option value="price-ascending" data-filter="price:product=asc">
-                                                            Giá: Tăng dần</option>
-                                                        <option value="price-descending" data-filter="price:product=desc">
-                                                            Giá: Giảm dần</option>
-                                                        <!-- Các tùy chọn khác -->
-                                                    </select>
-                                                    <button type="submit" class="btn btn-primary">Filter</button>
-                                                </div>
-                                            </form>
-                                        </div> --}}
-                                        {{-- 
-                                        <script>
-                                            const sortForm = document.getElementById("sortForm");
-                                            const sortBySelect = document.getElementById("sortBy");
-
-                                            sortBySelect.addEventListener("change", function() {
-                                                sortForm.submit();
-                                            });
-                                        </script> --}}
 
                                         <div class="col-md-8 col-8 text-right filterMobileFlex">
                                             <div class="sortByMain">
-                                                <form action="{{ route('shop-product-list', $id) }}" method="get"
+                                                <form action="{{ route('shop-search') }}" method="get"
                                                     id="filterForm">
                                                     <label class="sortBy" for="sortBy">Sắp xếp theo:</label>
+                                                    <input type="text" hidden value="{{$key}}" name="key">
                                                     <select id="sortBy" class="form-control" name="filter">
-                                                        <option value="1">
+                                                        <option value="">
+                                                            ---chọn khoảng giá---
+                                                        </option>
+                                                        <option <?= request()->filter == '1' ? 'selected' : '' ?> value="1">
                                                             Dưới 1 tr
                                                         </option>
-                                                        <option value="1to3">
+                                                        <option <?= request()->filter == '1to3' ? 'selected' : '' ?> value="1to3">
                                                             1-3 tr
                                                         </option>
-                                                        <option value="3to5">
+                                                        <option <?= request()->filter == '3to5' ? 'selected' : '' ?> value="3to5">
                                                             3-5 tr
                                                         </option>
-                                                        <option value="5to10">
+                                                        <option <?= request()->filter == '5to10' ? 'selected' : '' ?> value="5to10">
                                                             5-10 tr
                                                         </option>
-                                                        <option value="10">
+                                                        <option <?= request()->filter == '10' ? 'selected' : '' ?> value="10">
                                                             Trên 10 tr
                                                         </option>
                                                     </select>
@@ -191,20 +165,6 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        {{-- <script>
-                                            document.getElementById('filterForm').addEventListener('submit', function(event) {
-                                                event.preventDefault(); // Prevent the default form submission
-                                                applyFilter();
-                                            });
-                                            function applyFilter() {
-                                                const sortBySelect = document.getElementById("sortBy");
-                                                const selectedValue = sortBySelect.value;
-
-                                                // Thay đổi URL với giá trị filter đã chọn
-                                                const url = "{{ route('shop-product-list') }}?filter=" + encodeURIComponent(selectedValue);
-                                                window.location.href = url;
-                                            }
-                                        </script> --}}
                                     </div>
                                 </div>
                             </div>

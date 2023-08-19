@@ -79,9 +79,11 @@ Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
 Route::prefix('shop')->group(function () {
     Route::get('', [ShopDashboadController::class, 'index'])->name('dashboad');
     Route::post('check-guard', [ShopDashboadController::class, 'checkGuard'])->name('shop-check-guard');
+    Route::get('search', [ShopController::class, 'search'])->name('shop-search');
 
     Route::prefix('product')->group(function () {
         Route::get('list/{id}', [ShopProductController::class, 'listProductOfCategory'])->name('shop-product-list');
+        Route::get('detail/{id}', [ShopProductController::class, 'detail'])->name('shop-product-detail');
     });
 
     Route::prefix('cart')->group(function () {

@@ -37,4 +37,11 @@ class ProductController extends Controller
         // dd($listProduct);
         return view('shop.product.product-of-category', compact('listProduct', 'listCategory', 'id'));
     }
+
+    public function detail($id) {
+        $listCategory = Category::all();
+        $product = Product::findOrFail($id);
+        $listProductOfCate = Product::where('category_id',$product->category_id)->get();
+        return view('shop.product.product-detail', compact('product', 'listCategory', 'listProductOfCate'));
+    }
 }

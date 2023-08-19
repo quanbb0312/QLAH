@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
+    protected $paginate = 8;
     public function getViewPayment() {
         $carts = session()->get('cart', []);
         return view('shop.paymen', compact('carts'));
@@ -78,5 +79,38 @@ class ShopController extends Controller
         ->orderby('orders.id','DESC')
         ->get();
         return view('shop.history',compact('data'));
+    }
+
+    public function search(Request $request) {
+        $listCategory = Category::all();
+        $listProduct = Product::query();
+        $key = '';
+        if ($request->filter && $request->filter !='') {
+            switch ($request->filter) {
+                case '1':
+                    $listProduct->where('productPrice', '<=', 1000000);
+                    break;
+                case '1to3':
+                    $listProduct->whereBetween('productPrice', [1000000,3000000]);
+                    break;
+                case '3to5':
+                    $listProduct->whereBetween('productPrice', [3000000,5000000]);
+
+                    break;
+                case '5to10':
+                    $listProduct->whereBetween('productPrice', [5000000,10000000]);
+                    break;
+                case '10':
+                    $listProduct->where('productPrice', '>', 10000000);
+                    break;
+            }
+        }
+
+        if ($request->key != "") {
+            $listProduct = $listProduct->where('productName', 'like', '%' . $request->key . '%');
+            $key = $request->key;
+        }
+        $listProduct = $listProduct->paginate($this->paginate);
+        return view('shop.product.product-list-search', compact('listProduct', 'listCategory', 'key'));
     }
 }

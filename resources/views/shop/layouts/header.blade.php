@@ -4,26 +4,25 @@
             <div class="headerLeft">
                 <div class="headerLogo">
 
-                    <a href="#">
+                    <a href="{{route('dashboad')}}">
                         <img src="{{ asset('logo/logo.png') }}" alt="QLAH" class="img-fluid logoimg" />
                     </a>
 
                 </div>
             </div>
-            <div class="headerCenter">
-                <div class="headerSearch">
-                    <form action="/search" class="headerSearch">
+            <div class="headerCenter1">
+                <div class="headerSearch1">
+                    <form action="{{route('shop-search')}}" method="get" id="form-search">
+                        @csrf
                         <div class="headerSearchMain">
                             <select class="form-control">
                                 <option value="0">Tất cả sản phẩm</option>
-
                             </select>
-                            <input type="hidden" name="type" value="product" />
-                            <input required name="q" maxlength="40" autocomplete="off"
+                            <input required  maxlength="40" value="{{request()->key}}" autocomplete="off" name="key"
                                 class="headerSearchInput searchinput input-search search-input" type="text"
                                 size="20" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
                         </div>
-                        <button type="submit" class="btn-search btn headerSearchButton" aria-label="Tìm kiếm">
+                        <button type="submit" id="search-fe" class="btn-search btn headerSearchButton" aria-label="Tìm kiếm">
                             <i class="lni lni-search-alt"></i>
                         </button>
                     </form>
