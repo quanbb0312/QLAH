@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\CustomerUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 
@@ -23,7 +25,7 @@ class CustomerController extends Controller
         return view('admin.customer.add');
     }
 
-    public function save(Request $request)
+    public function save(CustomerStoreRequest $request)
     {
         $customer = new Customer();
         $customer->name = $request->name;
@@ -43,7 +45,7 @@ class CustomerController extends Controller
         return view('admin.customer.edit', compact('customer'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CustomerUpdateRequest $request, $id)
     {
         // Xử lý cập nhật thông tin khách hàng vào CSDL
         $customer = Customer::findOrFail($id);

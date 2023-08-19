@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\shop;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddCartRequest;
+use App\Http\Requests\RemoveCartRequest;
+use App\Http\Requests\UpdateCartRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -21,9 +24,8 @@ class CartController extends Controller
     }
 
     //add to cart
-    public function storeCart(Request $request)
+    public function storeCart(AddCartRequest $request)
     {
-        // session()->forget('cart');
         $id = $request->id;
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
@@ -46,7 +48,7 @@ class CartController extends Controller
     }
 
     //update cart
-    public function updateCart(Request $request)
+    public function updateCart(UpdateCartRequest $request)
     {
         if ($request->id && $request->quantity) {
             $cart = session()->get('cart');
@@ -71,7 +73,7 @@ class CartController extends Controller
     }
 
     //remove cart
-    public function removeCart(Request $request)
+    public function removeCart(RemoveCartRequest $request)
     {
         if ($request->id) {
             $cart = session()->get('cart');
@@ -82,15 +84,5 @@ class CartController extends Controller
             $data = session()->get('cart');
             return response()->json($data);
         }
-    }
-
-    //get view checkout
-    public function checkout()
-    {
-    }
-
-    //checkout
-    public function payment()
-    {
     }
 }

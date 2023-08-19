@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddCartRequest extends FormRequest
@@ -11,7 +12,7 @@ class AddCartRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,9 @@ class AddCartRequest extends FormRequest
      */
     public function rules(): array
     {
+        $listProductId = Product::all()->pluck('id')->toArray();
         return [
-            //
+            'id' => ['required', 'numeric', 'in:'.implode(',', $listProductId)],
         ];
     }
 }

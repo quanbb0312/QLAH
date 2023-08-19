@@ -11,7 +11,7 @@ class CustomerLoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class CustomerLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => ['required', 'email','min:11','max:50'],
+            'password' => ['required', 'min:3', 'max:200'],
         ];
     }
 }

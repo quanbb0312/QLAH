@@ -36,33 +36,40 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" name="name"
+                                    <input type="text" class="form-control form-control-lg @error('name') is-invalid @enderror" name="name"
                                         placeholder="Full Name" required>
+                                        @error('name')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" name="id"
-                                        placeholder="Username" required>
-                                </div> --}}
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" name="email"
+                                    <input type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email"
                                         placeholder="Email" required>
+                                        @error('email')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="password"
+                                    <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password"
                                         placeholder="Password" required>
+                                        @error('password')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg"
+                                    <input type="password" class="form-control form-control-lg @error('password_confirmation') is-invalid @enderror"
                                         name="password_confirmation" placeholder="Confirm Password" required>
+                                        @error('password_confirmation')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" name="address"
-                                        placeholder="Address" required>
-                                </div> --}}
                                 <div class="form-group">
                                     <label for="photo">Profile Photo</label>
-                                    <input type="file" class="form-control-file" name="photo" accept="image/*"
+                                    <input type="file" class="form-control-file @error('photo') is-invalid @enderror" name="photo" accept="image/*"
                                         required>
+                                        @error('photo')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="mb-4">
                                     <div class="form-check">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
@@ -17,14 +19,12 @@ class CategoryController extends Controller
         return view('admin.category.add');
     }
 
-    public function save(Request $request)
+    public function save(CategoryStoreRequest $request)
     {
         $category = new Category();
         $category->catName = $request->catName;
         $category->catSlug = $request->catSlug;
         $category->catDescriptions = $request->catDescriptions;
-        $category->catSubID = $request->catSubID;
-        $category->catParentID = $request->catParentID;
         $file = $request->catImage;
         if ($request->hasFile('catImage')) {
             $fileExtension = $file->getClientOriginalExtension(); // Lấy phần mở rộng của file (vd: jpg, png)
@@ -67,15 +67,13 @@ class CategoryController extends Controller
         return view('category-list', compact('categories'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, CategoryUpdateRequest $request)
     {
 
         $category = Category::find($id);
         $category->catName =  $request->catName;
         $category->catSlug =  $request->catSlug;
         $category->catDescriptions =  $request->catDescriptions;
-        $category->catSubID =  $request->catSubID;
-        $category->catParentID =  $request->catParentID;
         $oldImg = $category->catImage;
         $file = $request->new_image;
         if ($request->hasFile('new_image')) {

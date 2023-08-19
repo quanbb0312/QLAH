@@ -14,8 +14,6 @@
                                     <th>Category Slug</th>
                                     <th>Category Image</th>
                                     <th>Category Descriptions</th>
-                                    <th>Category Sub ID</th>
-                                    <th>Category Parent ID</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -29,8 +27,6 @@
                                                 style="height: 100px; width: 100px;">
                                         </td>
                                         <td>{{ $category->catDescriptions }}</td>
-                                        <td>{{ $category->catSubID }}</td>
-                                        <td>{{ $category->catParentID }}</td>
                                         <td>
                                             <a href="{{ route('category-edit', $category->id) }}" class="btn btn-primary">Edit</a>
 
