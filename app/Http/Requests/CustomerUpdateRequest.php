@@ -23,7 +23,7 @@ class CustomerUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:5', 'max:50',],
+            'name' => ['required', 'min:3', 'max:50',],
             'phone' => ['required', 'min:10', 'max:10', Rule::unique('customers')->ignore($this->id),],
             'email' => ['required', 'email','min:11','max:50',Rule::unique('customers')->ignore($this->id),],
             'address' => ['required', 'min:3', 'max:200'],

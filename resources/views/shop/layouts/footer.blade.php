@@ -350,7 +350,8 @@ use Illuminate\Support\Facades\Auth;
                                                     name="customer[password]" required>
                                             </div>
                                         @endif
-                                        <p id="message-error" style="color:red"></p>
+                                        <p id="message-error-login" style="color:red"></p>
+                                        <p id="message-success-login" style="color:green"></p>
                                         <div class="form-group">
                                             <button <?= Auth::guard('customers')->user() ? 'disabled' : '' ?>
                                                 type="submit" id="login-customer"
@@ -378,21 +379,18 @@ use Illuminate\Support\Facades\Auth;
                                 </h5>
                                 <div class="recover-form-body">
 
-
                                     <form accept-charset='UTF-8' action='/account/recover' method='post'>
                                         <input name='form_type' type='hidden' value='recover_customer_password'>
                                         <input name='utf8' type='hidden' value='✓'>
-
-
-
 
                                         <div class="form-group">
                                             <label for="recover-email">Email*</label>
                                             <input type="email" id="recover-email" value=""
                                                 class="form-control" name="email" required>
                                         </div>
+                                        <p style="color:red" id="message-error-email"></p>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary hoverOpacity">
+                                            <button type="submit" data-href="{{route('gaurd-sendmail')}}" id="check_forget_password" class="btn btn-primary hoverOpacity">
                                                 Gửi
                                             </button>
                                         </div>
@@ -450,6 +448,8 @@ use Illuminate\Support\Facades\Auth;
                                                 name="customer[password]" required>
                                         </div>
 
+                                        <p style="color:red" id="message-error-create"></p>
+
                                         <div class="form-group">
                                             <button type="submit" id="register-customer"
                                                 data-href="{{ route('gaurd-register') }}"
@@ -457,6 +457,7 @@ use Illuminate\Support\Facades\Auth;
                                                 ĐĂNG KÝ
                                             </button>
                                         </div>
+
 
                                         <input id='12ddf903b3f14e8b81687b8f588adb0b' name='g-recaptcha-response'
                                             type='hidden'><noscript

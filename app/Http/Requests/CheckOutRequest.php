@@ -22,7 +22,10 @@ class CheckOutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'min:3', 'max:50',],
+            'phone' => ['required', 'min:10', 'max:11'],
+            'email' => ['required', 'email','min:11','max:50'],
+            'address' => ['required', 'min:3', 'max:200'],
         ];
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\shop;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckOutRequest;
+use App\Jobs\SendEmail;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Order;
@@ -18,7 +20,7 @@ class ShopController extends Controller
         return view('shop.paymen', compact('carts'));
     }
 
-    public function checkOut(Request $request) {
+    public function checkOut(CheckOutRequest $request) {
         $id = Auth::guard('customers')->user()->id;
         $customer = Customer::find($id);
         if ($customer) {
