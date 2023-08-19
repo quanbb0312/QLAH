@@ -5,6 +5,7 @@ namespace App\Http\Controllers\shop;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerLoginRequest;
 use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\GuardRegisterRequest;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class GaurdController extends Controller
 {
     //register customer
-    public function register(CustomerStoreRequest $request)
+    public function register(GuardRegisterRequest $request)
     {
         $customer = new Customer();
         $customer->name = $request->name;
