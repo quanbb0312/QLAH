@@ -45,8 +45,11 @@
                                 @endif
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" name="email"
+                                    <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email"
                                         placeholder="Email">
+                                        @error('email')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"

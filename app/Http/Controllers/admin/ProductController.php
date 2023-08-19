@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -24,7 +26,7 @@ class ProductController extends Controller
         return view('admin.product.add', compact('cat'));
     }
 
-    public function save(Request $request)
+    public function save(ProductStoreRequest $request)
     {
         $pro = new Product();
         $pro->productName = $request->productName;
@@ -65,7 +67,7 @@ class ProductController extends Controller
         $pro = Product::where('id', '=', $id)->first();
         return view('admin.product.edit', compact('pro', 'cat'));
     }
-    public function update($id, Request $request)
+    public function update($id, ProductUpdateRequest $request)
     {
         $product = Product::find($id);
         $product->productName = $request->productName;

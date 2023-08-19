@@ -57,8 +57,6 @@ class DatabaseSeeder extends Seeder
         $cate->catSlug = '1';
         $cate->catImage = '';
         $cate->catDescriptions = 'PC SHOP';
-        $cate->catSubID = '1';
-        $cate->catParentID = '1';
         $cate->save();
 
         $cate = new Category();
@@ -66,8 +64,6 @@ class DatabaseSeeder extends Seeder
         $cate->catSlug = '1';
         $cate->catImage = '';
         $cate->catDescriptions = 'Linh Kiện PC SHOP';
-        $cate->catSubID = '1';
-        $cate->catParentID = '1';
         $cate->save();
 
         $cate = new Category();
@@ -75,8 +71,6 @@ class DatabaseSeeder extends Seeder
         $cate->catSlug = '1';
         $cate->catImage = '';
         $cate->catDescriptions = 'Màn Hình SHOP';
-        $cate->catSubID = '1';
-        $cate->catParentID = '1';
         $cate->save();
 
         $cate = new Category();
@@ -84,8 +78,6 @@ class DatabaseSeeder extends Seeder
         $cate->catSlug = '1';
         $cate->catImage = '';
         $cate->catDescriptions = 'Bàn Phím SHOP';
-        $cate->catSubID = '1';
-        $cate->catParentID = '1';
         $cate->save();
 
         $cate = new Category();
@@ -93,8 +85,6 @@ class DatabaseSeeder extends Seeder
         $cate->catSlug = '1';
         $cate->catImage = '';
         $cate->catDescriptions = 'Chuột - Lót Chuột SHOP';
-        $cate->catSubID = '1';
-        $cate->catParentID = '1';
         $cate->save();
 
         $cate = new Category();
@@ -102,8 +92,6 @@ class DatabaseSeeder extends Seeder
         $cate->catSlug = '1';
         $cate->catImage = '';
         $cate->catDescriptions = 'Tai Nghe - Loa SHOP';
-        $cate->catSubID = '1';
-        $cate->catParentID = '1';
         $cate->save();
 
         $cate = new Category();
@@ -111,8 +99,6 @@ class DatabaseSeeder extends Seeder
         $cate->catSlug = '1';
         $cate->catImage = '';
         $cate->catDescriptions = 'LAPTOP SHOP';
-        $cate->catSubID = '1';
-        $cate->catParentID = '1';
         $cate->save();
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductStoreRequest extends FormRequest
@@ -11,7 +12,7 @@ class ProductStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,15 @@ class ProductStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        $categories_id = Category::all()->pluck('id')->toArray();
         return [
-            //
+            'productName' => ['required', 'unique:products', 'min:3'],
+            'productSlug' => ['required', 'unique:products', 'min:3'],
+            'productPrice' => ['required', 'min:10000', 'max:1000000000', 'numeric'],
+            'productDetails' => ['required', 'min:3', 'max:200'],
+            'image' => ['required', 'mimes:jpg,bmp,png'],
+            'productQuantity' => ['required', 'numeric', 'min:1', 'max:1000'],
+            'category_id' => ['required', 'numeric', 'in:'.implode(',', $categories_id)],
         ];
     }
 }

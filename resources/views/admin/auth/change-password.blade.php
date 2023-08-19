@@ -45,20 +45,32 @@
                                 @endif
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" name="email"
+                                    <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email"
                                         placeholder="Email">
+                                        @error('email')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="oldPassword"
+                                    <input type="password" class="form-control form-control-lg @error('oldPassword') is-invalid @enderror" name="oldPassword"
                                         placeholder="Old Password">
+                                        @error('oldPassword')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="newPassword"
+                                    <input type="password" class="form-control form-control-lg @error('newPassword') is-invalid @enderror" name="newPassword"
                                         placeholder="New Password">
+                                        @error('newPassword')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="confirmPassword"
+                                    <input type="password" class="form-control form-control-lg @error('confirmPassword') is-invalid @enderror" name="confirmPassword"
                                         placeholder="Confirm New Password">
+                                        @error('confirmPassword')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"

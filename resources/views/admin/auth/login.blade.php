@@ -45,12 +45,18 @@
                                 @endif
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" name="email"
+                                    <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email"
                                         placeholder="Email">
+                                        @error('email')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" name="password"
+                                    <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password"
                                         placeholder="Password">
+                                        @error('password')
+                                        <div class="text text-danger">{{ $message }}</div>
+                                        @enderror<br>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
@@ -60,9 +66,7 @@
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
-                                        <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input"> Keep me signed in
-                                        </label>
+                                        <a href="{{ route('show-change-password') }}" class="auth-link text-black">Change password</a>
                                     </div>
                                     <a href="{{ route('confirm-email') }}" class="auth-link text-black">Forgot
                                         password?</a>

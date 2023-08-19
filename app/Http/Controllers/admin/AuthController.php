@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminChangePasswordRequest;
+use App\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\AdminRegisterRequest;
+use App\Http\Requests\AdminSendMailRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +31,7 @@ class AuthController extends Controller
     }
 
     // Xử lý đăng nhập
-    public function login(Request $request)
+    public function login(AdminLoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
@@ -54,28 +58,31 @@ class AuthController extends Controller
     }
 
     //Đăng ký
-    public function register(Request $request)
+    public function register(AdminRegisterRequest $request)
     {
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
         $file = $request->photo;
-        // dd($request->hasFile('photo'));
-        if ($request->hasFile('photo')) {
-            $fileExtension = $file->getClientOriginalName();
-            //Lưu file vào thư mục storage/app/public/image với tên mới
-            $request->file('photo')->storeAs('public/images', $fileExtension);
-            // Gán trường image của đối tượng task với tên mới
-            $user->photo = $fileExtension;
-        }
-        try {
-            $user->save();
-            return redirect()->route('adminLogin')->with('success', 'Successful account registration!!!');
-        } catch (\Exception $th) {
-            $image = 'public/images/' . $user->image;
-            Storage::delete($image);
-            return redirect()->back()->with('error', 'Account registration failed!!!');
+        if ($request->password == $request->password_confirmation) {
+            if ($request->hasFile('photo')) {
+                $fileExtension = $file->getClientOriginalName();
+                //Lưu file vào thư mục storage/app/public/image với tên mới
+                $request->file('photo')->storeAs('public/images', $fileExtension);
+                // Gán trường image của đối tượng task với tên mới
+                $user->photo = $fileExtension;
+            }
+            try {
+                $user->save();
+                return redirect()->route('adminLogin')->with('success', 'Successful account registration!!!');
+            } catch (\Exception $th) {
+                $image = 'public/images/' . $user->image;
+                Storage::delete($image);
+                return redirect()->back()->with('error', 'Account registration failed!!!');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Confirmation password is incorrect!!!');
         }
     }
 
@@ -85,7 +92,7 @@ class AuthController extends Controller
     }
 
     //send mail
-    public function sendMail(Request $request) {
+    public function sendMail(AdminSendMailRequest $request) {
         $email = $request->email;
         $user = User::where('email', $email)->first();
         $password = rand(100000,999999);
@@ -114,7 +121,7 @@ class AuthController extends Controller
     }
 
     //change password
-    public function changePassword(Request $request) {
+    public function changePassword(AdminChangePasswordRequest $request) {
         $email = $request->email;
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;
