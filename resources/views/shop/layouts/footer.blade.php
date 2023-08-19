@@ -307,6 +307,9 @@ use Illuminate\Support\Facades\Auth;
                                 role="tab" aria-controls="modalForget" aria-selected="false">Quên mật khẩu</a>
                             <a class="nav-link" id="modalRegisterTab" data-toggle="pill" href="#modalRegister"
                                 role="tab" aria-controls="modalRegister" aria-selected="false">Đăng ký</a>
+                            @if (Auth::guard('customers')->user() != null)
+                            <a class="nav-link" href="{{route('gaurd-logout')}}">Đăng xuất</a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
