@@ -28,4 +28,15 @@ class Customer extends Authenticatable
     {
         return $this->hasMany(Order::class, 'customer_id', 'id');
     }
+
+    public function scopeSearch($query)
+    {
+        if ($key = request()->key) {
+            $query = $query->where('name', 'like', '%' . $key . '%')
+            ->orwhere('email', 'like', '%' . $key . '%')
+            ->orwhere('phone', 'like', '%' . $key . '%')
+            ->orwhere('address', 'like', '%' . $key . '%');
+        }
+        return $query;
+    }
 }

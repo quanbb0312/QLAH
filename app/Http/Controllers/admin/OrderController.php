@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function list()
     {
         // Lấy danh sách đơn hàng từ CSDL và trả về view để hiển thị
-        $orders = Order::paginate($this->paginate);
+        $orders = Order::search()->paginate($this->paginate);
         return view('admin.order.list', compact('orders'));
     }
 

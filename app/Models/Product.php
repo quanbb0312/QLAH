@@ -27,4 +27,15 @@ class Product extends Model
     {
         return $this->hasMany(OrderDetail::class, 'product_id', 'id');
     }
+
+    public function scopeSearch($query)
+    {
+        if ($key = request()->key) {
+            $query->join('categories', 'products.category_id','=','categories.id')
+            ->where('products.productName', 'like', '%' . $key . '%')
+            ->orwhere('products.productDetails', 'like', '%' . $key . '%')
+            ->orwhere('categories.catName', 'like', '%' . $key . '%');
+        }
+        return $query;
+    }
 }

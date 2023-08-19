@@ -15,4 +15,12 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    public function scopeSearch($query)
+    {
+        if ($key = request()->key) {
+            $query = $query->where('catName', 'like', '%' . $key . '%');
+        }
+        return $query;
+    }
 }
