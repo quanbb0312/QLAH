@@ -229,6 +229,54 @@
             opacity: 0.5;
             pointer-events: none;
         }
+
+        #header .headerMain .headerCenter1 {
+            width: 45%;
+        }
+
+        #header .headerMain .headerCenter1 .headerSearch1 {
+            position: relative;
+            width: 100%;
+            margin: 0;
+        }
+
+        #header .headerMain .headerCenter1 .headerSearch1 .headerSearchMain {
+            display: flex;
+        }
+
+        #header .headerMain .headerCenter1 .headerSearch1 .headerSearchMain select {
+            width: 24%;
+            padding-left: 10px;
+            height: 35px;
+            line-height: 50px;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px 0 0 5px;
+            background: #f4f4f4;
+        }
+
+        #header .headerMain .headerCenter1 .headerSearch1 .headerSearchMain .headerSearchInput {
+            width: 80%;
+            padding: 0px 50px 0px 20px;
+            height: 35px;
+            line-height: 50px;
+            border: 1px solid #e1e1e1;
+            border-left: none;
+            border-radius: 0 5px 5px 0;
+        }
+
+        #header .headerMain .headerCenter1 .headerSearch1 .headerSearchButton {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            font-size: 20px;
+            width: 40px;
+            height: 35px;
+            line-height: 25px;
+            background: #000000;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 0 5px 5px 0;
+        }
     </style>
 
 </head>
@@ -377,6 +425,7 @@
         ///add to cart
         $('body').on('click', '.AddCartLoop', function(e) {
             e.preventDefault();
+            console.log(123);
             let id = $(this).attr('data-id');
             let urlCart = $(this).attr('data-href');
             let url = $(this).attr('href');
@@ -655,6 +704,12 @@
                     $('#message-error-email').html(XMLHttpRequest.responseJSON.message);
                 }
             })
+        });
+
+        $('#search-fe').on('click', function(e){
+            e.preventDefault();
+            console.log(111);
+            $('#form-search').submit();
         })
     </script>
 </body>

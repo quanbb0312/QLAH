@@ -152,7 +152,7 @@
                             <div class="proLoop">
                                 <div class="pro_content">
                                     <div class="productImg">
-                                        <a href="/" title="{{ $product->productName }}">
+                                        <a href="{{route('shop-product-detail', $product->id)}}" title="{{ $product->productName }}">
                                             <picture>
                                                 <img data-src=""
                                                     src="{{ asset('storage/products/' . $product->productImage) }}"
@@ -161,7 +161,7 @@
                                         </a>
                                     </div>
                                     <h3 class="productName">
-                                        <a href="/products/ban-phim-akko-3087-v2-world-tour-tokyo"
+                                        <a href="{{route('shop-product-detail', $product->id)}}"
                                             title="{{ $product->productName }}">{{ $product->productName }}</a>
                                     </h3>
 
@@ -231,7 +231,9 @@
                             <div class="proLoop">
                                 <div class="pro_content">
                                     <div class="productImg">
-                                        <a href="" title="{{ $product->productName }}">
+
+                                        <a href="{{route('shop-product-detail', $product->id)}}" title="{{ $product->productName }}">
+
                                             <picture>
                                                 <img data-src=""
                                                     src="{{ asset('storage/products/' . $product->productImage) }}"
@@ -240,7 +242,7 @@
                                         </a>
                                     </div>
                                     <h3 class="productName">
-                                        <a href=""
+                                        <a href="{{route('shop-product-detail', $product->id)}}"
                                             title="{{ $product->productName }}">{{ $product->productName }}</a>
                                     </h3>
 
