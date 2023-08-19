@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Customer;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CustomerSendMailRequest extends FormRequest
@@ -21,8 +22,9 @@ class CustomerSendMailRequest extends FormRequest
      */
     public function rules(): array
     {
+        $listEmail = Customer::all()->pluck('email')->toArray();
         return [
-            //
+            'email' => ['required', 'email', 'in:'.implode(',', $listEmail)],
         ];
     }
 }

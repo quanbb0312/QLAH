@@ -3861,7 +3861,7 @@
                                 </div>
                             </div>
                             <div class="step-footer" id="step-footer-checkout">
-                                <button data-href="{{route('shop-check-out')}}" type="submit" id="button-checkout" class="step-footer-continue-btn btn">
+                                <button data-href="{{route('shop-check-out')}}" type="submit" id="button-checkout" class=" btn">
                                     <span class="btn-content">Check Out</span>
                                 </button>
                                 <a class="step-footer-previous-link" href="{{route('payment-history')}}">
@@ -3951,7 +3951,7 @@
                         }
                     },
                     error: function(XMLHttpRequest, textStatus) {
-                        Haravan.onError(XMLHttpRequest, textStatus);
+                        $('#message-error').html(XMLHttpRequest.responseJSON.message)
                     }
                 })
             })
