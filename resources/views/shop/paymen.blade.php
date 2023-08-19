@@ -1,2459 +1,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="flexbox">
 
 <head>
-    <link rel="shortcut icon" href="//theme.hstatic.net/200000680123/1001107404/14/favicon.png?v=47" type="image/png">
+    {{-- <link rel="shortcut icon" href="//theme.hstatic.net/200000680123/1001107404/14/favicon.png?v=47" type="image/png"> --}}
     <title>
-        TITEK - Thanh toán đơn hàng
+        QLAH - Thanh toán đơn hàng
     </title>
-
-    <meta name="description" content="TITEK - Thanh toán đơn hàng">
-
-
-
-
-
-
-    <style>
-        .btn {
-            display: inline-block;
-            border-radius: 4px;
-            font-weight: 500;
-            padding: 1.4em 1.7em;
-            box-sizing: border-box;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-            position: relative;
-            background: #338dbc;
-            color: white;
-        }
-
-        .fieldset .field .field-input-wrapper .field-input {
-            box-shadow: 0 0 0 1px #d9d9d9;
-            transition: all 0.2s ease-out;
-            background-color: white;
-            color: #333333;
-            border-radius: 4px;
-            display: block;
-            box-sizing: border-box;
-            width: 100%;
-            padding: 0.94em 2.8em 0.94em 0.8em;
-            word-break: normal;
-        }
-
-        body {
-            color: #737373;
-            background: white !important;
-
-            font-size: 14px;
-            font-family: Helvetica Neue, sans-serif;
-            line-height: 1.3em;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-            word-break: break-word;
-            -webkit-font-smoothing: subpixel-antialiased;
-            overflow-x: hidden;
-        }
-
-        .fieldset .field .field-input-wrapper .field-input:focus {
-            box-shadow: 0 0 0 2px #338dbc;
-            outline: none;
-        }
-
-        .radio-wrapper .radio-input .input-radio:checked,
-        .checkbox-wrapper .checkbox-input .input-checkbox:checked {
-            border: none;
-            box-shadow: 0 0 0 10px #338dbc inset;
-        }
-
-        .fieldset .field.field-error .field-input-wrapper .field-input {
-            box-shadow: 0 0 0 2px #ff6d6d;
-            outline: none;
-        }
-
-        html,
-        body {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            /* == 2 => 1 page, == 1 => 2 page*/
-        }
-
-
-
-
-
-        a {
-            text-decoration: none;
-            color: #338dbc;
-            transition: color 0.2s ease-in-out;
-            display: inline-block;
-        }
-
-        .banner {
-            padding: 1.5em 0;
-
-            display: none;
-            ;
-        }
-
-        .alert {
-            padding: 16px;
-            border-radius: 5px;
-            display: -webkit-flex;
-            display: flex;
-            align-items: center;
-        }
-
-
-        .alert-danger svg {
-            width: 20px;
-            margin-right: 10px;
-        }
-
-        .alert-danger span {
-            max-width: calc(100% - 30px);
-        }
-
-        .alert-danger * {
-            flex: 0 0 auto;
-        }
-
-        .alert-danger {
-            color: #721c24;
-            background-color: #ffebeb;
-            border-color: #ffebeb;
-            line-height: 20px;
-        }
-
-        @-webkit-keyframes rotate {
-            0% {
-                -webkit-transform: rotate(0);
-                transform: rotate(0);
-            }
-
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes rotate {
-            0% {
-                -webkit-transform: rotate(0);
-                transform: rotate(0);
-            }
-
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-
-
-        a:focus {
-            outline: none;
-        }
-
-        a:hover {
-            /* color: #2b78a0; */
-            filter: brightness(1.2);
-        }
-
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: normal;
-            margin: 0;
-            line-height: 1em;
-        }
-
-        h2 {
-            font-size: 1.28571em;
-        }
-
-        h3 {
-            font-size: 1em;
-            font-weight: 500;
-            margin-bottom: 0.75em;
-        }
-
-        h3:not(:first-child) {
-            margin-top: 1.5em;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            font-size: 1em;
-        }
-
-        td,
-        th {
-            padding: 0;
-            padding-left: 1em;
-        }
-
-        td:first-child,
-        th:first-child {
-            padding-left: 0;
-            text-align: left;
-        }
-
-        td:last-child,
-        th:last-child {
-            text-align: right;
-        }
-
-        img {
-            border: 0;
-            max-width: 100%;
-        }
-
-        p {
-            margin: 0;
-            line-height: 1.5em;
-        }
-
-        button,
-        input,
-        optgroup,
-        select,
-        textarea {
-            color: inherit;
-            font: inherit;
-            margin: 0;
-            padding: 0;
-            -webkit-appearance: none;
-            -webkit-font-smoothing: inherit;
-            border: none;
-            background: transparent;
-            line-height: normal;
-        }
-
-        button:focus,
-        input:focus {
-            outline: none;
-        }
-
-        button,
-        input[type="button"],
-        input[type="reset"],
-        input[type="submit"] {
-            -webkit-appearance: button;
-            cursor: pointer;
-        }
-
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            text-indent: 1px;
-            text-overflow: '';
-        }
-
-        .radio-wrapper,
-        .checkbox-wrapper {
-            display: table;
-            box-sizing: border-box;
-            width: 100%;
-            zoom: 1;
-        }
-
-        .radio-wrapper:after,
-        .radio-wrapper:before,
-        .checkbox-wrapper:after,
-        .checkbox-wrapper:before {
-            content: "";
-            display: table;
-        }
-
-        .radio-wrapper .radio-input,
-        .checkbox-wrapper .checkbox-input {
-            display: table-cell;
-            padding-right: 0.75em;
-            white-space: nowrap;
-        }
-
-        .radio-wrapper .payment-method-checkbox {
-            display: flex;
-            align-self: center;
-        }
-
-        .radio-wrapper .radio-input .input-radio,
-        .checkbox-wrapper .checkbox-input .input-checkbox {
-            width: 18px;
-            height: 18px;
-            box-shadow: 0 0 0 0 #338dbc inset;
-            transition: all 0.2s ease-in-out;
-            position: relative;
-            cursor: pointer;
-            vertical-align: -4px;
-            outline: 0;
-            border: solid 1px #d9d9d9;
-        }
-
-        .radio-wrapper .radio-input .input-radio:hover,
-        .checkbox-wrapper .checkbox-input .input-checkbox:hover {
-            border-color: #cccccc;
-        }
-
-        .radio-wrapper .radio-input .input-radio {
-            border-radius: 50%;
-        }
-
-        .radio-wrapper .radio-content-input {
-            display: flex;
-            align-items: center;
-        }
-
-        .radio-content-input .content-wrapper {
-            display: grid
-        }
-
-        .radio-wrapper .radio-content-input .main-img {
-            margin-right: 10px;
-            display: flex;
-            align-self: center;
-            width: 40px;
-            height: 40px;
-        }
-
-        .radio-wrapper .radio-content-input .child-img {
-            max-height: 30px
-        }
-
-        .radio-wrapper .radio-content-input .quick-tagline {
-            color: #338dbc;
-            display: flex;
-            align-items: center;
-            margin-top: 2px;
-        }
-
-        .radio-wrapper .radio-content-input .quick-tagline svg {
-            fill: #338dbc;
-            margin-left: 10px;
-        }
-
-        .radio-wrapper .radio-input .input-radio:checked:focus,
-        .checkbox-wrapper .checkbox-input .input-checkbox:checked:focus {
-            border-color: #286f94;
-        }
-
-        .radio-wrapper .radio-input .input-radio:checked:after,
-        .checkbox-wrapper .checkbox-input .input-checkbox:checked:after {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-            opacity: 1;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 100 ")";
-            filter: alpha(opacity=100);
-        }
-
-        .radio-wrapper .radio-input .input-radio:after,
-        .checkbox-wrapper .checkbox-input .input-checkbox:after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: scale(0.2);
-            transform: scale(0.2);
-            transition: all 0.2s ease-in-out 0.1s;
-            opacity: 0;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 0 ")";
-            filter: alpha(opacity=0);
-        }
-
-        .radio-wrapper .radio-input .input-radio:after {
-            width: 4px;
-            height: 4px;
-            margin-left: -2px;
-            margin-top: -2px;
-            background-color: #fff;
-            border-radius: 50%;
-        }
-
-        .radio-wrapper .radio-label,
-        .checkbox-wrapper .checkbox-label {
-            display: flex !important;
-            cursor: pointer !important;
-            align-items: center;
-            padding: 1.3em;
-            width: auto;
-        }
-
-        .radio-wrapper .two-page,
-        .checkbox-wrapper .checkbox-label {
-            display: flex;
-            cursor: pointer;
-            align-items: center;
-            padding: 1.3em;
-            width: auto;
-        }
-
-        .radio-wrapper .radio-label .radio-label-primary,
-        .checkbox-wrapper .checkbox-label .checkbox-label-primary {
-            display: table-cell;
-            width: 100%;
-        }
-
-        .radio-wrapper .radio-accessory,
-        .checkbox-wrapper .checkbox-accessory {
-            display: table-cell;
-            padding-left: 0.75em;
-            white-space: nowrap;
-        }
-
-        .radio-wrapper.no-box,
-        .checkbox-wrapper.no-box {
-            display: block;
-        }
-
-        .radio-wrapper.no-box .radio-input,
-        .checkbox-wrapper.no-box .checkbox-input {
-            display: inline-block;
-        }
-
-        .radio-wrapper.no-box .radio-label,
-        .checkbox-wrapper.no-box .checkbox-label {
-            display: inline-block;
-            width: inherit;
-        }
-
-        ::selection {
-            background: #338dbc;
-            color: white;
-        }
-
-
-        .btn:not(.btn-disabled):hover {
-            /* background: #286f94; */
-            color: white;
-            filter: brightness(1.2);
-        }
-
-
-
-        .btn-spinner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: -10px;
-            margin-left: -10px;
-            /*transition: opacity 0.3s ease-in-out;*/
-            opacity: 0;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 0 ")";
-            filter: alpha(opacity=0);
-        }
-
-        .btn-loading {
-            pointer-events: none;
-            cursor: default;
-        }
-
-        .btn-loading .btn-content {
-            opacity: 0;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 0 ")";
-            filter: alpha(opacity=0);
-        }
-
-        .btn-loading .btn-spinner {
-            -webkit-animation: rotate 0.5s linear infinite;
-            animation: rotate 0.5s linear infinite;
-            opacity: 1;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 100 ")";
-            filter: alpha(opacity=100);
-        }
-
-        #div_location_country_not_vietnam {
-            display: none;
-        }
-
-        div#section-shipping-rate,
-        #section-payment-method {
-            position: relative;
-        }
-
-        .icon {
-            background-position: center center;
-            background-repeat: no-repeat;
-            display: inline-block;
-        }
-
-        .icon.icon-button-spinner {
-            width: 20px;
-            height: 20px;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTIwIDEwYzAgNS41MjMtNC40NzcgMTAtMTAgMTBTMCAxNS41MjMgMCAxMCA0LjQ3NyAwIDEwIDB2MmMtNC40MTggMC04IDMuNTgyLTggOHMzLjU4MiA4IDggOCA4LTMuNTgyIDgtOGgyeiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg=='), none;
-        }
-
-        .icon.icon-clear {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMiAtNCAxNiAxNiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAyIC00IDE2IDE2Ij48cGF0aCBvcGFjaXR5PSIuMiIgZD0iTTEwLTRjLTQuNCAwLTggMy42LTggOHMzLjYgOCA4IDggOC0zLjYgOC04LTMuNi04LTgtOHptMy43IDEwLjdsLTEgMS0yLjctMi42LTIuNyAyLjYtMS0xIDIuNi0yLjctMi42LTIuNyAxLTEgMi43IDIuNiAyLjctMi42IDEgMS0yLjYgMi43IDIuNiAyLjd6Ii8+PC9zdmc+'), none;
-        }
-
-        .icon.icon-os-question {
-            width: 18px;
-            height: 18px;
-            margin-right: 0.5em;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48cGF0aCBkPSJNOSAxOGM0Ljk3IDAgOS00LjAzIDktOXMtNC4wMy05LTktOS05IDQuMDMtOSA5IDQuMDMgOSA5IDl6TTUuODUgNy4xNjJoMS41NDZjLjA1My0uODAzLjYtMS4zMTcgMS40NS0xLjMxNy44MjggMCAxLjM4LjQ5NCAxLjM4IDEuMTggMCAuNjUtLjI3NSAxLTEuMDkyIDEuNDkzLS45MDguNTM0LTEuMjkgMS4xMjYtMS4yMyAyLjExNGwuMDA2LjQ0OGgxLjUyN3YtLjM3NmMwLS42NS4yNDQtLjk4NyAxLjEwNi0xLjQ5NC44OTYtLjUzNCAxLjM5Ni0xLjIzOCAxLjM5Ni0yLjI0NiAwLTEuNDU1LTEuMjA3LTIuNDk1LTMuMDEtMi40OTUtMS45NTUgMC0zLjAzIDEuMTMtMy4wOCAyLjY5em0yLjg5NiA3LjA1OGMuNjcyIDAgMS4wOTMtLjQxNCAxLjA5My0xLjA0NiAwLS42NC0uNDIzLTEuMDU0LTEuMDk1LTEuMDU0LS42NiAwLTEuMDkzLjQxNS0xLjA5MyAxLjA1NCAwIC42MzIuNDM0IDEuMDQ2IDEuMDkzIDEuMDQ2eiIgZmlsbD0iI0I1QjVCNSIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+'), none;
-        }
-
-        .icon.icon-closed-box {
-            width: 68px;
-            height: 54px;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2OCIgaGVpZ2h0PSI1NCIgdmlld0JveD0iMjQuMSAtMTcgNjggNTQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjQuMSAtMTcgNjggNTQiPjxwYXRoIHN0cm9rZT0iI0IyQjJCMiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGZpbGw9Im5vbmUiIGQ9Ik0yNS4xLTVoNjZNMzIuMSAyOGgxNk0zMi4xIDIzaDEyIi8+PHBhdGggc3Ryb2tlPSIjQjJCMkIyIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTI1LjEtNS40bDYuNy0xMC42aDUyLjlsNi40IDEwLjZ2MzguNmMwIDEuNi0xLjIgMi44LTIuOCAyLjhoLTYwLjRjLTEuNiAwLTIuOC0xLjItMi44LTIuOHYtMzguNnpNNTguMS0xNnYxMSIgZmlsbD0ibm9uZSIvPjwvc3ZnPg=='), none;
-        }
-
-        .icon.icon-closed-box.has-error {
-            width: 68px;
-            height: 54px;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2OCIgaGVpZ2h0PSI1NCIgdmlld0JveD0iMjQuMSAtMTcgNjggNTQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjQuMSAtMTcgNjggNTQiPjxwYXRoIHN0cm9rZT0iI2ZmNmQ2ZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGZpbGw9Im5vbmUiIGQ9Ik0yNS4xLTVoNjZNMzIuMSAyOGgxNk0zMi4xIDIzaDEyIi8+PHBhdGggc3Ryb2tlPSIjZmY2ZDZkIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTI1LjEtNS40bDYuNy0xMC42aDUyLjlsNi40IDEwLjZ2MzguNmMwIDEuNi0xLjIgMi44LTIuOCAyLjhoLTYwLjRjLTEuNiAwLTIuOC0xLjItMi44LTIuOHYtMzguNnpNNTguMS0xNnYxMSIgZmlsbD0ibm9uZSIvPjwvc3ZnPg=='), none;
-        }
-
-        .flexbox {}
-
-        .flexbox body,
-        .flexbox .content,
-        .flexbox .content .wrap,
-        .flexbox .main {
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            -webkit-flex: 1 0 auto;
-            -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-        }
-
-        .flexbox .main-content {
-            -webkit-flex: 1 0 auto;
-            -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-        }
-
-        .step-footer {
-            z-index: 2;
-            position: relative;
-            margin-top: 1em;
-            zoom: 1;
-        }
-
-        .step-footer:after,
-        .step-footer:before {
-            content: "";
-            display: table;
-        }
-
-        .step-footer:after {
-            clear: both;
-        }
-
-        .step-footer .step-footer-previous-link {
-            cursor: pointer;
-            display: block;
-        }
-
-        .step-footer .step-footer-previous-link .previous-link-icon {
-            fill: #338dbc;
-            transition: all 0.2s cubic-bezier(0.3, 0, 0, 1);
-            margin-right: 0.25em;
-        }
-
-        .step-footer .step-footer-previous-link:hover .previous-link-icon {
-            fill: #2b78a0;
-            -webkit-transform: translateX(-5px);
-            transform: translateX(-5px);
-        }
-
-        .step-footer .step-footer-info {
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-        .content {
-            overflow-x: hidden;
-        }
-
-        .content.content-second {
-            display: none;
-        }
-
-        .section {
-            position: relative;
-            padding-top: 2em;
-        }
-
-        .section.thank-you-checkout-info {
-            padding-top: 0.5em;
-        }
-
-        .section:first-child {
-            padding-top: 0;
-        }
-
-        .section .section-header {
-            position: relative;
-        }
-
-        .section .section-content {
-            zoom: 1;
-            margin-bottom: 2em;
-        }
-
-        .section .section-content .section-content-text {
-            margin-bottom: 0.75em;
-        }
-
-        .section .section-content.no-mb,
-        .section .section-content:last-child {
-            margin-bottom: inherit;
-        }
-
-        .section .section-content:after,
-        .section .section-content:before {
-            content: "";
-            display: table;
-        }
-
-        .section .section-content .content-box {
-            box-shadow: 0 0 0 1px #d9d9d9;
-            border-radius: 4px;
-            background: #fff;
-            color: #737373;
-            margin-top: 1em;
-        }
-
-        .section .section-content .content-box.has-error {
-            box-shadow: 0 0 0 2px #ff6d6d;
-            color: #ff6d6d;
-        }
-
-        .section .section-content .content-box.no-border {
-            box-shadow: none;
-        }
-
-        .section .section-content .content-box:first-child {
-            margin-top: 0;
-        }
-
-        .section .section-content .content-box .content-box-row {
-            display: table;
-            box-sizing: border-box;
-            width: 100%;
-            border-top: 1px solid #d9d9d9;
-            zoom: 1;
-        }
-
-        .section .section-content .content-box .content-box-row.content-box-row-padding {
-            padding: 0.8em 0.6em;
-        }
-
-        .section .section-content .content-box .content-box-row:first-child {
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            border-top: none;
-        }
-
-        .section .section-content .content-box .content-box-row:last-child {
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-        }
-
-        .section .section-content .content-box .content-box-row:after,
-        .section .section-content .content-box .content-box-row:before {
-            content: "";
-            display: table;
-        }
-
-        .section .section-content .content-box .content-box-row.content-box-row-secondary {
-            background-color: #fafafa;
-        }
-
-        .section .section-content .content-box .content-box-row.content-box-row-no-border {
-            padding-bottom: 0;
-        }
-
-        .section .section-content .content-box .content-box-row.content-box-row-no-border+.content-box-row {
-            border-top: none !important;
-        }
-
-        .section .section-content .content-box .content-box-emphasis {
-            font-weight: 500;
-            color: #4d4d4d;
-        }
-
-        .section .section-content .content-box h3 {
-            color: #4d4d4d;
-        }
-
-        .section .section-content .content-box h2 {
-            color: #333333;
-        }
-
-        .section .section-content .content-box h2:only-child {
-            margin: 0;
-        }
-
-        .section .section-title {
-            color: #333333;
-
-
-        }
-
-        .payment-later-table,
-        .payment-later-table>table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            box-shadow: 0px 0px 5px rgb(10 31 68 / 21%);
-            border-radius: 9px;
-            background-color: #FFFFFF;
-        }
-
-        .paylater--text {
-            color: #ACA9A9;
-        }
-
-        .paylater--h4 {
-            padding-top: 1em;
-        }
-
-        .payment-later-table--loading {
-            border-collapse: collapse;
-            border-spacing: 0;
-            width: 100%;
-            box-shadow: 0px 0px 5px rgb(10 31 68 / 21%);
-            border-radius: 9px;
-            background-color: #FFFFFF;
-            display: none;
-        }
-
-        .payment-later-table--loading.show {
-            display: block;
-        }
-
-        .payment-later-table>table th {
-            text-align: center;
-            padding: 16px;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            color: #338DBC;
-        }
-
-        .payment-later-table>table th:first-child {
-            text-align: left;
-            border-top-left-radius: 9px;
-            border: 1px;
-        }
-
-        .payment-later-table>table th:last-child {
-            text-align: right;
-            border-top-right-radius: 9px;
-            border: 1px;
-        }
-
-        .payment-later-table>table td {
-            text-align: center;
-            padding: 16px;
-            font-weight: 500;
-        }
-
-        .payment-later-table>table td:first-child {
-            text-align: left;
-        }
-
-        .payment-later-table>table td:last-child {
-            text-align: right;
-            padding: 16px;
-        }
-
-        .payment-later-table>table tr:nth-child(odd) {
-            background-color: #D9D9D9;
-        }
-
-
-        .fieldset {
-            margin: -0.45em;
-            zoom: 1;
-        }
-
-        .fieldset:after,
-        .fieldset:before {
-            content: "";
-            display: table;
-        }
-
-        .fieldset:after {
-            clear: both;
-        }
-
-        .fieldset .field {
-            width: 100%;
-            float: left;
-            padding: 0.45em;
-            box-sizing: border-box;
-        }
-
-        .fieldset .field .field-input-btn-wrapper {
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-        }
-
-        .fieldset .field .field-input-btn-wrapper .field-input-btn {
-            width: auto;
-            margin-left: 0.9em;
-            white-space: nowrap;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .fieldset .field .field-input-btn-wrapper .field-input-wrapper {
-            -webkit-flex-grow: 1;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-        }
-
-        .fieldset .field .field-input-wrapper {
-            position: relative;
-        }
-
-        .fieldset .field .field-input-wrapper .field-label {
-            font-size: 0.85714em;
-            font-weight: normal;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            padding: 0 0.93333em;
-            z-index: 1;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-transform: translateY(3px);
-            transform: translateY(3px);
-            pointer-events: none;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            box-sizing: border-box;
-            opacity: 0;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 0 ")";
-            filter: alpha(opacity=0);
-            color: #999999;
-            transition: all 0.2s ease-out;
-            margin: 0.5em 0;
-            margin-top: 0.3em;
-            display: block;
-        }
-
-
-
-
-        .fieldset .field .field-input-wrapper .field-description {
-            display: block;
-            margin-left: 25px;
-            margin-top: 2px;
-        }
-
-        .fieldset .field .field-input-wrapper.field-input-wrapper-select {}
-
-        .fieldset .field .field-input-wrapper.field-input-wrapper-select::before {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDIxIDE5Ij48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjMDAwIj48Zz48cGF0aCBkPSJNMCAwaDF2MTlIMFYweiIgaWQ9IlNoYXBlIiBmaWxsLW9wYWNpdHk9Ii4xNSIvPjxwYXRoIGQ9Ik0xMSA4aDEwbC01IDUtNS01eiIgZmlsbC1vcGFjaXR5PSIuNSIvPjwvZz48L2c+PC9nPjwvc3ZnPg=='), none;
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 50px;
-            background-position: center center;
-            background-repeat: no-repeat;
-            pointer-events: none;
-        }
-
-        .fieldset .field .field-message {
-            font-size: 0.85714em;
-        }
-
-        .fieldset .field .field-message.field-message-error {
-            margin: 0;
-            display: none;
-            margin: 0.75em 0 0.25em;
-            transition: all 0.3s ease-out;
-            line-height: 1.3em;
-            color: #ff6d6d
-        }
-
-        .fieldset .field.field-active {}
-
-        .fieldset .field.field-active .field-input-wrapper .field-label {
-            color: #737373;
-        }
-
-        .fieldset .field.field-show-floating-label {}
-
-        .fieldset .field.field-show-floating-label .field-input-wrapper .field-label {
-            -webkit-transform: none;
-            transform: none;
-            opacity: 1;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 100 ")";
-            filter: alpha(opacity=100);
-        }
-
-        .fieldset .field.field-show-floating-label .field-input-wrapper .field-input {
-            padding-top: 1.5em;
-            padding-bottom: 0.38em;
-        }
-
-        .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-webkit-input-placeholder {
-            color: transparent;
-        }
-
-        .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-moz-placeholder {
-            color: transparent;
-        }
-
-        .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-moz-placeholder {
-            color: transparent;
-        }
-
-        .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-ms-input-placeholder {
-            color: transparent;
-        }
-
-        .fieldset .field.field-error {}
-
-        .fieldset .field.field-error .field-input-wrapper {}
-
-        .fieldset .field.field-error .field-message.field-message-error {
-            display: block;
-        }
-
-        .wrap {
-            margin: 0 auto;
-            max-width: 40em;
-            zoom: 1;
-        }
-
-        .wrap:after {
-            clear: both;
-        }
-
-        .wrap:after,
-        .wrap:before {
-            content: "";
-            display: table;
-        }
-
-        .sidebar {
-            position: relative;
-            color: #717171;
-        }
-
-        .sidebar h2 {
-            color: #323232;
-        }
-
-        .sidebar:after {
-            content: "";
-            display: block;
-            width: 300%;
-            position: absolute;
-            top: 0;
-            left: -100%;
-            bottom: 0;
-            background: #fafafa;
-
-            z-index: -1;
-            box-shadow: 0 -1px 0 #e1e1e1 inset;
-        }
-
-        .sidebar .sidebar-content {}
-
-        .sidebar .sidebar-content .order-summary {}
-
-        .sidebar .sidebar-content .order-summary .order-summary-sections {}
-
-        .sidebar .sidebar-content .order-summary .order-summary-sections .order-summary-section {
-            border-top: 1px solid;
-            padding-top: 1.5em;
-            padding-bottom: 1em;
-            border-color: #e1e1e1;
-        }
-
-        .sidebar .sidebar-content .order-summary .order-summary-sections .order-summary-section:first-child {
-            border-top: none;
-        }
-
-        .sidebar .sidebar-content .order-summary .order-summary-emphasis {
-            font-weight: 500;
-            color: #4b4b4b;
-        }
-
-        .sidebar .sidebar-content .order-summary .order-summary-small-text {
-            font-size: 0.85714em;
-            color: #969696;
-        }
-
-        .sidebar .sidebar-content .order-summary .product {}
-
-        .sidebar .sidebar-content .order-summary .product:first-child td {
-            padding-top: 0;
-        }
-
-        .sidebar .sidebar-content .order-summary .product td {
-            padding-top: 1em;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-image {}
-
-        .sidebar .sidebar-content .order-summary .product .product-image .product-thumbnail {
-            width: 4.6em;
-            height: 4.6em;
-            border-radius: 8px;
-            background: #fff;
-            position: relative;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-image .product-thumbnail .product-thumbnail-wrapper {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-image .product-thumbnail .product-thumbnail-wrapper .product-thumbnail-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            max-width: 100%;
-            max-height: 100%;
-            margin: auto;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-image .product-thumbnail .product-thumbnail-quantity {
-            font-size: 0.85714em;
-            font-weight: 500;
-            white-space: nowrap;
-            padding: 0.15em 0.65em;
-            border-radius: 2em;
-            background-color: rgba(153, 153, 153, 0.9);
-            color: #fff;
-            position: absolute;
-            right: -0.75em;
-            top: -0.75em;
-            z-index: 2;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-image .product-thumbnail::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            border-radius: 8px;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-description {
-            width: 100%;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-description .product-description-name,
-        .sidebar .sidebar-content .order-summary .product .product-description .product-description-variant,
-        .sidebar .sidebar-content .order-summary .product .product-description .product-description-property {
-            display: block;
-        }
-
-        .sidebar .sidebar-content .order-summary .product .product-quantity {}
-
-        .sidebar .sidebar-content .order-summary .product .product-price {
-            white-space: nowrap;
-        }
-
-        .sidebar .btn-disabled {
-            cursor: default;
-            background: #c8c8c8;
-            box-shadow: none;
-        }
-
-
-        .logo-text {
-            color: #333333;
-        }
-
-        .main {}
-
-        .main .main-header {}
-
-        .main .main-header .logo {
-            display: none;
-        }
-
-        .main .main-header .breadcrumb {}
-
-        .main .main-header .breadcrumb .breadcrumb-item {
-            display: inline-block;
-            font-size: 0.85714em;
-            color: #999999;
-        }
-
-        .main .main-header .breadcrumb .breadcrumb-item.breadcrumb-item-current {
-            font-weight: 500;
-            color: #4d4d4d;
-        }
-
-        .main .main-header .breadcrumb .breadcrumb-item:after {
-            content: "";
-            display: inline-block;
-            width: 6px;
-            height: 11px;
-            vertical-align: middle;
-            margin: 0 0.5em;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjExIiBvcGFjaXR5PSIuNCIgZmlsbD0iIzAwMCI+PHBhdGggZD0iTS41MjYgMS40MDhsNCA0LjY0NS4wMTQtLjgzLTQgNC4zNTQuOTIuODQ2IDQtNC4zNTYuMzc2LS40MS0uMzYyLS40Mi00LTQuNjQ1LS45NDguODE2eiIvPjwvc3ZnPg=='), none;
-        }
-
-        .main .main-header .breadcrumb .breadcrumb-item:last-child:after {
-            display: none;
-        }
-
-        .main .main-header .breadcrumb .breadcrumb-item .breadcrumb-link {
-            cursor: pointer;
-        }
-
-        .main .main-footer {
-            padding: 1em 0;
-            border-top: 1px solid #e6e6e6;
-        }
-
-        .main h2 {
-            color: #333333;
-        }
-
-        .field-label-strong {
-            font-weight: 600;
-        }
-
-        .ctrl_payment_method {
-            padding: 10px 60px;
-        }
-
-        .ctrl_payment_method>label {
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .ctrl_payment_method .payment_method_list {
-            padding-left: 10px;
-        }
-
-        .total-line {}
-
-        .total-line td {
-            padding-top: 0.75em;
-        }
-
-        .total-line-table-footer .total-line td {
-            padding-top: 3em;
-            position: relative;
-        }
-
-        .total-line-table-footer .total-line td::before {
-            background-color: #e1e1e1;
-            content: '';
-            position: absolute;
-            top: 1.5em;
-            left: 0;
-            width: 100%;
-            height: 1px;
-        }
-
-        .payment-due-label {}
-
-        .payment-due-label .payment-due-label-total {
-            font-size: 1.14286em;
-            color: #4b4b4b;
-        }
-
-        .payment-due {}
-
-        .payment-due .payment-due-currency {
-            font-size: 0.85714em;
-            vertical-align: 0.2em;
-            margin-right: 0.5em;
-            color: #969696;
-        }
-
-        .payment-due .payment-due-price {
-            font-size: 1.71429em;
-            font-weight: 500;
-            letter-spacing: -0.04em;
-            color: #4b4b4b;
-            line-height: 1em;
-        }
-
-        .applied-reduction-code {
-            margin-left: 0.5em;
-        }
-
-        .applied-reduction-code .applied-reduction-code-icon {
-            fill: #338dbc;
-            vertical-align: middle;
-            margin-right: 0.14286em;
-        }
-
-        .applied-reduction-code .applied-reduction-code-information {
-            font-size: 0.85714em;
-            color: #338dbc;
-            font-weight: 500;
-        }
-
-        .applied-reduction-code-clear-button {
-            vertical-align: middle;
-            margin-left: 0.28571em;
-        }
-
-        .hanging-icon {
-            margin-right: 0.75em;
-            stroke: #338dbc;
-        }
-
-        .hanging-icon.hanging-icon-error {
-            stroke: #ff6d6d;
-        }
-
-        .os-header {
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            -webkit-align-items: center;
-            -ms-flex-align: center;
-            align-items: center;
-            margin: 0;
-        }
-
-        .os-header .os-header-heading {
-            -webkit-flex-grow: 1;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-        }
-
-        .os-header .os-header-heading .os-order-number {
-            display: block;
-        }
-
-        .os-header .os-header-heading .os-header-title {
-            font-size: 1.5em;
-            margin-bottom: 0.1em;
-        }
-
-        .os-header .os-header-heading .os-description {
-            color: #4d4d4d;
-        }
-
-        .wrap {
-            margin: 0 auto;
-            max-width: 40em;
-            zoom: 1;
-        }
-
-        .wrap:after,
-        .wrap:before {
-            content: "";
-            display: table;
-        }
-
-        .order-summary-toggle {
-            background: #fafafa;
-            border-top: 1px solid #e6e6e6;
-            border-bottom: 1px solid #e6e6e6;
-            padding: 1.25em 0;
-            -webkit-flex-shrink: 0;
-            -ms-flex-negative: 0;
-            flex-shrink: 0;
-            text-align: left;
-            width: 100%;
-        }
-
-        .order-summary-toggle .order-summary-toggle-inner {
-            display: table;
-            box-sizing: border-box;
-            width: 100%;
-            zoom: 1;
-        }
-
-        .order-summary-toggle .order-summary-toggle-inner:after,
-        .order-summary-toggle .order-summary-toggle-inner:before {
-            content: "";
-            display: table;
-        }
-
-        .order-summary-toggle .order-summary-toggle-inner .order-summary-toggle-icon-wrapper {
-            display: table-cell;
-            vertical-align: middle;
-            padding-right: 0.75em;
-            white-space: nowrap;
-        }
-
-        .order-summary-toggle .order-summary-toggle-inner .order-summary-toggle-icon-wrapper .order-summary-toggle-icon {
-            fill: #338dbc;
-            transition: fill 0.2s ease-in-out;
-        }
-
-
-
-        .order-summary-toggle .order-summary-toggle-inner .order-summary-toggle-text {
-            color: #338dbc;
-            vertical-align: middle;
-            transition: color 0.2s ease-in-out;
-            display: none;
-        }
-
-        .order-summary-toggle .order-summary-toggle-inner .order-summary-toggle-text .order-summary-toggle-dropdown {
-            vertical-align: middle;
-            transition: fill 0.2s ease-in-out;
-            fill: #338dbc;
-        }
-
-        .order-summary-toggle .order-summary-toggle-inner .order-summary-toggle-total-recap {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: right;
-            padding-left: 0.75em;
-            white-space: nowrap;
-        }
-
-        .order-summary-toggle .order-summary-toggle-inner .order-summary-toggle-total-recap .total-recap-final-price {
-            font-size: 1.28571em;
-            line-height: 1em;
-            color: #4d4d4d;
-        }
-
-        .order-summary-toggle.order-summary-toggle-show {}
-
-        .order-summary-toggle.order-summary-toggle-hide .order-summary-toggle-inner .order-summary-toggle-text.order-summary-toggle-text-show,
-        .order-summary-toggle.order-summary-toggle-show .order-summary-toggle-inner .order-summary-toggle-text.order-summary-toggle-text-hide {
-            display: table-cell;
-            width: 100%;
-        }
-
-        .logged-in-customer-information {
-            display: table;
-            box-sizing: border-box;
-            width: 100%;
-            margin-bottom: 1.5em;
-        }
-
-        .logged-in-customer-information:after,
-        .logged-in-customer-information:before {
-            content: "";
-            display: table;
-        }
-
-        .logged-in-customer-information .logged-in-customer-information-avatar-wrapper {
-            display: table-cell;
-            padding-right: 1em;
-            white-space: nowrap;
-            vertical-align: middle;
-        }
-
-        .logged-in-customer-information .logged-in-customer-information-avatar-wrapper .logged-in-customer-information-avatar {
-            border-radius: 8px;
-            background-size: cover;
-            position: relative;
-            max-width: none;
-            width: 50px;
-            height: 50px;
-            overflow: hidden;
-        }
-
-        .logged-in-customer-information .logged-in-customer-information-avatar-wrapper .logged-in-customer-information-avatar:before {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDUwIDUwIj48dGl0bGU+QXJ0Ym9hcmQ8L3RpdGxlPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTAgMGg1MHY1MEgwVjB6IiBmaWxsPSIjRDhEOEQ4Ii8+PHBhdGggZD0iTTI1LjEwMyAyNi4yNDJjMy4yMTIgMCA1LjY0Mi0yLjkyIDUuNjQyLTYuNzg3IDAtMy4wODYtMi41OC01LjcwNS01LjY0Mi01LjcwNS0zLjA2IDAtNS42NCAyLjYyLTUuNjQgNS43MDUgMCAzLjg2NiAyLjQzIDYuNzg3IDUuNjQgNi43ODd6bTAtMTAuNTRjMS45NTIgMCAzLjY3OCAxLjc2MyAzLjY3OCAzLjc1MyAwIDIuNzU3LTEuNTc0IDQuODM1LTMuNjc3IDQuODM1LTIuMTAzIDAtMy42NzctMi4wNzgtMy42NzctNC44MzUgMC0xLjk5IDEuNzI2LTMuNzUzIDMuNjc3LTMuNzUzem0tOC40NSAyMC42MTVsLjE3Ny0xLjg3N2MuMzktMy43NzggNC42OTctNC42MSA4LjI3My00LjYxIDMuNTc3IDAgNy44ODQuODMyIDguMjc0IDQuNTk4bC4xNzYgMS44OWgyLjAxNWwtLjE3Ni0yLjA4Yy0uNDQtNC4xMTctNC4wNjgtNi4zODQtMTAuMjktNi4zODQtNi4yMiAwLTkuODQ2IDIuMjY3LTEwLjI4NyA2LjM5N2wtLjE3NiAyLjA2N2gyLjAxNHoiIGZpbGw9IiNGRkYiLz48L2c+PC9zdmc+'), none;
-        }
-
-        .logged-in-customer-information .logged-in-customer-information-paragraph {
-            display: table-cell;
-            width: 100%;
-            padding-top: 0.25em;
-            vertical-align: middle;
-        }
-
-        @media (min-width: 1300px) {
-            .hanging-icon {
-                position: absolute;
-                right: 100%;
-                top: 50%;
-                -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
-                margin-right: 1.5em;
-            }
-        }
-
-        @media (min-width: 1000px) {
-            .wrap {
-                padding: 0 5%;
-                width: 90%;
-                max-width: 78.57143em;
-            }
-
-            .order-summary-toggle {
-                display: none;
-            }
-
-            .flexbox .content .wrap {
-                -webkit-flex-direction: row-reverse;
-                -ms-flex-direction: row-reverse;
-                flex-direction: row-reverse;
-            }
-
-            .main {
-                width: 52%;
-                width: 52%;
-                padding-right: 6%;
-                /* float: left;*/
-            }
-
-            .main .main-header {
-                padding-bottom: 1em;
-            }
-
-            .main .main-header .logo {
-                display: block;
-            }
-
-            .main .main-header .breadcrumb {
-                margin-top: 1em;
-            }
-
-            .sidebar {
-                width: 38%;
-                padding-left: 4%;
-                background-position: left top;
-                /* float: right; */
-            }
-
-            .sidebar:after {
-                left: 0;
-                background-position: left top;
-                box-shadow: 1px 0 0 #e1e1e1 inset;
-            }
-
-            .sidebar .sidebar-content .order-summary .order-summary-sections .order-summary-section:first-child {
-                padding-top: 0;
-            }
-        }
-
-        @media (max-width: 999px) {
-            .content {}
-
-            .content.content-second {
-                display: block;
-            }
-
-            .wrap {
-                width: 100%;
-                box-sizing: border-box;
-                padding: 0 1em;
-            }
-
-            .banner {
-                display: block;
-            }
-
-            .banner.error {
-                padding-bottom: 100px;
-            }
-
-            #checkout_order_information_changed_error_message {
-                position: absolute;
-                top: 60px;
-                left: 15px;
-                width: calc(100% - 30px);
-                margin-bottom: 0 !important;
-            }
-
-            .main .main-header .breadcrumb {
-                display: none;
-            }
-
-            .sidebar .sidebar-content .order-summary.order-summary-is-collapsed {
-                height: 0;
-                overflow: hidden;
-            }
-        }
-
-        @media (max-width: 999px) and (min-width: 750px) {
-            .hanging-icon {
-                position: absolute;
-                right: 100%;
-                top: 50%;
-                -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
-                margin-right: 1.5em;
-            }
-        }
-
-        @media (min-width: 750px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .main {
-                padding-top: 1.5em;
-            }
-
-            .main .main-content {
-                padding-bottom: 4em;
-            }
-
-            .step-footer {
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-flex-direction: row-reverse;
-                -ms-flex-direction: row-reverse;
-                flex-direction: row-reverse;
-                -webkit-align-items: center;
-                -ms-flex-align: center;
-                align-items: center;
-                margin-top: 1.5em;
-            }
-
-            .step-footer .step-footer-continue-btn {
-                -webkit-flex: 0 0 auto;
-                -ms-flex: 0 0 auto;
-                flex: 0 0 auto;
-                float: right;
-            }
-
-            .step-footer .step-footer-previous-link {
-                -webkit-flex: 1 1 auto;
-                -ms-flex: 1 1 auto;
-                flex: 1 1 auto;
-                margin-right: 1em;
-                float: left;
-                display: block;
-            }
-
-            .step-footer .step-footer-info {
-                -webkit-flex: 1 1 auto;
-                -ms-flex: 1 1 auto;
-                flex: 1 1 auto;
-                margin-right: 1em;
-                float: left;
-            }
-
-            .section {
-                padding-top: 3em;
-            }
-
-            .section.thank-you-checkout-info {
-                padding-top: 1.5em;
-            }
-
-            .section .section-header {
-                margin-bottom: 1.5em;
-            }
-
-            .field-half {
-                width: 50% !important;
-            }
-
-            .field-two-thirds {
-                width: 66.66667% !important;
-            }
-
-            .field-third {
-                width: 33.33333% !important;
-            }
-
-            .os-header {
-                margin: 0 0 -0.5em !important;
-            }
-
-            .icon {}
-
-            .icon.icon-closed-box {
-                width: 108px;
-                height: 85px;
-                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgiIGhlaWdodD0iODUiIHZpZXdCb3g9IjAgMCAxMDggODUiPjxnIHN0cm9rZT0iI0IyQjJCMiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGZpbGw9Im5vbmUiPjxwYXRoIGQ9Ik0xIDE4aDEwNk0xMSA3MC4zaDI2bS0yNi02aDI2bS0yNi02aDE3Ii8+PC9nPjxwYXRoIHN0cm9rZT0iI0IyQjJCMiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0xIDE4bDEwLjctMTdoODQuN2wxMC42IDE3djYxLjVjMCAyLjUtMiA0LjUtNC41IDQuNWgtOTdjLTIuNSAwLTQuNS0yLTQuNS00LjV2LTYxLjV6TTU0IDF2MTYuNiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg=='), none;
-            }
-
-            .icon.icon-closed-box.has-error {
-                width: 108px;
-                height: 85px;
-                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDgiIGhlaWdodD0iODUiIHZpZXdCb3g9IjAgMCAxMDggODUiPjxnIHN0cm9rZT0iI2ZmNmQ2ZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGZpbGw9Im5vbmUiPjxwYXRoIGQ9Ik0xIDE4aDEwNk0xMSA3MC4zaDI2bS0yNi02aDI2bS0yNi02aDE3Ii8+PC9nPjxwYXRoIHN0cm9rZT0iI2ZmNmQ2ZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0xIDE4bDEwLjctMTdoODQuN2wxMC42IDE3djYxLjVjMCAyLjUtMiA0LjUtNC41IDQuNWgtOTdjLTIuNSAwLTQuNS0yLTQuNS00LjV2LTYxLjV6TTU0IDF2MTYuNiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg=='), none;
-            }
-        }
-
-        @media (min-width: 1000px) {
-
-            .main,
-            .sidebar {
-                padding-top: 4em;
-            }
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        @media (max-width: 749px) {
-            .modal-container {
-                display: block;
-            }
-
-            .tool-tip__info,
-            .tool-tip {
-                display: none !important;
-            }
-
-            .main {
-                padding-top: 1.5em;
-            }
-
-            .main .main-content {
-                padding-bottom: 1.5em;
-            }
-
-            .section-header {
-                margin-bottom: 1em;
-            }
-
-            .text-center {
-                text-align: left;
-            }
-
-            .btn {
-                width: 100%;
-                padding-top: 1.75em;
-                padding-bottom: 1.75em;
-            }
-
-            .step-footer {}
-
-            .step-footer .step-footer-previous-link {
-                padding-top: 1.5em;
-                text-align: center;
-            }
-
-            .step-footer .step-footer-info {
-                -webkit-justify-content: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                padding-top: 1.5em;
-                text-align: center;
-            }
-        }
-
-        .thank-you-additional-content {
-            margin-top: 15px;
-            line-height: 1.25em;
-        }
-
-        .blank-slate {
-            white-space: pre-line;
-            padding: 1.5em;
-            text-align: center;
-        }
-
-        .paylater {
-            padding: .8em;
-            white-space: normal;
-        }
-
-        .paylater--ul {
-            list-style-type: disc;
-            padding: 0 2em;
-            padding-right: 1em;
-            word-break: break-word;
-        }
-
-        .paylater--ul li {
-            margin: 5px;
-            text-align: justify;
-        }
-
-        .blank-slate .blank-slate-icon {
-            margin-bottom: 1em;
-        }
-
-        .dp-none {
-            display: none;
-        }
-
-        .dp-inline-block {
-            display: inline-block;
-        }
-
-        .visually-hidden {
-            border: 0;
-            clip: rect(0, 0, 0, 0);
-            clip: rect(0 0 0 0);
-            width: 2px;
-            height: 2px;
-            margin: -2px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-        }
-
-        .clearfix:after {
-            visibility: hidden;
-            display: block;
-            font-size: 0;
-            content: " ";
-            clear: both;
-            height: 0;
-        }
-
-        .group:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .pt0 {
-            padding-top: 0px !important;
-        }
-
-        .mt0 {
-            margin-top: 0px !important;
-        }
-
-        .mb5 {
-            margin-bottom: 5px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        form#form_update_shipping_method {
-            position: relative;
-        }
-
-        .footer-powered-by {
-            text-align: center;
-            color: #4B5563;
-            font-size: 0.9em;
-        }
-
-        .order-checkout__loading {
-            position: static;
-        }
-
-        .order-checkout__loading--box {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            display: -webkit-flex;
-            display: flex;
-            opacity: 0;
-            visibility: hidden;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-        }
-
-        .checkout-payment__loading--box {
-            position: relative;
-            left: 0;
-            top: 0;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            display: -webkit-flex;
-            display: flex;
-            opacity: 0;
-            visibility: hidden;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 0;
-        }
-
-        .checkout-payment__loading--box p {
-            margin-top: 1em;
-        }
-
-        .checkout-payment__loading--box.show {
-            z-index: 2;
-            visibility: visible;
-            opacity: 1;
-            padding-top: 25px;
-            padding-bottom: 25px;
-        }
-
-        .order-checkout__loading--box.show {
-            z-index: 2;
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .order-checkout__loading--circle {
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #5cabe0;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            margin: 0;
-            -webkit-transform-origin: 50%;
-            -o-transform-origin: 50%;
-            -ms-transform-origin: 50%;
-            transform-origin: 50%;
-            -moz-animation: spin 700ms infinite linear;
-            -ms-animation: spin 1.5s infinite linear;
-            -webkit-animation: spin 700ms infinite linear;
-            -o-animation: spin 700ms infinite linear;
-            animation: spin 700ms infinite linear;
-            z-index: 1;
-        }
-
-        .order-checkout__loading--box.show:after {
-            content: "";
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-            z-index: 3;
-        }
-
-
-        .step-sections {
-            position: relative;
-            z-index: 3;
-        }
-
-        @media (max-width: 767px) {
-            .order-checkout__loading--box {
-                position: fixed;
-            }
-
-            .order-checkout__loading--box.show:after {
-                display: none;
-            }
-        }
-
-
-        .order-checkout__loading--show .order-checkout__loading--box {
-            display: block;
-        }
-
-
-        @-moz-keyframes spin {
-            100% {
-                -moz-transform: rotate(360deg);
-            }
-        }
-
-        @-webkit-keyframes spin {
-            100% {
-                -webkit-transform: rotate(360deg);
-            }
-        }
-
-        @keyframes spin {
-            100% {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
-            }
-        }
-
-        .redeem-login {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .redeem-login-title {
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .redeem-login-title h2 {
-            color: #333;
-            margin-right: 5px;
-        }
-
-
-        .redeem-login-btn a {
-            display: inline-block;
-            border-radius: 4px;
-            font-weight: 500;
-            padding: 13px 10px;
-            background: #338dbc;
-            color: #fff;
-            width: 82px;
-            text-align: center;
-        }
-
-        .redeem-login-btn a:hover,
-        .redeem-login-btn a:focus {
-            filter: brightness(1.2);
-        }
-
-        .redeem-form-used {
-            padding-top: 10px;
-        }
-
-        .btn-redeem-loading .btn-redeem-spinner {
-            -webkit-animation: rotate 0.5s linear infinite;
-            animation: rotate 0.5s linear infinite;
-            opacity: 1;
-            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" 100 ")";
-            filter: alpha(opacity=100);
-        }
-
-        .icon-redeem-button-spinner {
-            position: absolute;
-            top: 0;
-            opacity: 0;
-            right: -25px;
-            width: 12px;
-            height: 12px;
-            border: 2px solid #999999;
-            border-bottom-color: transparent;
-            border-radius: 100%;
-        }
-
-        .total-line-table-footer {
-            white-space: nowrap;
-        }
-
-        .row-align-top {
-            vertical-align: top;
-        }
-
-        .section .section-content #form_update_shipping_method.default .content-box .content-box-row.content-box-row-secondary {
-            padding: 0;
-            background: transparent;
-            border: none !important;
-            margin: 0;
-            width: 100%;
-            display: block;
-            box-shadow: unset !important;
-        }
-
-        form#form_update_shipping_method.default {
-            padding: 0;
-        }
-
-        #form_update_shipping_method.default .content-box {
-            box-shadow: unset;
-        }
-
-
-
-
-        .hrv-discount-choose-coupons {
-            cursor: pointer;
-            display: -webkit-flex;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            color: #338dbc;
-        }
-
-        .hrv-discount-choose-coupons #list_short_coupon {
-            display: -webkit-flex;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            width: 100%;
-        }
-
-        .hrv-discount-choose-coupons>div:first-child {
-            flex: 0 0 100%;
-            margin-bottom: 10px;
-        }
-
-        .hrv-discount-choose-coupons #list_short_coupon>span:not(:last-child) {
-            margin-right: 5px;
-        }
-
-        .hrv-discount-choose-coupons #list_short_coupon>span {
-            overflow: hidden;
-            padding: 6px 0;
-            position: relative;
-            margin-bottom: 5px;
-        }
-
-        .hrv-discount-choose-coupons #list_short_coupon>span span {
-            border: 1px solid #338dbc;
-            padding: 5px 10px;
-            border-radius: 3px;
-            background: #fff;
-            font-weight: 700;
-            color: #338dbc
-        }
-
-        .hrv-discount-choose-coupons #list_short_coupon>span:before {
-            content: "";
-            display: block;
-            width: 10px;
-            height: 10px;
-            border: 1px solid #338dbc;
-            background: #fff;
-            z-index: 1;
-            left: -7px;
-            top: 50%;
-            position: absolute;
-            border-radius: 50%;
-            transform: translateY(-50%);
-        }
-
-        .hrv-discount-choose-coupons #list_short_coupon>span:after {
-            content: "";
-            display: block;
-            width: 10px;
-            height: 10px;
-            border: 1px solid #338dbc;
-            background: #fff;
-            z-index: 1;
-            right: -7px;
-            top: 50%;
-            position: absolute;
-            border-radius: 50%;
-            transform: translateY(-50%);
-        }
-
-        .hrv-coupons-popup {
-            width: 375px;
-            transition: opacity 0.5s ease-out;
-            padding: 0;
-            opacity: 1;
-            position: fixed;
-            background: #FFFFFF;
-            box-shadow: 0px 0px 20px rgb(33 33 33 / 20%);
-            border-radius: 8px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-height: 70vh;
-            min-height: 500px;
-            z-index: 1234;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-out;
-            display: -webkit-flex;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hrv-title-coupons-popup {
-            display: flex;
-            padding: 19px 16px;
-            width: calc(100% - 32px);
-            position: relative;
-            box-shadow: inset 0px -1px 0px #eeeeee;
-        }
-
-        .hrv-title-coupons-popup p {
-            width: 100%;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 22px;
-            padding-right: 60px;
-            color: #424242;
-        }
-
-        .hrv-title-coupons-popup div {
-            width: 60px;
-            height: 100%;
-            position: absolute;
-            right: 0;
-            top: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        }
-
-        .hrv-title-coupons-popup div svg {
-            float: right;
-            cursor: pointer;
-        }
-
-        .hrv-coupons-popup-site-overlay {
-            background: #CFCFCF;
-            position: fixed;
-            opacity: 0.6 !important;
-            top: 0px;
-            right: 0px;
-            left: 0px;
-            bottom: 0px;
-            z-index: 123;
-            visibility: hidden;
-        }
-
-        .hrv-content-coupons-code {
-            overflow-x: hidden !important;
-            overflow-y: auto;
-            max-height: calc(100% - 82px);
-            padding: 11px 12.5px;
-        }
-
-        div[class*="hrv-discount-code-"].open-more .text-center span:last-child {
-            transform: rotate(180deg);
-            display: inline-block;
-        }
-
-        h3.coupon_heading {
-            font-size: 16px;
-            line-height: 22px;
-            font-weight: 500;
-            padding: 0 3.5px;
-            width: 100%;
-            color: #424242;
-        }
-
-        @-webkit-keyframes pulse {
-            0% {
-                -webkit-transform: translate(0, 0);
-                transform: translate(0, 0);
-            }
-
-            50% {
-                -webkit-transform: translate(0, 10px);
-                transform: translate(0, 10px);
-            }
-
-            100% {
-                -webkit-transform: translate(0, 0);
-                transform: translate(0, 0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                -webkit-transform: translate(0, 0);
-                transform: translate(0, 0);
-            }
-
-            50% {
-                -webkit-transform: translate(0, 10px);
-                transform: translate(0, 10px);
-            }
-
-            100% {
-                -webkit-transform: translate(0, 0);
-                transform: translate(0, 0);
-            }
-        }
-
-        #show_all_coupon {
-            /*-webkit-animation: pulse 1s infinite;
-	animation: pulse 2s infinite;*/
-            height: 40px;
-            width: 100%;
-            color: #338dbc;
-        }
-
-        #show_all_coupon svg {
-            fill: #338dbc;
-            width: 15px;
-            position: relative;
-        }
-
-        .active-popup {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .hrv-content-coupons-code .coupon_icon {
-            display: flex;
-            width: 100%;
-            align-items: center;
-        }
-
-        .hrv-content-coupons-code .coupon_item {
-            position: relative;
-            background: #fff;
-            filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, .15));
-            padding: 10px 16px;
-            display: flex;
-            min-height: 80px;
-            border-radius: 5px;
-            margin: 5px 0px 15px 2px;
-        }
-
-        .hrv-content-coupons-code::-webkit-scrollbar {
-            width: 8px;
-            background-color: transparent;
-        }
-
-        .hrv-content-coupons-code::-webkit-scrollbar-thumb {
-            background-color: #e0e0e0;
-            border-radius: 4px;
-        }
-
-        .hrv-content-coupons-code .coupon_item:before {
-            content: "";
-            display: none;
-            position: absolute;
-            top: 0;
-            left: -3px;
-            height: 100%;
-            width: 10px;
-            color: #fff;
-            background-clip: padding-box;
-            background: repeating-linear-gradient(#e5e5e5, #e5e5e5 5px, transparent 0, transparent 9px, #e5e5e5 0, #e5e5e5 10px) 0/1px 100% no-repeat, radial-gradient(circle at 0 7px, transparent, transparent 2px, #e5e5e5ee 0, #e5e5e5 3px, currentColor 0) 1px 0/100% 10px repeat-y;
-        }
-
-        .hrv-content-coupons-code .coupon_icon>div {
-            flex: 0 0 auto;
-        }
-
-        .hrv-content-coupons-code .coupon_icon .icon-svg {
-            width: 37px;
-            flex: 0 0 auto;
-            margin-right: 10px;
-            text-align: center;
-        }
-
-        .hrv-content-coupons-code .coupon_icon .icon-svg svg {
-            width: 100%;
-        }
-
-        .hrv-content-coupons-code .coupon_body {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            width: 100%;
-            position: relative;
-        }
-
-        .hrv-content-coupons-code .coupon_body .coupon_head {
-            width: 100%;
-            display: -webkit-flex;
-            display: flex;
-            align-items: center;
-            /* margin-bottom: 10px;
-	position: relative;*/
-        }
-
-        .coupon_layer {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-        }
-
-        .hrv-content-coupons-code .coupon_item h3.coupon_title {
-            font-size: 16px;
-            width: calc(100% - 47px);
-            margin: 0.25em 0 5px;
-        }
-
-        .hrv-content-coupons-code .coupon_item h3.coupon_title span {
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 20px;
-            color: #212121;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_desc {
-            display: none;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_desc ul,
-        .hrv-content-coupons-code .coupon_item .coupon_desc_short ul {
-            list-style: initial;
-            list-style-position: outside;
-            padding-left: 18px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_desc_short.close {
-            display: none;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_desc_short.close+.coupon_desc {
-            display: block;
-        }
-
-        .hrv-content-coupons-code .coupon_item div[class*="coupon_desc"] {
-            width: 100%;
-            font-size: 14px;
-            color: #212121;
-        }
-
-        .hrv-content-coupons-code .coupon_item div[class*="coupon_desc"] ul li a {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .hrv-content-coupons-code .coupon_item div[class*="coupon_desc"] ul li a:before {
-            content: "-";
-            margin-right: 5px
-        }
-
-        .hrv-content-coupons-code .coupon_item div[class*="coupon_desc"] ul li br {
-            display: none;
-        }
-
-        .hrv-content-coupons-code .coupon_item div[class*="coupon_desc"] ul li a:first-child {
-            margin-top: 5px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_actions {
-            display: -webkit-flex;
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_more {
-            cursor: pointer;
-            color: #338dbc;
-            margin-top: 0px;
-            position: relative;
-            z-index: 2;
-            font-size: 14px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_more.open {
-            font-size: 0px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_more.open:before {
-            content: "Thu gọn";
-            font-size: 14px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_exp {
-            max-width: calc(100% - 75px);
-            line-height: 20px;
-            margin-top: 0px;
-            font-size: 14px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_more svg {
-            fill: #338bdc;
-            width: 10px;
-            margin-left: 8px;
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_more.open svg {
-            transform: rotate(180deg);
-        }
-
-        .hrv-content-coupons-code .coupon_item .coupon_more.open #show_all_icon {
-            transform: rotate(180deg);
-        }
-
-        .btn_apply_line_coupon {
-            height: 32px;
-            padding: 5px 10px !important;
-            width: auto !important;
-            background: #338dbc;
-        }
-
-
-
-        @media screen and (max-width: 767px) {
-            .hrv-content-coupons-code .coupon_item {
-                padding: 5px 12.5px;
-                width: calc(100% - 25px);
-                margin: 5px 0 15px;
-            }
-
-            .hrv-coupons-popup {
-                width: 100%;
-                top: unset;
-                bottom: 0;
-                left: 0;
-                height: 80vh;
-                min-height: unset;
-                max-height: unset;
-                border-radius: 8px 8px 0 0;
-                transform: translate(0, 0);
-                -webkit-transform: translateY(100%);
-                transform: translateY(100%);
-                -webkit-transition: transform 0.35s ease, bottom 0.25s ease, visibility 0s;
-                transition: transform 0.3;
-            }
-
-            .hrv-coupons-popup.active-popup {
-                max-height: calc(100% - 60px);
-                -webkit-transform: translateY(0);
-                transform: translateY(0);
-                -webkit-transition-delay: 0.1s;
-                transition-delay: 0.1s;
-                -webkit-transition-duration: 0.3s;
-                transition-duration: 0.3s;
-            }
-
-            .hrv-content-coupons-code .coupon_icon {
-                padding: 10px 0;
-            }
-        }
-
-        .sidebar .sidebar-content .order-summary .order-summary-sections .order-summary-section[data-order-summary-section="discount-display"] {
-            padding: 0px;
-            border-top: 0px;
-            padding-bottom: 1.5em;
-        }
-
-        .order-summary-section.order-summary-section-total-lines.payment-lines[data-order-summary-section="payment-lines"] {
-            padding-top: 1em !important;
-        }
-    </style>
-
-
-
-    <link href="//theme.hstatic.net/200000680123/1001107404/14/check_out.css?v=47" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="../../user/payment.css" type="text/css">
+    <meta name="description" content="QLAH - Thanh toán đơn hàng">
+    <link href="//theme.hstatic.net/200000680123/1001107404/14/check_out.css?v=47" rel="stylesheet" type="text/css"
+        media="all">
     <script src="//hstatic.net/0/0/global/jquery.min.js" type="text/javascript"></script>
     <script src="//hstatic.net/0/0/global/api.jquery.js" type="text/javascript"></script>
     <script src="//hstatic.net/0/0/global/jquery.validate.js" type="text/javascript"></script>
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no">
     <script type="text/javascript">
         var parseQueryString = function(url) {
@@ -2603,7 +161,8 @@
                 paylayterLoadingTrigger()
             }
 
-            if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' || formId == 'section-shipping-rate' || formId == 'section-payment-method') {
+            if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' || formId ==
+                'section-shipping-rate' || formId == 'section-payment-method') {
                 if ($('.order-checkout__loading--box').length > 0) {
                     $('#' + formId).find('.order-checkout__loading--box').addClass('show');
                     $('body').find('button:submit').addClass('btn-loading');
@@ -2693,7 +252,8 @@
                     listparameters.set('customer_shipping_country', countrytmp);
                 }
 
-                if ($('body').find('#customer_pick_at_location_true').length != 0 && $('body').find('#customer_pick_at_location_true').is(':checked')) {
+                if ($('body').find('#customer_pick_at_location_true').length != 0 && $('body').find(
+                        '#customer_pick_at_location_true').is(':checked')) {
                     let location_id_checked = $('.inventory_location input[name="inventory_location_id"]:checked').val();
                     listparameters.set('inventory_location_id', location_id_checked);
                 }
@@ -2739,7 +299,8 @@
 
 
                 var address1tmp = $('body').find('input[name$="billing_address[address1]"]').val();
-                if (address1tmp != '' && address1tmp != undefined) listparameters.set('billing_address[address1]', address1tmp);
+                if (address1tmp != '' && address1tmp != undefined) listparameters.set('billing_address[address1]',
+                    address1tmp);
 
                 var phonetmp = $('body').find('input[name$="billing_address[phone]"]').val();
                 if (phonetmp != '' && phonetmp != undefined) listparameters.set('billing_address[phone]', phonetmp);
@@ -2748,7 +309,8 @@
                 if (emailtmp != '' && emailtmp != undefined) listparameters.set('checkout_user[email]', emailtmp);
 
                 var fullnametmp = $('body').find('input[name$="billing_address[full_name]"]').val();
-                if (fullnametmp != '' && fullnametmp != undefined) listparameters.set('billing_address[full_name]', fullnametmp);
+                if (fullnametmp != '' && fullnametmp != undefined) listparameters.set('billing_address[full_name]',
+                    fullnametmp);
 
 
                 listparameters.delete('selected_customer_shipping_country');
@@ -2758,14 +320,16 @@
 
                 if ($('body').find('input[name$="customer_pick_at_location"]')) {
                     var optionShippingtmp = $('body').find('input[name$="customer_pick_at_location"]:checked').val();
-                    if (optionShippingtmp != '' && optionShippingtmp != undefined) listparameters.set('customer_pick_at_location', optionShippingtmp);
+                    if (optionShippingtmp != '' && optionShippingtmp != undefined) listparameters.set(
+                        'customer_pick_at_location', optionShippingtmp);
 
                 } else {
                     listparameters.append("customer_pick_at_location", false);
                 }
 
 
-                if (formId == 'form_next_step' || formId == 'form_update_shipping_method' || formId == 'section-payment-method' || formId == 'section-shipping-rate') {
+                if (formId == 'form_next_step' || formId == 'form_update_shipping_method' || formId ==
+                    'section-payment-method' || formId == 'section-shipping-rate') {
                     var version = Number($('body').find('.checkout_version').attr("data_checkout_version"));
                     if (version)
                         listparameters.append("version", version);
@@ -2787,27 +351,33 @@
                 }
 
                 var provincetmp = $('body').find('input[name$="selected_customer_shipping_province"]').val();
-                if (provincetmp != '' && listparameters.customer_shipping_province) listparameters.customer_shipping_province = provincetmp;
+                if (provincetmp != '' && listparameters.customer_shipping_province) listparameters
+                    .customer_shipping_province = provincetmp;
 
                 var districttmp = $('body').find('input[name$="selected_customer_shipping_district"]').val();
-                if (districttmp != '' && listparameters.customer_shipping_district) listparameters.customer_shipping_district = districttmp;
+                if (districttmp != '' && listparameters.customer_shipping_district) listparameters
+                    .customer_shipping_district = districttmp;
 
                 var wardtmp = $('body').find('input[name$="selected_customer_shipping_ward"]').val();
                 if (wardtmp != '' && listparameters.customer_shipping_ward) listparameters.customer_shipping_ward = wardtmp;
 
 
                 var address1tmp = $('body').find('input[name$="billing_address[address1]"]').val();
-                if (address1tmp != '' && listparameters.billing_address[address1] && address1tmp != undefined) listparameters.set('billing_address[address1]', address1tmp);
+                if (address1tmp != '' && listparameters.billing_address[address1] && address1tmp != undefined)
+                    listparameters.set('billing_address[address1]', address1tmp);
 
                 var phonetmp = $('body').find('input[name$="billing_address[phone]"]').val();
-                if (phonetmp != '' && listparameters.billing_address[phone] && phonetmp != undefined) listparameters.set('billing_address[phone]', phonetmp);
+                if (phonetmp != '' && listparameters.billing_address[phone] && phonetmp != undefined) listparameters.set(
+                    'billing_address[phone]', phonetmp);
 
                 var emailtmp = $('body').find('input[name$="checkout_user[email]"]').val();
-                if (emailtmp != '' && listparameters.checkout_user[email] && emailtmp != undefined) listparameters.set('checkout_user[email]', emailtmp);
+                if (emailtmp != '' && listparameters.checkout_user[email] && emailtmp != undefined) listparameters.set(
+                    'checkout_user[email]', emailtmp);
 
 
                 var fullnametmp = $('body').find('input[name$="billing_address[full_name]"]').val();
-                if (fullnametmp != '' && listparameters.billing_address[full_name] && fullnametmp != undefined) listparameters.set('billing_address[full_name]', fullnametmp);
+                if (fullnametmp != '' && listparameters.billing_address[full_name] && fullnametmp != undefined)
+                    listparameters.set('billing_address[full_name]', fullnametmp);
 
 
                 delete listparameters.selected_customer_shipping_country;
@@ -2817,12 +387,14 @@
 
                 if ($('body').find('input[name$="customer_pick_at_location"]')) {
                     var optionShippingtmp = $('body').find('input[name$="customer_pick_at_location"]:checked').val();
-                    if (optionShippingtmp != '' && optionShippingtmp != undefined) listparameters.set('customer_pick_at_location', optionShippingtmp);
+                    if (optionShippingtmp != '' && optionShippingtmp != undefined) listparameters.set(
+                        'customer_pick_at_location', optionShippingtmp);
                 } else {
                     listparameters.append("customer_pick_at_location", false);
                 }
 
-                if (formId == 'form_next_step' || formId == 'form_update_shipping_method' || formId == 'section-payment-method' || formId == 'section-shipping-rate') {
+                if (formId == 'form_next_step' || formId == 'form_update_shipping_method' || formId ==
+                    'section-payment-method' || formId == 'section-shipping-rate') {
                     var fiversion = $('body').find('.checkout_version').attr("data_checkout_version");
                     if (fiversion && fiversion != '') {
                         listparameters['version'] = Number(fiversion);
@@ -2873,7 +445,8 @@
                                     for (var j = 0; j < newElement.length; j++)
                                         if (j < listTempElement.length) {
 
-                                            if ($(newElement[j]).attr('id') == 'checkout_order_information_changed_error_message') {
+                                            if ($(newElement[j]).attr('id') ==
+                                                'checkout_order_information_changed_error_message') {
                                                 if ($(newElement[j]).find('span').html().trim() != '') {
                                                     $(listTempElement[j]).removeClass('hidden');
                                                     $("html, body").animate({
@@ -2889,9 +462,11 @@
                                                     }
                                                 }
                                             }
-                                            if ($(newElement[j]).attr('class') == 'order-summary-sections' && formId == 'section-payment-method') {
+                                            if ($(newElement[j]).attr('class') == 'order-summary-sections' &&
+                                                formId == 'section-payment-method') {
                                                 const oldVersion = $('.checkout_version')
-                                                const newVersion = $(html).find('.checkout_version').attr('data_checkout_version')
+                                                const newVersion = $(html).find('.checkout_version').attr(
+                                                    'data_checkout_version')
                                                 $(oldVersion).attr('data_checkout_version', newVersion);
                                                 $(listTempElement[j]).html($(newElement[j]).html());
                                             } else {
@@ -2924,7 +499,9 @@
                                 scrollTop: 0
                             }, "slow");
                         }
-                        if (['section-payment-method', 'form_discount_add', 'section-shipping-rate', 'form_discount_remove'].includes(formId) && isReePay) {
+                        if (['section-payment-method', 'form_discount_add', 'section-shipping-rate',
+                                'form_discount_remove'
+                            ].includes(formId) && isReePay) {
                             if (formId != 'section-payment-method') {
                                 paylayterLoadingTrigger()
                                 funcFormOnSubmit('#section-payment-method')
@@ -2944,7 +521,9 @@
                             paylayterLoadingTrigger()
                         }
 
-                        if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' || formId == 'section-shipping-rate' || formId == 'section-payment-method') {
+                        if (formId == 'form_update_location_customer_shipping' || formId ==
+                            'form_update_shipping_method' || formId == 'section-shipping-rate' || formId ==
+                            'section-payment-method') {
                             if ($('.order-checkout__loading--box').length > 0) {
                                 $('.order-checkout__loading--box').removeClass('show');
                             }
@@ -2959,7 +538,8 @@
                     $('#section-pay-later-method').addClass('hidden');
                     paylayterLoadingTrigger(false)
                 }
-                if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' || formId == 'section-shipping-rate' || formId == 'section-payment-method') {
+                if (formId == 'form_update_location_customer_shipping' || formId == 'form_update_shipping_method' ||
+                    formId == 'section-shipping-rate' || formId == 'section-payment-method') {
                     if ($('.order-checkout__loading--box').length > 0) {
                         $('.order-checkout__loading--box').removeClass('show');
 
@@ -3012,7 +592,8 @@
             if (formId == 'section-payment-method') {
                 $.ajax({
                     type: 'GET',
-                    url: window.location.origin + window.location.pathname + '?' + 'payment_method_id=' + paymentMethodId + '&preview=true',
+                    url: window.location.origin + window.location.pathname + '?' + 'payment_method_id=' +
+                        paymentMethodId + '&preview=true',
                     success: function(html) {
                         for (var i = 0; i < replaceElement.length; i++) {
                             let tempElement = replaceElement[i];
@@ -3110,16 +691,19 @@
                     if (country_selected && country_selected.length > 0) {
                         $(country_selected).val($(this).val());
 
-                        var province_selected = $('body').find('#form_update_location_customer_shipping select[name=customer_shipping_province]');
+                        var province_selected = $('body').find(
+                            '#form_update_location_customer_shipping select[name=customer_shipping_province]');
                         if (province_selected && province_selected.length > 0) {
                             province_selected.val("null");
                         }
-                        var district_selected = $('body').find('#form_update_location_customer_shipping select[name=customer_shipping_district]');
+                        var district_selected = $('body').find(
+                            '#form_update_location_customer_shipping select[name=customer_shipping_district]');
                         if (district_selected && district_selected.length > 0) {
                             district_selected.val("null");
                         }
 
-                        var ward_selected = $('body').find('#form_update_location_customer_shipping select[name=customer_shipping_ward]');
+                        var ward_selected = $('body').find(
+                            '#form_update_location_customer_shipping select[name=customer_shipping_ward]');
                         if (ward_selected && ward_selected.length > 0) {
                             ward_selected.val("null");
                         }
@@ -3141,49 +725,54 @@
 
                     $('.section-customer-information input:hidden[name=customer_shipping_coutry]').val($(this).val());
                 })
-                .on('change', '#form_update_location_customer_shipping select[name=customer_shipping_province]', function() {
+                .on('change', '#form_update_location_customer_shipping select[name=customer_shipping_province]',
+                    function() {
 
-                    var province_selected = $('body').find('input[name=selected_customer_shipping_province]');
-                    if (province_selected && province_selected.length > 0) {
-                        $(province_selected).val($(this).val());
-                        var district_selected = $('body').find('#form_update_location_customer_shipping select[name=customer_shipping_district]');
+                        var province_selected = $('body').find('input[name=selected_customer_shipping_province]');
+                        if (province_selected && province_selected.length > 0) {
+                            $(province_selected).val($(this).val());
+                            var district_selected = $('body').find(
+                                '#form_update_location_customer_shipping select[name=customer_shipping_district]');
+                            if (district_selected && district_selected.length > 0) {
+                                district_selected.val("null");
+                            }
+
+                            var ward_selected = $('body').find(
+                                '#form_update_location_customer_shipping select[name=customer_shipping_ward]');
+                            if (ward_selected && ward_selected.length > 0) {
+                                ward_selected.val("null");
+                            }
+
+                            var district = $('.section-customer-information input:hidden[name=customer_shipping_district]');
+                            if (district) {
+                                district.val("null");
+                            }
+                            var ward = $('.section-customer-information input:hidden[name=customer_shipping_ward]');
+                            if (ward) {
+                                ward.val("null");
+                            }
+                        }
+                        $('.section-customer-information input:hidden[name=customer_shipping_province]').val($(this).val());
+                    })
+                .on('change', '#form_update_location_customer_shipping select[name=customer_shipping_district]',
+                    function() {
+
+                        var district_selected = $('body').find('input[name=selected_customer_shipping_district]');
                         if (district_selected && district_selected.length > 0) {
-                            district_selected.val("null");
-                        }
+                            $(district_selected).val($(this).val());
 
-                        var ward_selected = $('body').find('#form_update_location_customer_shipping select[name=customer_shipping_ward]');
-                        if (ward_selected && ward_selected.length > 0) {
-                            ward_selected.val("null");
+                            var ward_selected = $('body').find(
+                                '#form_update_location_customer_shipping select[name=customer_shipping_ward]');
+                            if (ward_selected && ward_selected.length > 0) {
+                                ward_selected.val("null");
+                            }
+                            var ward = $('.section-customer-information input:hidden[name=customer_shipping_ward]');
+                            if (ward) {
+                                ward.val("null");
+                            }
                         }
-
-                        var district = $('.section-customer-information input:hidden[name=customer_shipping_district]');
-                        if (district) {
-                            district.val("null");
-                        }
-                        var ward = $('.section-customer-information input:hidden[name=customer_shipping_ward]');
-                        if (ward) {
-                            ward.val("null");
-                        }
-                    }
-                    $('.section-customer-information input:hidden[name=customer_shipping_province]').val($(this).val());
-                })
-                .on('change', '#form_update_location_customer_shipping select[name=customer_shipping_district]', function() {
-
-                    var district_selected = $('body').find('input[name=selected_customer_shipping_district]');
-                    if (district_selected && district_selected.length > 0) {
-                        $(district_selected).val($(this).val());
-
-                        var ward_selected = $('body').find('#form_update_location_customer_shipping select[name=customer_shipping_ward]');
-                        if (ward_selected && ward_selected.length > 0) {
-                            ward_selected.val("null");
-                        }
-                        var ward = $('.section-customer-information input:hidden[name=customer_shipping_ward]');
-                        if (ward) {
-                            ward.val("null");
-                        }
-                    }
-                    $('.section-customer-information input:hidden[name=customer_shipping_district]').val($(this).val());
-                })
+                        $('.section-customer-information input:hidden[name=customer_shipping_district]').val($(this).val());
+                    })
                 .on('change', '#form_update_location_customer_shipping select[name=customer_shipping_ward]', function() {
 
 
@@ -3340,7 +929,8 @@
         var toggleShowOrderSummary = false;
         $(document).ready(function() {
             var currentUrl = '';
-            const findPaymentMethodId = $('body').find('input:radio[name$="payment_method_id"]:checked').attr('type-id');
+            const findPaymentMethodId = $('body').find('input:radio[name$="payment_method_id"]:checked').attr(
+                'type-id');
             const isReePay = findPaymentMethodId == 41 || findPaymentMethodId == 43 || findPaymentMethodId == 46
             if (isReePay) {
 
@@ -3408,12 +998,12 @@
         //]]>
     </script>
     <script defer="" src="https://stats.hstatic.net/beacon.min.js" hrv-beacon-t="200000680123"></script>
-    <style>
+    {{-- <style>
         .grecaptcha-badge {
             visibility: hidden;
         }
-    </style>
-    <script type="text/javascript">
+    </style> --}}
+    {{-- <script type="text/javascript">
         window.HaravanAnalytics = window.HaravanAnalytics || {};
         window.HaravanAnalytics.meta = window.HaravanAnalytics.meta || {};
         window.HaravanAnalytics.meta.currency = 'VND';
@@ -3469,8 +1059,8 @@
             window.HaravanAnalytics.meta[attr] = meta[attr];
         }
         window.HaravanAnalytics.AutoTrack = true;
-    </script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-24C1XZ9BDQ"></script>
+    </script> --}}
+    {{-- <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-24C1XZ9BDQ"></script> --}}
     <script>
         window.HaravanAnalytics.ga4 = "G-24C1XZ9BDQ";
         window.HaravanAnalytics.enhancedEcommercev4 = true;
@@ -3485,41 +1075,43 @@
 </head>
 
 <body style="">
-
-
     <input id="reloadValue" type="hidden" name="reloadValue" value="">
     <input id="is_vietnam" type="hidden" value="true">
     <input id="is_vietnam_location" type="hidden" value="true">
-
     <div class="banner">
         <div class="wrap">
             <a href="/" class="logo">
-
-
-                <h1 class="logo-text">TITEK</h1>
-
+                <h1 class="logo-text">QLAH</h1>
             </a>
         </div>
     </div>
-
     <button class="order-summary-toggle order-summary-toggle-hide">
         <div class="wrap">
             <div class="order-summary-toggle-inner">
                 <div class="order-summary-toggle-icon-wrapper">
-                    <svg width="20" height="19" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle-icon">
-                        <path d="M17.178 13.088H5.453c-.454 0-.91-.364-.91-.818L3.727 1.818H0V0h4.544c.455 0 .91.364.91.818l.09 1.272h13.45c.274 0 .547.09.73.364.18.182.27.454.18.727l-1.817 9.18c-.09.455-.455.728-.91.728zM6.27 11.27h10.09l1.454-7.362H5.634l.637 7.362zm.092 7.715c1.004 0 1.818-.813 1.818-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817zm9.18 0c1.004 0 1.817-.813 1.817-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817z"></path>
+                    <svg width="20" height="19" xmlns="http://www.w3.org/2000/svg"
+                        class="order-summary-toggle-icon">
+                        <path
+                            d="M17.178 13.088H5.453c-.454 0-.91-.364-.91-.818L3.727 1.818H0V0h4.544c.455 0 .91.364.91.818l.09 1.272h13.45c.274 0 .547.09.73.364.18.182.27.454.18.727l-1.817 9.18c-.09.455-.455.728-.91.728zM6.27 11.27h10.09l1.454-7.362H5.634l.637 7.362zm.092 7.715c1.004 0 1.818-.813 1.818-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817zm9.18 0c1.004 0 1.817-.813 1.817-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817z">
+                        </path>
                     </svg>
                 </div>
                 <div class="order-summary-toggle-text order-summary-toggle-text-show">
                     <span>Hiển thị thông tin đơn hàng</span>
-                    <svg width="11" height="6" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle-dropdown" fill="#000">
-                        <path d="M.504 1.813l4.358 3.845.496.438.496-.438 4.642-4.096L9.504.438 4.862 4.534h.992L1.496.69.504 1.812z"></path>
+                    <svg width="11" height="6" xmlns="http://www.w3.org/2000/svg"
+                        class="order-summary-toggle-dropdown" fill="#000">
+                        <path
+                            d="M.504 1.813l4.358 3.845.496.438.496-.438 4.642-4.096L9.504.438 4.862 4.534h.992L1.496.69.504 1.812z">
+                        </path>
                     </svg>
                 </div>
                 <div class="order-summary-toggle-text order-summary-toggle-text-hide">
                     <span>Ẩn thông tin đơn hàng</span>
-                    <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle-dropdown" fill="#000">
-                        <path d="M6.138.876L5.642.438l-.496.438L.504 4.972l.992 1.124L6.138 2l-.496.436 3.862 3.408.992-1.122L6.138.876z"></path>
+                    <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg"
+                        class="order-summary-toggle-dropdown" fill="#000">
+                        <path
+                            d="M6.138.876L5.642.438l-.496.438L.504 4.972l.992 1.124L6.138 2l-.496.436 3.862 3.408.992-1.122L6.138.876z">
+                        </path>
                     </svg>
                 </div>
                 <div class="order-summary-toggle-total-recap" data-checkout-payment-due-target="5550000000">
@@ -3534,9 +1126,8 @@
                 <div class="sidebar-content">
                     <div class="order-summary">
                         <div class="order-summary-sections">
-
-
-                            <div class="order-summary-section order-summary-section-discount" data-order-summary-section="discount">
+                            <div class="order-summary-section order-summary-section-discount"
+                                data-order-summary-section="discount">
                                 <form id="form_discount_add" accept-charset="UTF-8" method="post">
                                     <input name="utf8" type="hidden" value="✓">
 
@@ -3545,9 +1136,14 @@
                                             <div class="field-input-btn-wrapper">
                                                 <div class="field-input-wrapper">
                                                     <label class="field-label" for="discount.code">Discount Code</label>
-                                                    <input placeholder="Discount Code" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code" name="discount.code" value="">
+                                                    <input placeholder="Discount Code" class="field-input"
+                                                        data-discount-field="true" autocomplete="false"
+                                                        autocapitalize="off" spellcheck="false" size="30"
+                                                        type="text" id="discount.code" name="discount.code"
+                                                        value="">
                                                 </div>
-                                                <button type="submit" class="field-input-btn btn btn-default btn-disabled">
+                                                <button type="submit"
+                                                    class="field-input-btn btn btn-default btn-disabled">
                                                     <span class="btn-content">Use</span>
                                                     <i class="btn-spinner icon icon-button-spinner"></i>
                                                 </button>
@@ -3557,9 +1153,6 @@
                                     </div>
                                 </form>
                             </div>
-
-
-
 
                         </div>
                     </div>
@@ -3575,7 +1168,8 @@
                     <div class="order-summary order-summary-is-collapsed">
                         <h2 class="visually-hidden">Thông tin đơn hàng</h2>
                         <div class="order-summary-sections">
-                            <div class="order-summary-section order-summary-section-product-list" data-order-summary-section="line-items">
+                            <div class="order-summary-section order-summary-section-product-list"
+                                data-order-summary-section="line-items">
                                 <table class="product-table">
                                     <thead>
                                         <tr>
@@ -3588,33 +1182,40 @@
                                     <tbody>
                                         @php
                                             $totalAll = 0;
-                                            $format = new NumberFormatter('vi-VN',  NumberFormatter::CURRENCY);
+                                            $format = new NumberFormatter('vi-VN', NumberFormatter::CURRENCY);
                                         @endphp
                                         @foreach ($carts as $key => $product)
-                                        @php
-                                            $total = $product['price'] * $product['quantity'];
-                                            $totalAll += $total;
-                                        @endphp
-                                            <tr class="product" data-product-id="{{$key}}" data-variant-id="{{$key}}">
+                                            @php
+                                                $total = $product['price'] * $product['quantity'];
+                                                $totalAll += $total;
+                                            @endphp
+                                            <tr class="product" data-product-id="{{ $key }}"
+                                                data-variant-id="{{ $key }}">
                                                 <td class="product-image">
                                                     <div class="product-thumbnail">
                                                         <div class="product-thumbnail-wrapper">
-                                                            <img class="product-thumbnail-image" alt="{{$product['nameVi']}}" src="//product.hstatic.net/200000680123/product/1a7cba9a-8c0b-421d-b661-e5517f2d56bf_8598f3ac7b2c40719121814101a18ab8_small.png">
+                                                            <img class="product-thumbnail-image"
+                                                                alt="{{ $product['nameVi'] }}"
+                                                                src="//product.hstatic.net/200000680123/product/1a7cba9a-8c0b-421d-b661-e5517f2d56bf_8598f3ac7b2c40719121814101a18ab8_small.png">
                                                         </div>
-                                                        <span class="product-thumbnail-quantity" aria-hidden="true">{{$product['quantity']}}</span>
+                                                        <span class="product-thumbnail-quantity"
+                                                            aria-hidden="true">{{ $product['quantity'] }}</span>
                                                     </div>
                                                 </td>
                                                 <td class="product-description">
-                                                    <span class="product-description-name order-summary-emphasis">{{$product['nameVi']}}</span>
+                                                    <span
+                                                        class="product-description-name order-summary-emphasis">{{ $product['nameVi'] }}</span>
 
                                                     <span class="product-description-variant order-summary-small-text">
-                                                        {{$product['nameVi']}}
+                                                        {{ $product['nameVi'] }}
                                                     </span>
 
                                                 </td>
-                                                <td class="product-quantity visually-hidden">{{$product['quantity']}}</td>
+                                                <td class="product-quantity visually-hidden">{{ $product['quantity'] }}
+                                                </td>
                                                 <td class="product-price">
-                                                    <span class="order-summary-emphasis">{{$format->formatCurrency($total, 'VND')}}</span>
+                                                    <span
+                                                        class="order-summary-emphasis">{{ $format->formatCurrency($total, 'VND') }}</span>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -3622,17 +1223,24 @@
                                 </table>
                             </div>
 
-                            <div class="order-summary-section order-summary-section-discount" data-order-summary-section="discount">
+                            <div class="order-summary-section order-summary-section-discount"
+                                data-order-summary-section="discount">
                                 <form id="form_discount_add" accept-charset="UTF-8" method="post">
                                     <input name="utf8" type="hidden" value="✓">
                                     <div class="fieldset">
                                         <div class="field  ">
                                             <div class="field-input-btn-wrapper">
                                                 <div class="field-input-wrapper">
-                                                    <label class="field-label" for="discount.code">Discount Code</label>
-                                                    <input placeholder="Discount Code" class="field-input" data-discount-field="true" autocomplete="false" autocapitalize="off" spellcheck="false" size="30" type="text" id="discount.code" name="discount.code" value="">
+                                                    <label class="field-label" for="discount.code">Discount
+                                                        Code</label>
+                                                    <input placeholder="Discount Code" class="field-input"
+                                                        data-discount-field="true" autocomplete="false"
+                                                        autocapitalize="off" spellcheck="false" size="30"
+                                                        type="text" id="discount.code" name="discount.code"
+                                                        value="">
                                                 </div>
-                                                <button type="submit" class="field-input-btn btn btn-default btn-disabled">
+                                                <button type="submit"
+                                                    class="field-input-btn btn btn-default btn-disabled">
                                                     <span class="btn-content">Use</span>
                                                     <i class="btn-spinner icon icon-button-spinner"></i>
                                                 </button>
@@ -3645,7 +1253,8 @@
 
 
 
-                            <div class="order-summary-section order-summary-section-total-lines payment-lines" data-order-summary-section="payment-lines">
+                            <div class="order-summary-section order-summary-section-total-lines payment-lines"
+                                data-order-summary-section="payment-lines">
                                 <table class="total-line-table">
                                     <thead>
                                         <tr>
@@ -3657,8 +1266,9 @@
                                         <tr class="total-line total-line-subtotal">
                                             <td class="total-line-name">Provisional</td>
                                             <td class="total-line-price">
-                                                <span class="order-summary-emphasis" data-checkout-subtotal-price-target="{{$totalAll}}">
-                                                    {{$format->formatCurrency($totalAll, 'VND')}}
+                                                <span class="order-summary-emphasis"
+                                                    data-checkout-subtotal-price-target="{{ $totalAll }}">
+                                                    {{ $format->formatCurrency($totalAll, 'VND') }}
                                                 </span>
                                             </td>
                                         </tr>
@@ -3667,7 +1277,8 @@
                                         <tr class="total-line total-line-shipping">
                                             <td class="total-line-name">Transport fee</td>
                                             <td class="total-line-price">
-                                                <span class="order-summary-emphasis" data-checkout-total-shipping-target="0">
+                                                <span class="order-summary-emphasis"
+                                                    data-checkout-total-shipping-target="0">
 
                                                     —
 
@@ -3682,10 +1293,12 @@
                                             </td>
                                             <td class="total-line-name payment-due">
                                                 <span class="payment-due-currency">VND</span>
-                                                <span class="payment-due-price" data-checkout-payment-due-target="{{$totalAll}}">
-                                                {{number_format($totalAll)}}
+                                                <span class="payment-due-price"
+                                                    data-checkout-payment-due-target="{{ $totalAll }}">
+                                                    {{ number_format($totalAll) }}
                                                 </span>
-                                                <span class="checkout_version" display:none="" data_checkout_version="0">
+                                                <span class="checkout_version" display:none=""
+                                                    data_checkout_version="0">
                                                 </span>
                                             </td>
                                         </tr>
@@ -3699,9 +1312,9 @@
             <div class="main">
                 <div class="main-header">
 
-                    <a href="{{route('dashboad')}}" class="logo">
+                    <a href="{{ route('dashboad') }}" class="logo">
 
-                        <h1 class="logo-text">TITEK</h1>
+                        <h1 class="logo-text">QLAH</h1>
 
                     </a>
 
@@ -3723,6 +1336,7 @@
                         .logo-text {
                             text-align: "";
                         }
+
                         #form_update_location_customer_shipping {
                             background-color: white !important;
                         }
@@ -3731,6 +1345,7 @@
                             box-shadow: none !important;
                             border-radius: none !important;
                         }
+
                         .content-box-row-secondary {
                             padding: 0 !important;
                         }
@@ -3750,13 +1365,18 @@
                 <div class="main-content">
 
 
-                    <div id="checkout_order_information_changed_error_message" class="hidden" style="margin-bottom:15px">
+                    <div id="checkout_order_information_changed_error_message" class="hidden"
+                        style="margin-bottom:15px">
 
 
 
-                        <p class="field-message field-message-error alert alert-danger"><svg x="0px" y="0px" viewBox="0 0 286.054 286.054" style="enable-background:new 0 0 286.054 286.054;" xml:space="preserve">
+                        <p class="field-message field-message-error alert alert-danger"><svg x="0px"
+                                y="0px" viewBox="0 0 286.054 286.054"
+                                style="enable-background:new 0 0 286.054 286.054;" xml:space="preserve">
                                 <g>
-                                    <path style="fill:#E2574C;" d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027 c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236 c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209 S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972 c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723 c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843 C160.878,195.732,152.878,187.723,143.036,187.723z"></path>
+                                    <path style="fill:#E2574C;"
+                                        d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027 c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236 c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209 S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972 c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723 c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843 C160.878,195.732,152.878,187.723,143.036,187.723z">
+                                    </path>
                                 </g>
                                 <g> </g>
                                 <g> </g>
@@ -3786,12 +1406,11 @@
                         $("html, body").animate({
                             scrollTop: 0
                         }, "slow");
-                    
                     </script>
 
 
-                    <form action="{{route('shop-check-out')}}" id="shop-check-out" method="post">
-                    @csrf
+                    <form action="{{ route('shop-check-out') }}" id="shop-check-out" method="post">
+                        @csrf
                         <div class="step">
                             <div class="step-sections " step="1">
                                 <div class="section">
@@ -3810,20 +1429,37 @@
                                         <div class="fieldset">
                                             <div class="field field-required  ">
                                                 <div class="field-input-wrapper">
-                                                    <label class="field-label" for="billing_address_full_name">Name</label>
-                                                    <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->name : ''}}" placeholder="Name" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_full_name" name="name" value="" autocomplete="false" required>
+                                                    <label class="field-label"
+                                                        for="billing_address_full_name">Name</label>
+                                                    <input
+                                                        value="{{ Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->name : '' }}"
+                                                        placeholder="Name" autocapitalize="off" spellcheck="false"
+                                                        class="field-input" size="30" type="text"
+                                                        id="billing_address_full_name" name="name" value=""
+                                                        autocomplete="false" required>
                                                 </div>
                                             </div>
                                             <div class="field  field-two-thirds  ">
                                                 <div class="field-input-wrapper">
                                                     <label class="field-label" for="checkout_user_email">Email</label>
-                                                    <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->email : ''}}"  autocomplete="false" placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="checkout_user_email" name="email" value="" required>
+                                                    <input
+                                                        value="{{ Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->email : '' }}"
+                                                        autocomplete="false" placeholder="Email" autocapitalize="off"
+                                                        spellcheck="false" class="field-input" size="30"
+                                                        type="email" id="checkout_user_email" name="email"
+                                                        value="" required>
                                                 </div>
                                             </div>
                                             <div class="field field-required field-third  ">
                                                 <div class="field-input-wrapper">
-                                                    <label class="field-label" for="billing_address_phone">Phone</label>
-                                                    <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->phone : ''}}"  autocomplete="false" placeholder="Phone" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="15" type="tel" id="billing_address_phone" name="phone" value="" required>
+                                                    <label class="field-label"
+                                                        for="billing_address_phone">Phone</label>
+                                                    <input
+                                                        value="{{ Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->phone : '' }}"
+                                                        autocomplete="false" placeholder="Phone" autocapitalize="off"
+                                                        spellcheck="false" class="field-input" size="30"
+                                                        maxlength="15" type="tel" id="billing_address_phone"
+                                                        name="phone" value="" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -3833,7 +1469,9 @@
                                             <input name="utf8" type="hidden" value="✓">
                                             <div class="content-box mt0">
 
-                                                <div id="form_update_location_customer_shipping" class="order-checkout__loading radio-wrapper content-box-row content-box-row-padding content-box-row-secondary " for="customer_pick_at_location_false">
+                                                <div id="form_update_location_customer_shipping"
+                                                    class="order-checkout__loading radio-wrapper content-box-row content-box-row-padding content-box-row-secondary "
+                                                    for="customer_pick_at_location_false">
                                                     <input name="utf8" type="hidden" value="✓">
                                                     <div class="order-checkout__loading--box">
                                                         <div class="order-checkout__loading--circle"></div>
@@ -3841,15 +1479,24 @@
 
                                                     <div class="field field-required  ">
                                                         <div class="field-input-wrapper">
-                                                            <label class="field-label" for="billing_address_address1">Address</label>
-                                                            <input value = "{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->address : ''}}" placeholder="Address" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_address" name="address" value="" required>
+                                                            <label class="field-label"
+                                                                for="billing_address_address1">Address</label>
+                                                            <input
+                                                                value="{{ Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->address : '' }}"
+                                                                placeholder="Address" autocapitalize="off"
+                                                                spellcheck="false" class="field-input" size="30"
+                                                                type="text" id="billing_address_address"
+                                                                name="address" value="" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="field field-required  ">
                                                         <div class="field-input-wrapper">
                                                             <label class="field-label" for="billing_note">Note</label>
-                                                            <input placeholder="Note" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_note" name="note" value="">
+                                                            <input placeholder="Note" autocapitalize="off"
+                                                                spellcheck="false" class="field-input" size="30"
+                                                                type="text" id="billing_note" name="note"
+                                                                value="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3861,10 +1508,11 @@
                                 </div>
                             </div>
                             <div class="step-footer" id="step-footer-checkout">
-                                <button data-href="{{route('shop-check-out')}}" type="submit" id="button-checkout" class="step-footer-continue-btn btn">
+                                <button data-href="{{ route('shop-check-out') }}" type="submit"
+                                    id="button-checkout" class="step-footer-continue-btn btn">
                                     <span class="btn-content">Check Out</span>
                                 </button>
-                                <a class="step-footer-previous-link" href="{{route('payment-history')}}">
+                                <a class="step-footer-previous-link" href="{{ route('payment-history') }}">
                                     Order History
                                 </a>
                             </div>
@@ -3881,8 +1529,11 @@
                     <div class="hrv-title-coupons-popup">
                         <p>Chọn giảm giá <span class="count-coupons"></span></p>
                         <div class="hrv-coupons-close-popup">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.1663 2.4785L15.5213 0.833496L8.99968 7.35516L2.47801 0.833496L0.833008 2.4785L7.35468 9.00016L0.833008 15.5218L2.47801 17.1668L8.99968 10.6452L15.5213 17.1668L17.1663 15.5218L10.6447 9.00016L17.1663 2.4785Z" fill="#424242"></path>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.1663 2.4785L15.5213 0.833496L8.99968 7.35516L2.47801 0.833496L0.833008 2.4785L7.35468 9.00016L0.833008 15.5218L2.47801 17.1668L8.99968 10.6452L15.5213 17.1668L17.1663 15.5218L10.6447 9.00016L17.1663 2.4785Z"
+                                    fill="#424242"></path>
                             </svg>
                         </div>
                     </div>
@@ -3905,16 +1556,19 @@
     <script>
         $(document).ready(function() {
             checkPayment();
+
             function checkPayment() {
                 let check = localStorage.getItem('checkout');
                 if (check) {
                     localStorage.removeItem('checkout');
                     $('#message-checkout').attr('style', 'padding:5px');
-                    $('#message-checkout').html("You have successfully placed an order. Go to <a style='color:red' href='{{route('payment-history')}}'>Order History</a> to review your order history");
+                    $('#message-checkout').html(
+                        "You have successfully placed an order. Go to <a style='color:red' href='{{ route('payment-history') }}'>Order History</a> to review your order history"
+                    );
                 }
             }
 
-            $('#button-checkout').on('click', function(e){
+            $('#button-checkout').on('click', function(e) {
                 $('#message-checkout').html('');
                 $('#message-error').html('');
                 e.preventDefault();
@@ -3944,10 +1598,14 @@
                             localStorage.setItem('checkout', 'true');
                         } else if (res == 401) {
                             $('#message-error').attr('style', 'padding:5px');
-                            $('#message-error').html("Please add product to cart before checkout!!! Back to <a href='{{route('dashboad')}}'>Home</a>");
+                            $('#message-error').html(
+                                "Please add product to cart before checkout!!! Back to <a href='{{ route('dashboad') }}'>Home</a>"
+                            );
                         } else {
                             $('#message-error').attr('style', 'padding:5px');
-                            $('#message-error').html("Please login before checkout!!! Go to <a href='{{route('dashboad')}}'>Login</a>");
+                            $('#message-error').html(
+                                "Please login before checkout!!! Go to <a href='{{ route('dashboad') }}'>Login</a>"
+                            );
                         }
                     },
                     error: function(XMLHttpRequest, textStatus) {
@@ -3955,7 +1613,6 @@
                     }
                 })
             })
-
             var dataDiscount = {
                 "data": []
             };
@@ -4045,7 +1702,8 @@
                 }
 
                 if (item.customer_limit_used > 0) {
-                    str_LimitUsedCustomer = "<li>Mỗi khách hàng chỉ được áp dụng " + item.customer_limit_used + " lần</li>";
+                    str_LimitUsedCustomer = "<li>Mỗi khách hàng chỉ được áp dụng " + item.customer_limit_used +
+                        " lần</li>";
 
                 }
 
@@ -4081,7 +1739,8 @@
                     var lstProducts = "";
                     item.entitled_products.data.forEach(function(objData) {
                         var obj = objData.product;
-                        var str = "<a target='blank' href='" + obj.product_url + "'>" + obj.product_title + "</a> <br/>";
+                        var str = "<a target='blank' href='" + obj.product_url + "'>" + obj.product_title +
+                            "</a> <br/>";
                         lstProducts += str;
                     })
 
@@ -4093,7 +1752,8 @@
                     var lstCollections = "";
                     item.entitled_collections.data.forEach(function(objData) {
                         var obj = objData.collection;
-                        var str = "<a target='blank' href='" + obj.collection_url + "'>" + obj.collection_title + "</a> <br/>";
+                        var str = "<a target='blank' href='" + obj.collection_url + "'>" + obj
+                            .collection_title + "</a> <br/>";
                         lstCollections += str;
                     })
 
@@ -4106,7 +1766,8 @@
                     item.entitled_variants.data.forEach(function(objData) {
 
                         var obj = objData.variant;
-                        var str = "<a target='blank' href='" + obj.product_url + "'>" + obj.product_title + " (" + obj.variant_title + ")" + "</a> <br/>";
+                        var str = "<a target='blank' href='" + obj.product_url + "'>" + obj.product_title +
+                            " (" + obj.variant_title + ")" + "</a> <br/>";
                         lstVariants += str;
                     })
 
@@ -4137,7 +1798,8 @@
                         resultDiscount = "<li>Giảm " + amount + " phí vận chuyển" + "</li>";
                         if (item.max_shipping_fee_apply > 0) {
                             var max_shipping_fee_apply = Haravan.formatMoney(item.max_shipping_fee_apply, "₫");
-                            var subItem = "<li>Không áp dụng nếu phí vận chuyển vượt quá " + max_shipping_fee_apply + "</li>";
+                            var subItem = "<li>Không áp dụng nếu phí vận chuyển vượt quá " +
+                                max_shipping_fee_apply + "</li>";
                             resultDiscount = resultDiscount + subItem;
                         }
                     } else {
@@ -4146,7 +1808,8 @@
                         resultDiscount = "<li>Giảm " + amount + "% phí vận chuyển" + "</li>";
                         if (item.max_shipping_fee_apply > 0) {
                             var max_shipping_fee_apply = Haravan.formatMoney(item.max_shipping_fee_apply, "₫");
-                            var subItem = "<li>Không áp dụng nếu phí vận chuyển vượt quá " + max_shipping_fee_apply + "</li>";
+                            var subItem = "<li>Không áp dụng nếu phí vận chuyển vượt quá " +
+                                max_shipping_fee_apply + "</li>";
                             resultDiscount = resultDiscount + subItem;
                         }
 
@@ -4196,7 +1859,8 @@
 
 
             function togglePopupCoupons() {
-                if ($('.hrv-coupons-popup').hasClass('active-popup') && $('.hrv-coupons-popup-site-overlay').hasClass('active-popup')) {
+                if ($('.hrv-coupons-popup').hasClass('active-popup') && $('.hrv-coupons-popup-site-overlay')
+                    .hasClass('active-popup')) {
                     $('.hrv-coupons-popup').removeClass('active-popup');
                     $('.hrv-coupons-popup-site-overlay').removeClass('active-popup');
                     $('[class*="hrv-discount-code-"]').removeClass('open-more');
@@ -4220,7 +1884,7 @@
                     var couponItem = v.discount;
                     if (i >= 2) hiddenClass = 'hidden';
                     /*
-		var htmlItemCoupon = `<div class="coupon_item ${hiddenClass}">
+                                                                		var htmlItemCoupon = `<div class="coupon_item ${hiddenClass}">
 		                        <div class="coupon_icon pos-relative">
 									<div class="icon-svg">
 										<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 56 56"><defs><style>.cls-1{fill:#10a9f7;}.cls-2{fill:#1c70f7;}.cls-3{fill:#1f26f7;}</style></defs><path class="cls-1" d="M32.67,4.67A7,7,0,0,0,28,6.49a7,7,0,1,0-4.67,12.18h9.34a7,7,0,0,0,0-14ZM21,11.67a2.34,2.34,0,1,1,4.67,0V14H23.33A2.34,2.34,0,0,1,21,11.67ZM32.67,14H30.33V11.67A2.34,2.34,0,1,1,32.67,14Z"/><path class="cls-2" d="M44.54,25.67H11.87A2.33,2.33,0,0,0,9.54,28V49a2.36,2.36,0,0,0,2.36,2.36H44.52A2.35,2.35,0,0,0,46.87,49V28A2.33,2.33,0,0,0,44.54,25.67Z"/><path class="cls-3" d="M42,14H14a7,7,0,0,0-7,7v8.49a.84.84,0,0,0,.84.84H48.16a.84.84,0,0,0,.84-.84V21A7,7,0,0,0,42,14Z"/><path class="cls-1" d="M25.67,14h4.66V51.33H25.67Z"/></svg>
@@ -4231,14 +1895,14 @@
 											<h3 class="coupon_title"> <span>${couponItem.name}</span></h3>
 											<div class="coupon_desc_short">${couponItem.highlight_note}</div>
 											<div class="coupon_desc">${couponItem.description}</div>`;
-		if(couponItem.description != '') htmlItemCoupon += `<div class="coupon_more">Xem chi tiết</div>`;
-			htmlItemCoupon +=				`<div class="coupon_exp">${couponItem.enddate}</div>
+                                                                		if(couponItem.description != '') htmlItemCoupon += `<div class="coupon_more">Xem chi tiết</div>`;
+                                                                			htmlItemCoupon +=				`<div class="coupon_exp">${couponItem.enddate}</div>
 										</div>
 										<button class="btn btn_apply_line_coupon" data-code="${couponItem.name}">Áp dụng</button>
 									</div>
 								</div>
 							  </div>`;
-        */
+                                                                        */
 
                     var htmlItemCoupon = `<div class="coupon_item ${hiddenClass}">
 		                        <div class="coupon_icon pos-relative">
@@ -4256,8 +1920,10 @@
 												<div class="coupon_exp">${couponItem.enddate}</b></div>
 											</h3>
 										 </div>`;
-                    if (couponItem.highlight_note != '') htmlItemCoupon += `<div class="coupon_desc_short">${couponItem.highlight_note}</div>`;
-                    if (couponItem.description != '') htmlItemCoupon += `<div class="coupon_desc">${couponItem.description}</div>`;
+                    if (couponItem.highlight_note != '') htmlItemCoupon +=
+                        `<div class="coupon_desc_short">${couponItem.highlight_note}</div>`;
+                    if (couponItem.description != '') htmlItemCoupon +=
+                        `<div class="coupon_desc">${couponItem.description}</div>`;
                     htmlItemCoupon += `			 <div class="coupon_actions">
 										    <div class="coupon_more">Xem chi tiết<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve"><path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"></path><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>
 										    <button class="btn btn_apply_line_coupon" data-code="${couponItem.name}">Áp dụng</button>
@@ -4293,16 +1959,18 @@
                     parentDOM.addClass('open-more');
                     $(this).find('span:first-child').html('Thu gọn');
                 } else {
-                    parentDOM.find('.coupon_item:nth-child(n+3):nth-child(-n+' + coupons + ')').addClass('hidden');
+                    parentDOM.find('.coupon_item:nth-child(n+3):nth-child(-n+' + coupons + ')').addClass(
+                        'hidden');
                     parentDOM.removeClass('open-more');
                     $(this).find('span:first-child').html('Xem thêm');
                 }
             });
 
-            $('body').on('click', '.order-summary-section-display-discount .hrv-discount-choose-coupons', function() {
-                togglePopupCoupons();
-                renderCoupons();
-            })
+            $('body').on('click', '.order-summary-section-display-discount .hrv-discount-choose-coupons',
+                function() {
+                    togglePopupCoupons();
+                    renderCoupons();
+                })
 
             $('body').on('click', '.hrv-coupons-close-popup svg', function() {
                 togglePopupCoupons();
@@ -4312,7 +1980,8 @@
                 var codeCoupons = $(this).data('code');
                 togglePopupCoupons();
                 $('input[id="discount.code"]').val(codeCoupons).trigger("change");
-                $('form#form_discount_add button.field-input-btn.btn.btn-default').removeClass('btn-disabled');
+                $('form#form_discount_add button.field-input-btn.btn.btn-default').removeClass(
+                    'btn-disabled');
                 $('form#form_discount_add button.field-input-btn.btn.btn-default').trigger('click');
             })
 
@@ -4339,9 +2008,6 @@
 
         }
     </script>
-
-
-
 
 </body>
 
