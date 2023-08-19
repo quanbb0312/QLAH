@@ -6,11 +6,11 @@
                 <div class="breadcrumb-wrap container container-xl">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/shop">Trang chủ</a></li>
-                        @foreach ($listProduct as $product)
-                            <li class="breadcrumb-item active">
-                                <p>{{ $product->category->catName }}</p>
-                            </li>
-                        @endforeach
+                        <li class="breadcrumb-item active">
+                            @if (count($listProduct) > 0)
+                                <p>{{ $listProduct[0]->category->catName }}</p>
+                            @endif
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -19,9 +19,9 @@
                     <div class="collectionMainContent">
 
                         <div class="collectionMainContentLeft">
-                            <h1 class="title">
+                            {{-- <h1 class="title">
                                 {{ $listProduct->first()->category->catName }}
-                            </h1>
+                            </h1> --}}
                             <div class="collectionFilter">
                                 <div class="collectionFilterMobileAction">
                                     <span>BỘ LỌC</span>
@@ -151,10 +151,11 @@
                                                             Giá: Giảm dần</option>
                                                         <!-- Các tùy chọn khác -->
                                                     </select>
+                                                    <button type="submit" class="btn btn-primary">Filter</button>
                                                 </div>
                                             </form>
-                                        </div>
-
+                                        </div> --}}
+                                        {{-- 
                                         <script>
                                             const sortForm = document.getElementById("sortForm");
                                             const sortBySelect = document.getElementById("sortBy");
@@ -166,26 +167,35 @@
 
                                         <div class="col-md-8 col-8 text-right filterMobileFlex">
                                             <div class="sortByMain">
-                                                <form action="" method="get" id="filterForm">
+                                                <form action="{{ route('shop-product-list', $id) }}" method="get"
+                                                    id="filterForm">
                                                     <label class="sortBy" for="sortBy">Sắp xếp theo:</label>
-                                                    <select id="sortBy" class="form-control">
-                                                        @foreach ($listProduct as $product)
-                                                            <option value="{{ $product->category->catSlug }}">
-                                                                {{ $product->productSlug }}
-                                                            </option>
-                                                        @endforeach
+                                                    <select id="sortBy" class="form-control" name="filter">
+                                                        <option value="1">
+                                                            Dưới 1 tr
+                                                        </option>
+                                                        <option value="1to3">
+                                                            1-3 tr
+                                                        </option>
+                                                        <option value="3to5">
+                                                            3-5 tr
+                                                        </option>
+                                                        <option value="5to10">
+                                                            5-10 tr
+                                                        </option>
+                                                        <option value="10">
+                                                            Trên 10 tr
+                                                        </option>
                                                     </select>
                                                     <button type="submit" class="btn btn-primary">Filter</button>
                                                 </form>
                                             </div>
                                         </div>
-
                                         {{-- <script>
                                             document.getElementById('filterForm').addEventListener('submit', function(event) {
                                                 event.preventDefault(); // Prevent the default form submission
                                                 applyFilter();
                                             });
-
                                             function applyFilter() {
                                                 const sortBySelect = document.getElementById("sortBy");
                                                 const selectedValue = sortBySelect.value;
@@ -195,7 +205,6 @@
                                                 window.location.href = url;
                                             }
                                         </script> --}}
-
                                     </div>
                                 </div>
                             </div>
@@ -221,9 +230,7 @@
                                                 <div class="p-price-group">
 
                                                     <span class="p-price">
-
                                                         {{ number_format($product->productPrice) }}₫
-
                                                     </span>
                                                 </div>
                                                 <div class="p-btn-group">
