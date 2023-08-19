@@ -15,7 +15,7 @@ class CustomerController extends Controller
     public function list()
     {
         // Lấy danh sách khách hàng từ CSDL và trả về view để hiển thị
-        $customers = Customer::paginate($this->paginate);
+        $customers = Customer::search()->paginate($this->paginate);
         return view('admin.customer.list', compact('customers'));
     }
 
