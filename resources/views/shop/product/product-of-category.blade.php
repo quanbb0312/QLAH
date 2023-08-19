@@ -87,10 +87,6 @@
                                     </ul>
 
                                 </div>
-
-
-
-
                                 <div class="collectionFilterBlock">
                                     <h4>
                                         Giá sản phẩm
@@ -134,9 +130,8 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="collectionMainContentRight ">
-                            {{-- <div class="">
+                            <div class="">
                                 <div class="collectionHeader 	">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12 col-4">
@@ -144,41 +139,66 @@
                                                     data-type="sidebarAllFilter"><i class="lni lni-funnel"></i> Bộ lọc</a>
                                             </div>
                                         </div>
+                                        {{-- <div class="col-md-8 col-8 text-right filterMobileFlex">
+                                            <form id="sortForm" method="get" action="/your-data-url">
+                                                <div class="sortByMain">
+                                                    <label class="" for="sortBy">Sắp xếp theo:</label>
+                                                    <select id="sortBy" class="form-control" name="sortby">
+                                                        <option value="manual">Sản phẩm nổi bật</option>
+                                                        <option value="price-ascending" data-filter="price:product=asc">
+                                                            Giá: Tăng dần</option>
+                                                        <option value="price-descending" data-filter="price:product=desc">
+                                                            Giá: Giảm dần</option>
+                                                        <!-- Các tùy chọn khác -->
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <script>
+                                            const sortForm = document.getElementById("sortForm");
+                                            const sortBySelect = document.getElementById("sortBy");
+
+                                            sortBySelect.addEventListener("change", function() {
+                                                sortForm.submit();
+                                            });
+                                        </script> --}}
 
                                         <div class="col-md-8 col-8 text-right filterMobileFlex">
                                             <div class="sortByMain">
-                                                <label class="" for="sortBy">Sắp xếp theo:</label>
-                                                <select id="sortBy" class="form-control">
-
-                                                    <option value="manual">Sản phẩm nổi bật</option>
-
-                                                    <option value="price-ascending"
-                                                        data-filter="&amp;sortby=(price:product=asc)">Giá: Tăng dần
-                                                    </option>
-                                                    <option value="price-descending"
-                                                        data-filter="&amp;sortby=(price:product=desc)">Giá: Giảm dần
-                                                    </option>
-                                                    <option value="title-ascending"
-                                                        data-filter="&amp;sortby=(title:product=asc)">Tên: A-Z</option>
-                                                    <option value="title-descending"
-                                                        data-filter="&amp;sortby=(price:product=desc)">Tên: Z-A</option>
-                                                    <option value="created-ascending"
-                                                        data-filter="&amp;sortby=(updated_at:product=desc)">Cũ nhất
-                                                    </option>
-                                                    <option value="created-descending"
-                                                        data-filter="&amp;sortby=(updated_at:product=asc)">Mới nhất
-                                                    </option>
-                                                    <option value="best-selling"
-                                                        data-filter="&amp;sortby=(sold_quantity:product=desc)">Bán chạy
-                                                        nhất</option>
-                                                    <option value="quantity-descending">Tồn kho: Giảm dần</option>
-                                                </select>
+                                                <form action="" method="get" id="filterForm">
+                                                    <label class="sortBy" for="sortBy">Sắp xếp theo:</label>
+                                                    <select id="sortBy" class="form-control">
+                                                        @foreach ($listProduct as $product)
+                                                            <option value="{{ $product->category->catSlug }}">
+                                                                {{ $product->productSlug }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <button type="submit" class="btn btn-primary">Filter</button>
+                                                </form>
                                             </div>
                                         </div>
+
+                                        {{-- <script>
+                                            document.getElementById('filterForm').addEventListener('submit', function(event) {
+                                                event.preventDefault(); // Prevent the default form submission
+                                                applyFilter();
+                                            });
+
+                                            function applyFilter() {
+                                                const sortBySelect = document.getElementById("sortBy");
+                                                const selectedValue = sortBySelect.value;
+
+                                                // Thay đổi URL với giá trị filter đã chọn
+                                                const url = "{{ route('shop-product-list') }}?filter=" + encodeURIComponent(selectedValue);
+                                                window.location.href = url;
+                                            }
+                                        </script> --}}
+
                                     </div>
                                 </div>
-
-                            </div> --}}
+                            </div>
                             <div class="collectionBody">
                                 <div class="collectionListProduct">
                                     @foreach ($listProduct as $product)
@@ -188,24 +208,10 @@
                                                     <a href="#" title="{{ $product->productName }}"
                                                         class="productImgLink">
                                                         <picture>
-                                                            <source
-                                                                srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
-                                                                data-srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
-                                                                media="(max-width: 767px)">
                                                             <img src="{{ asset('storage/products/' . $product->productImage) }}"
                                                                 class="img-fluid lazyloaded"
                                                                 alt=" {{ $product->productName }} ">
                                                         </picture>
-                                                        {{-- <picture>
-                                                            <source
-                                                                srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
-                                                                data-srcset="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_medium.jpg"
-                                                                media="(max-width: 767px)">
-                                                            <img data-src="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_large.jpg"
-                                                                src="//product.hstatic.net/200000680123/product/pc_fire_1650_ef13964a0d60485d8bc2ee83a35466c5_large.jpg"
-                                                                class="img-fluid ls-is-cached lazyloaded"
-                                                                alt=" {{ $product->productName }} ">
-                                                        </picture> --}}
                                                     </a>
                                                 </div>
                                                 <h3 class="productName">
@@ -252,7 +258,9 @@
                                     </div>
                                 </div>
                                 <div class="pagination-wrapper">
-                                    {{ $listProduct->appends(request()->all())->links() }}
+                                    <nav>
+                                        {{ $listProduct->appends(request()->all())->links() }}
+                                    </nav>
                                 </div>
                             </div>
                         </div>

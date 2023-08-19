@@ -2,20 +2,19 @@
     <h2>{{ $data['type'] }}</h2>
     <p> <b>{{ $data['task'] }}</b> {{ $data['content'] }}</p>
 </div>
-<p>{!!$data['note']!!}</p>
+<p>{!! $data['note'] !!}</p>
 
 <p>Chúc bạn có một ngày làm việc vui vẻ!</p>
 
 <p>Thân!</p>
 
 <p>------</p>
-<h4>Nguyen Duc Tan (Mr.)</h4>
-<label>T: <a href="tel:+0762783458" style="color:rgb(17,85,204)" target="_blank">(84) 762783458</a>
-    | E: <a href="mailto:tntyesterday031093@gmail.com" style="color:rgb(17,85,204)"
-        target="_blank">tntyesterday031093@gmail.com</a>
+<h4>Nguyen Huynh Phuc Huu Loc Mr.(Admin Page)</h4>
+<label>T: <a href="tel:+0762783458" style="color:rgb(17,85,204)" target="_blank">(84) 898406358</a>
+    | E: <a href="mailto:qlhacomputer@gmail.com" style="color:rgb(17,85,204)" target="_blank">qlhacomputer@gmail.com</a>
 </label>
 <h3>AdminShop | W: <a href="http://127.0.0.1:8000/" style="color:rgb(17,85,204)" target="_blank">adminshop.com.vn</a></h3>
-<label>133 Lý Thường Kiệt, Đông Lương, Đông Hà, Quảng Trị |
-    <a href="https://www.google.com/maps/place/133+L%C3%BD+Th%C6%B0%E1%BB%9Dng+Ki%E1%BB%87t,+%C4%90%C3%B4ng+H%E1%BA%A3i,+%C4%90%C3%B4ng+H%C3%A0,+Qu%E1%BA%A3ng+Tr%E1%BB%8B,+Vi%E1%BB%87t+Nam/@16.802374,107.1092616,17z/data=!3m1!4b1!4m5!3m4!1s0x3140e584960ba903:0x5c5e139c80555b93!8m2!3d16.8023689!4d107.1114503"
+<label>20 Cộng Hoà Phường 12 Quận Tân Bình TPHCM
+    <a href="https://www.google.com/maps/place/Cộng+hoà+Garden/@10.8039668,106.6499261,17z/data=!3m1!4b1!4m6!3m5!1s0x317529f1e1b3981b:0x322ddae404071dcc!8m2!3d10.8039668!4d106.652501!16s%2Fg%2F11t2zyysf_?entry=ttu"
         style="color:rgb(17,85,204)" target="_blank">View Map</a>
 </label>
