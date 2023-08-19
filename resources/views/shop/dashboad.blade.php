@@ -113,7 +113,7 @@
                 <div class="categories-main">
                     @foreach ($listCategory as $category)
                         <div class="categories-main-item">
-                            <a href="#">
+                            <a href="{{ route('shop-product-list', ['id' => $category->id]) }}">
                                 <img src="{{ asset('storage/categoryImage/' . $category->catImage) }}"
                                     class="lazyload img-fluid" alt="{{ $category->catName }}">
                             </a>
@@ -125,8 +125,7 @@
         </section>
         <section id="bannerThumb" class="banner_thumb_new">
             <div class="container">
-                <a href="https://www.facebook.com/TiTekPC/posts/pfbid0e48MCEWrpCF4fwAuFDp5zPXnLPzDap9uPaBVdCw9rkPdg2tbqwQmYpwUak5owNhzl"
-                    class="bannerThumbImg">
+                <a href="#" class="bannerThumbImg">
                     <picture>
                         <img src="{{ asset('logo/backtoschool.png') }}" class="lazyload img-fluid" alt="bannerThumb" />
                     </picture>
@@ -138,7 +137,7 @@
             <div class="container">
                 <div class="sectionTitleAll">
                     <h2>
-                        <a href="/collections/gear">{{ $keyboards->catName }}</a>
+                        <a href="#">{{ $keyboards->catName }}</a>
                     </h2>
                 </div>
                 <div class="group-one-main-list">
@@ -206,8 +205,7 @@
         </section>
         <section id="bannerThumb">
             <div class="container">
-                <a href="https://www.facebook.com/TiTekPC/posts/pfbid0e48MCEWrpCF4fwAuFDp5zPXnLPzDap9uPaBVdCw9rkPdg2tbqwQmYpwUak5owNhzl"
-                    class="bannerThumbImg">
+                <a href="#" class="bannerThumbImg">
                     <picture>
                         <img src="{{ asset('logo/backtoschool.png') }}"class="lazyload img-fluid" alt="bannerThumb" />
                     </picture>
@@ -233,7 +231,7 @@
                             <div class="proLoop">
                                 <div class="pro_content">
                                     <div class="productImg">
-                                        <a href="/" title="{{ $product->productName }}">
+                                        <a href="" title="{{ $product->productName }}">
                                             <picture>
                                                 <img data-src=""
                                                     src="{{ asset('storage/products/' . $product->productImage) }}"
@@ -242,7 +240,7 @@
                                         </a>
                                     </div>
                                     <h3 class="productName">
-                                        <a href="/products/ban-phim-akko-3087-v2-world-tour-tokyo"
+                                        <a href=""
                                             title="{{ $product->productName }}">{{ $product->productName }}</a>
                                     </h3>
 

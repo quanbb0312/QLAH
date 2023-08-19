@@ -26,7 +26,6 @@
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->productName }}</td>
                                         <td>{{ number_format($product->productPrice, 0, '.', ',') }} VNĐ</td>
-
                                         <td>{{ $product->productQuantity }}</td>
                                         <td><img src="{{ asset('storage/products/' . $product->productImage) }}"
                                                 style="height: 100px; width: 100px;">

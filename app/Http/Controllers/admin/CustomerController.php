@@ -32,7 +32,7 @@ class CustomerController extends Controller
         $customer->email = $request->email;
         $customer->phone = $request->phone;
         $customer->address = $request->address;
-        $customer->password = bcrypt($request->password);
+        $customer->password = bcrypt($request->password); //mã hoá passwords
         // Thêm các trường thông tin khác tương tự ở đây
         $customer->save();
         return redirect()->route('customer-list')->with('success', 'Customer added successfully!');

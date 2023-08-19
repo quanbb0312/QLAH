@@ -46,19 +46,20 @@ class GaurdController extends Controller
     }
 
     //send mail
-    public function sendMail(CustomerSendMailRequest $request) {
+    public function sendMail(CustomerSendMailRequest $request)
+    {
         $email = $request->email;
         $customer = Customer::where('email', $email)->first();
-        $password = rand(100000,999999);
+        $password = rand(100000, 999999);
         if ($email && $customer) {
-            $data=[
-                'type'=> 'Chào bạn,',
-                'task'=>'Bạn',
-                'content'=>'đã gửi yêu cầu lấy lại mật khẩu tài khoản!',
-                'note'=>'Dưới đây là mật khẩu của bạn. Không chia sẽ mật khẩu với người khác!
-                <br><br>Mật khẩu: '.$password.'<br>'
+            $data = [
+                'type' => 'Chào bạn,',
+                'task' => 'Bạn',
+                'content' => 'đã gửi yêu cầu lấy lại mật khẩu tài khoản!',
+                'note' => 'Dưới đây là mật khẩu của bạn. Không chia sẽ mật khẩu với người khác!
+                <br><br>Mật khẩu: ' . $password . '<br>'
             ];
-            SendEmail::dispatch($data,$email)->delay(now()->addMinute());
+            SendEmail::dispatch($data, $email)->delay(now()->addMinute());
 
             $customer->password = bcrypt($password);
             $customer->save();

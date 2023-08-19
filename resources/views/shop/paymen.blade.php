@@ -1365,7 +1365,7 @@
                 <div class="main-content">
 
 
-                    <div id="checkout_order_information_changed_error_message" class="hidden"
+                    {{-- <div id="checkout_order_information_changed_error_message" class="hidden"
                         style="margin-bottom:15px">
 
 
@@ -1401,13 +1401,12 @@
                             </span>
 
                         </p>
-                    </div>
+                    </div> --}}
                     <script>
                         $("html, body").animate({
                             scrollTop: 0
                         }, "slow");
                     </script>
-
 
                     <form action="{{ route('shop-check-out') }}" id="shop-check-out" method="post">
                         @csrf
@@ -1476,7 +1475,6 @@
                                                     <div class="order-checkout__loading--box">
                                                         <div class="order-checkout__loading--circle"></div>
                                                     </div>
-
                                                     <div class="field field-required  ">
                                                         <div class="field-input-wrapper">
                                                             <label class="field-label"
@@ -1508,13 +1506,8 @@
                                 </div>
                             </div>
                             <div class="step-footer" id="step-footer-checkout">
-
-                                {{-- <button data-href="{{ route('shop-check-out') }}" type="submit"
-                                    id="button-checkout" class="step-footer-continue-btn btn"> --}}
-
                                 <button data-href="{{ route('shop-check-out') }}" type="submit"
                                     id="button-checkout" class=" btn">
-
                                     <span class="btn-content">Check Out</span>
                                 </button>
                                 <a class="step-footer-previous-link" href="{{ route('payment-history') }}">
@@ -1889,7 +1882,7 @@
                     var couponItem = v.discount;
                     if (i >= 2) hiddenClass = 'hidden';
                     /*
-                                                                        		var htmlItemCoupon = `<div class="coupon_item ${hiddenClass}">
+                                                                                            		var htmlItemCoupon = `<div class="coupon_item ${hiddenClass}">
 		                        <div class="coupon_icon pos-relative">
 									<div class="icon-svg">
 										<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 56 56"><defs><style>.cls-1{fill:#10a9f7;}.cls-2{fill:#1c70f7;}.cls-3{fill:#1f26f7;}</style></defs><path class="cls-1" d="M32.67,4.67A7,7,0,0,0,28,6.49a7,7,0,1,0-4.67,12.18h9.34a7,7,0,0,0,0-14ZM21,11.67a2.34,2.34,0,1,1,4.67,0V14H23.33A2.34,2.34,0,0,1,21,11.67ZM32.67,14H30.33V11.67A2.34,2.34,0,1,1,32.67,14Z"/><path class="cls-2" d="M44.54,25.67H11.87A2.33,2.33,0,0,0,9.54,28V49a2.36,2.36,0,0,0,2.36,2.36H44.52A2.35,2.35,0,0,0,46.87,49V28A2.33,2.33,0,0,0,44.54,25.67Z"/><path class="cls-3" d="M42,14H14a7,7,0,0,0-7,7v8.49a.84.84,0,0,0,.84.84H48.16a.84.84,0,0,0,.84-.84V21A7,7,0,0,0,42,14Z"/><path class="cls-1" d="M25.67,14h4.66V51.33H25.67Z"/></svg>
@@ -1900,14 +1893,14 @@
 											<h3 class="coupon_title"> <span>${couponItem.name}</span></h3>
 											<div class="coupon_desc_short">${couponItem.highlight_note}</div>
 											<div class="coupon_desc">${couponItem.description}</div>`;
-                                                                        		if(couponItem.description != '') htmlItemCoupon += `<div class="coupon_more">Xem chi tiết</div>`;
-                                                                        			htmlItemCoupon +=				`<div class="coupon_exp">${couponItem.enddate}</div>
+                                                                                            		if(couponItem.description != '') htmlItemCoupon += `<div class="coupon_more">Xem chi tiết</div>`;
+                                                                                            			htmlItemCoupon +=				`<div class="coupon_exp">${couponItem.enddate}</div>
 										</div>
 										<button class="btn btn_apply_line_coupon" data-code="${couponItem.name}">Áp dụng</button>
 									</div>
 								</div>
 							  </div>`;
-                                                                                */
+                                                                                                    */
 
                     var htmlItemCoupon = `<div class="coupon_item ${hiddenClass}">
 		                        <div class="coupon_icon pos-relative">

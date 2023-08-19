@@ -17,194 +17,37 @@
             <div class="collectionMain">
                 <div class="container">
                     <div class="collectionMainContent">
-
-                        <div class="collectionMainContentLeft">
-                            {{-- <h1 class="title">
-                                {{ $listProduct->first()->category->catName }}
-                            </h1> --}}
-                            <div class="collectionFilter">
-                                <div class="collectionFilterMobileAction">
-                                    <span>BỘ LỌC</span>
-                                    <button class="collectionFilterClose">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 409.806 409.806" style="enable-background:new 0 0 409.806 409.806;"
-                                            xml:space="preserve">
-                                            <path
-                                                d="M228.929,205.01L404.596,29.343c6.78-6.548,6.968-17.352,0.42-24.132c-6.548-6.78-17.352-6.968-24.132-0.42
-								 c-0.142,0.137-0.282,0.277-0.42,0.42L204.796,180.878L29.129,5.21c-6.78-6.548-17.584-6.36-24.132,0.42
-								 c-6.388,6.614-6.388,17.099,0,23.713L180.664,205.01L4.997,380.677c-6.663,6.664-6.663,17.468,0,24.132
-								 c6.664,6.662,17.468,6.662,24.132,0l175.667-175.667l175.667,175.667c6.78,6.548,17.584,6.36,24.132-0.42
-								 c6.387-6.614,6.387-17.099,0-23.712L228.929,205.01z">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="collectionFilterMobileButton">
-                                    <button class="collectionFilterMobile-apply">
-                                        ÁP DỤNG
-                                    </button>
-                                </div>
-
-
-                                <div class="collectionFilterBlock">
-                                    <h4>
-                                        Loại sản phẩm
-                                    </h4>
-                                    <ul class="collectionFilterList">
-
-
-                                        <li>
-                                            <input type="checkbox" id="data-type-p1" value="TTK WATER"
-                                                class="checkboxFilter" name="typeFilter">
-                                            <label for="data-type-p1">QLAH 1 PC</label>
-                                        </li>
-
-                                        <li>
-                                            <input type="checkbox" id="data-type-p2" value="TTK FIRE" class="checkboxFilter"
-                                                name="typeFilter">
-                                            <label for="data-type-p2">QLAH 2 PC</label>
-                                        </li>
-
-                                    </ul>
-
-                                </div>
-
-
-                                <div class="collectionFilterBlock">
-                                    <h4>
-                                        Thương hiệu
-                                    </h4>
-                                    <ul class="collectionFilterList">
-
-
-                                        <li>
-                                            <input type="checkbox" id="data-brand-p1" value="PC GAMING"
-                                                class="checkboxFilter" name="vendorFilter">
-                                            <label for="data-brand-p1">PC GAMING</label>
-                                        </li>
-
-                                    </ul>
-
-                                </div>
-                                <div class="collectionFilterBlock">
-                                    <h4>
-                                        Giá sản phẩm
-                                    </h4>
-                                    <div class="priceRangeBox">
-                                        <div id="priceRange" class="noUi-target noUi-ltr noUi-horizontal noUi-txt-dir-ltr">
-                                            <div class="noUi-base">
-                                                <div class="noUi-connects">
-                                                    <div class="noUi-connect"
-                                                        style="transform: translate(0%, 0px) scale(1, 1);"></div>
-                                                </div>
-                                                <div class="noUi-origin"
-                                                    style="transform: translate(-1000%, 0px); z-index: 5;">
-                                                    <div class="noUi-handle noUi-handle-lower" data-handle="0"
-                                                        tabindex="0" role="slider" aria-orientation="horizontal"
-                                                        aria-valuemin="0.0" aria-valuemax="20000000.0" aria-valuenow="0.0"
-                                                        aria-valuetext="0.00">
-                                                        <div class="noUi-touch-area"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="noUi-origin" style="transform: translate(0%, 0px); z-index: 4;">
-                                                    <div class="noUi-handle noUi-handle-upper" data-handle="1"
-                                                        tabindex="0" role="slider" aria-orientation="horizontal"
-                                                        aria-valuemin="0.0" aria-valuemax="20000000.0"
-                                                        aria-valuenow="20000000.0" aria-valuetext="20000000.00">
-                                                        <div class="noUi-touch-area"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="priceRangeValueBox d-flex pt-3">
-                                            <input style="display:none;" type="checkbox" id="data-price" value=""
-                                                class="checkboxFilter" name="priceFilter">
-                                            <span class="example-val" id="priceRangeValue">0₫ - 20,000,000₫</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="clearFilter">
-                                    <a href="javascript:void(0);">Xóa tất cả lựa chọn</a>
-                                </div>
-                            </div>
-                        </div>
                         <div class="collectionMainContentRight ">
                             <div class="">
                                 <div class="collectionHeader 	">
                                     <div class="row">
-                                        <div class="col-md-4 col-sm-12 col-4">
-                                            <div class="filterMobile headerTool"><a href=""
-                                                    data-type="sidebarAllFilter"><i class="lni lni-funnel"></i> Bộ lọc</a>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="col-md-8 col-8 text-right filterMobileFlex">
-                                            <form id="sortForm" method="get" action="/your-data-url">
-                                                <div class="sortByMain">
-                                                    <label class="" for="sortBy">Sắp xếp theo:</label>
-                                                    <select id="sortBy" class="form-control" name="sortby">
-                                                        <option value="manual">Sản phẩm nổi bật</option>
-                                                        <option value="price-ascending" data-filter="price:product=asc">
-                                                            Giá: Tăng dần</option>
-                                                        <option value="price-descending" data-filter="price:product=desc">
-                                                            Giá: Giảm dần</option>
-                                                        <!-- Các tùy chọn khác -->
-                                                    </select>
-                                                    <button type="submit" class="btn btn-primary">Filter</button>
-                                                </div>
-                                            </form>
-                                        </div> --}}
-                                        {{-- 
-                                        <script>
-                                            const sortForm = document.getElementById("sortForm");
-                                            const sortBySelect = document.getElementById("sortBy");
-
-                                            sortBySelect.addEventListener("change", function() {
-                                                sortForm.submit();
-                                            });
-                                        </script> --}}
-
                                         <div class="col-md-8 col-8 text-right filterMobileFlex">
                                             <div class="sortByMain">
                                                 <form action="{{ route('shop-product-list', $id) }}" method="get"
                                                     id="filterForm">
                                                     <label class="sortBy" for="sortBy">Sắp xếp theo:</label>
                                                     <select id="sortBy" class="form-control" name="filter">
-                                                        <option value="1">
-                                                            Dưới 1 tr
+                                                        <option value="1"
+                                                            {{ $request->filter == '1' ? 'selected' : '' }}>Dưới 1 triệu
                                                         </option>
-                                                        <option value="1to3">
-                                                            1-3 tr
-                                                        </option>
-                                                        <option value="3to5">
-                                                            3-5 tr
-                                                        </option>
-                                                        <option value="5to10">
-                                                            5-10 tr
-                                                        </option>
-                                                        <option value="10">
-                                                            Trên 10 tr
+                                                        <option value="1to3"
+                                                            {{ $request->filter == '1to3' ? 'selected' : '' }}>1 triệu - 3
+                                                            triệu</option>
+                                                        <option value="3to5"
+                                                            {{ $request->filter == '3to5' ? 'selected' : '' }}>3 triệu - 5
+                                                            triệu</option>
+                                                        <option value="5to10"
+                                                            {{ $request->filter == '5to10' ? 'selected' : '' }}>5 triệu - 10
+                                                            triệu</option>
+                                                        <option value="10"
+                                                            {{ $request->filter == '10' ? 'selected' : '' }}>Trên 10 triệu
                                                         </option>
                                                     </select>
+
                                                     <button type="submit" class="btn btn-primary">Filter</button>
                                                 </form>
                                             </div>
                                         </div>
-                                        {{-- <script>
-                                            document.getElementById('filterForm').addEventListener('submit', function(event) {
-                                                event.preventDefault(); // Prevent the default form submission
-                                                applyFilter();
-                                            });
-                                            function applyFilter() {
-                                                const sortBySelect = document.getElementById("sortBy");
-                                                const selectedValue = sortBySelect.value;
-
-                                                // Thay đổi URL với giá trị filter đã chọn
-                                                const url = "{{ route('shop-product-list') }}?filter=" + encodeURIComponent(selectedValue);
-                                                window.location.href = url;
-                                            }
-                                        </script> --}}
                                     </div>
                                 </div>
                             </div>
