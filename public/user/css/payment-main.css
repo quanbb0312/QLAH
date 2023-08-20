@@ -1,0 +1,41 @@
+
+a.logo {
+    display: block;
+}
+
+.logo-cus {
+    width: 100%;
+    padding: 15px 0;
+    text-align: "",
+}
+
+.logo-cus img {
+    max-height: 4.2857142857em
+}
+
+.logo-text {
+    text-align: "";
+}
+
+#form_update_location_customer_shipping {
+    background-color: white !important;
+}
+
+.section .section-content .content-box {
+    box-shadow: none !important;
+    border-radius: none !important;
+}
+
+.content-box-row-secondary {
+    padding: 0 !important;
+}
+
+.main .main-content {
+    padding-bottom: 0px !important;
+}
+
+@media (max-width: 767px) {
+    .banner a {
+        display: block;
+    }
+}

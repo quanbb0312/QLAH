@@ -91,7 +91,11 @@ class ShopController extends Controller
                     $listProduct->where('productPrice', '<=', 1000000);
                     break;
                 case '1to3':
-                    $listProduct->whereBetween('productPrice', [1000000,3000000]);
+                    $listProduct->where(function ($query) {
+                        $query->where('productPrice', '<=', 1000000)
+                            ->orWhere('productPrice', '>', 1000000)
+                            ->where('productPrice', '<=', 3000000);
+                    });
                     break;
                 case '3to5':
                     $listProduct->whereBetween('productPrice', [3000000,5000000]);

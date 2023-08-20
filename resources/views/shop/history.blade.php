@@ -1,28 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="flexbox">
-{{-- <!DOCTYPE html>
-<html class="no-js" lang="vi"> --}}
 
 <head>
-    {{-- <link rel="shortcut icon" href="//theme.hstatic.net/200000680123/1001107404/14/favicon.png?v=47" type="image/png"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>
         QLAH- Lịch sử đơn hàng
     </title>
     <link rel="stylesheet" href="../../user/history.css" type="text/css">
     <meta name="description" content="QLAH- Lịch sử đơn hàng">
-    {{-- <link href="//theme.hstatic.net/200000680123/1001107404/14/check_out.css?v=47" rel="stylesheet" type="text/css"
-        media="all"> --}}
-    {{-- <script src="//hstatic.net/0/0/global/jquery.min.js" type="text/javascript"></script>
-    <script src="//hstatic.net/0/0/global/api.jquery.js" type="text/javascript"></script>
-    <script src="//hstatic.net/0/0/global/jquery.validate.js" type="text/javascript"></script> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no">
-    {{-- <script defer="" src="https://stats.hstatic.net/beacon.min.js" hrv-beacon-t="200000680123"></script> --}}
-    {{-- <style>
-        .grecaptcha-badge {
-            visibility: hidden;
-        }
-    </style> --}}
-    {{-- <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-24C1XZ9BDQ"></script> --}}
 </head>
 
 <body style="">
