@@ -305,6 +305,10 @@ use Illuminate\Support\Facades\Auth;
                                 role="tab" aria-controls="modalLogin" aria-selected="true">Đăng nhập</a>
                             <a class="nav-link" id="modalForgetTab" data-toggle="pill" href="#modalForget"
                                 role="tab" aria-controls="modalForget" aria-selected="false">Quên mật khẩu</a>
+                            @if (Auth::guard('customers')->user() != null)
+                            <a class="nav-link" id="modalChangPwTab" data-toggle="pill" href="#modalChangPw"
+                            role="tab" aria-controls="modalChangPw" aria-selected="false">Đổi thông tin</a>
+                            @endif
                             <a class="nav-link" id="modalRegisterTab" data-toggle="pill" href="#modalRegister"
                                 role="tab" aria-controls="modalRegister" aria-selected="false">Đăng ký</a>
                             @if (Auth::guard('customers')->user() != null)
@@ -329,8 +333,8 @@ use Illuminate\Support\Facades\Auth;
 
                                         @if (Auth::guard('customers')->user())
                                             <div class="form-group">
-                                                <label for="recover-email">Name*</label>
-                                                <input type="text" id="recover-email"
+                                                <label for="name">Name*</label>
+                                                <input type="text" id="name-cunstomer"
                                                     value="{{ Auth::guard('customers')->user()->name }}"
                                                     class="form-control" disabled name="email" required>
                                             </div>
@@ -455,6 +459,79 @@ use Illuminate\Support\Facades\Auth;
                                                 data-href="{{ route('gaurd-register') }}"
                                                 class="btn btn-primary hoverOpacity">
                                                 ĐĂNG KÝ
+                                            </button>
+                                        </div>
+
+
+                                        <input id='12ddf903b3f14e8b81687b8f588adb0b' name='g-recaptcha-response'
+                                            type='hidden'><noscript
+                                            data-src='https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-'></noscript><noscript>grecaptcha.ready(function()
+                                            {grecaptcha.execute('6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-', {action:
+                                            'submit'}).then(function(token)
+                                            {document.getElementById('12ddf903b3f14e8b81687b8f588adb0b').value =
+                                            token;});});</noscript>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="modalChangPw" role="tabpanel"
+                                aria-labelledby="modalChangPwTab">
+                                <h5 class="text-center">
+                                    ĐỔI THÔNG TIN
+                                </h5>
+                                <div class="register-form-body">
+                                    <form accept-charset='UTF-8' action='/account' id='create_customer'
+                                        method='post'>
+                                        <div class="form-group">
+                                            <label for="name">Name*</label>
+                                            <input value="{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->name : ''}}" 
+                                            type="text" id="name" class="form-control"
+                                                name="customer[first_name]" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email">Email*</label>
+                                            <input value="{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->email : ''}}"
+                                            type="email" id="email" class="form-control"
+                                                name="customer[email]" disabled required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="phone">Phone*</label>
+                                            <input value="{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->phone : ''}}"
+                                            type="text" id="phone" class="form-control"
+                                                name="customer[phone]" pattern='^\+?\d{0,10}' required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="address">Address*</label>
+                                            <input value="{{Auth::guard('customers')->user() != null ? Auth::guard('customers')->user()->address : ''}}"
+                                            type="text" id="address" class="form-control"
+                                                name="customer[address]" pattern='^\+?\d{0,10}' required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password">Mật khẩu*</label>
+                                            <input type="password" id="password" class="form-control"
+                                                name="customer[password]" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newpassword">Mật khẩu mới*</label>
+                                            <input type="password" id="newpassword" class="form-control"
+                                                name="customer[password]" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="renewpassword">Nhập lại Mật khẩu mới*</label>
+                                            <input type="password" id="renewpassword" class="form-control"
+                                                name="customer[password]" required>
+                                        </div>
+                                        <p style="color:red" id="message-error-change-info"></p>
+                                        <p style="color:green" id="message-success-change-info"></p>
+
+                                        <div class="form-group">
+                                            <button type="submit" id="change-info"
+                                                class="btn btn-primary hoverOpacity">
+                                                THAY ĐỔI THÔNG TIN
                                             </button>
                                         </div>
 

@@ -268,6 +268,57 @@ $('#check_forget_password').on('click', function(e){
     })
 });
 
+//chang info
+$('#change-info').on('click', function(e){
+    e.preventDefault();
+    $('#password').val('');
+    $('#newpassword').val('');
+    $('#renewpassword').val('');
+    $('#message-success-change-info').html('');
+    $('#message-error-change-info').html('');
+    let name = $('#name').val();
+    let email = $('#email').val();
+    let phone = $('#phone').val();
+    let address = $('#address').val();
+    let password = $('#password').val();
+    let newpassword = $('#newpassword').val();
+    let renewpassword = $('#renewpassword').val();
+
+    $.ajax({
+        type: 'POST',
+        url: _appUrl + "/shop/gaurd/change-info",
+        data: {
+            _token: _token,
+            name: name,
+            email: email,
+            phone: phone,
+            address: address,
+            password: password,
+            newpassword: newpassword,
+            renewpassword: renewpassword,
+        },
+        success: function(res) {
+            if (res == 200) {
+                //thay đổi mk thành công
+                $('#message-success-change-info').html('You have successfully changed the information!');
+                $('#name-cunstomer').attr('value', name);
+                $('#password').val('');
+                $('#newpassword').val('');
+                $('#renewpassword').val('');
+            } else if (res == 401) {
+                //mk không đúng
+                $('#message-error-change-info').html('Incorrect password!');
+            } else {
+                //mk nhập lại không đúng
+                $('#message-error-change-info').html('Re-entered password is incorrect!');
+            }
+        },
+        error: function(XMLHttpRequest, textStatus) {
+            $('#message-error-change-info').html(XMLHttpRequest.responseJSON.message);
+        }
+    })
+})
+
 
 
 
