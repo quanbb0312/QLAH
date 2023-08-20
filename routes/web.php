@@ -105,5 +105,6 @@ Route::prefix('shop')->group(function () {
         Route::post('login', [GaurdController::class, 'login'])->name('gaurd-login');
         Route::get('logout', [GaurdController::class, 'logout'])->name('gaurd-logout');
         Route::post('sendmail', [GaurdController::class, 'sendMail'])->name('gaurd-sendmail');
+        Route::post('change-info', [GaurdController::class, 'changeInfo'])->name('gaurd-change-info');
     });
 });

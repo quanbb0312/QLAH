@@ -5,12 +5,14 @@ namespace App\Http\Controllers\shop;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerLoginRequest;
 use App\Http\Requests\CustomerSendMailRequest;
+use App\Http\Requests\GaurdChangeInfo;
 use App\Http\Requests\GuardRegisterRequest;
 use App\Jobs\SendEmail;
 use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class GaurdController extends Controller
 {
@@ -66,6 +68,44 @@ class GaurdController extends Controller
             return response()->json(200);
         } else {
             return response()->json(400);
+        }
+    }
+
+    public function changeInfo(GaurdChangeInfo $request) {
+        $name = $request->name;
+        $phone = $request->phone;
+        $address = $request->address;
+        $password = $request->password;
+        $user = Customer::where('id', Auth::guard('customers')->user()->id)->first();
+        if ($request->newpassword && $request->renewpassword) {
+            //đổi mật khẩu
+            $newpassword = $request->newpassword;
+            $renewpassword = $request->renewpassword;
+            if ($newpassword == $renewpassword) {
+                if (Hash::check($password, Auth::guard('customers')->user()->password)) {
+                    $user->name = $name;
+                    $user->phone = $phone;
+                    $user->address = $address;
+                    $user->password = bcrypt($newpassword);
+                    $user->save();
+                    return response()->json(200);
+                } else {
+                    return response()->json(401);
+                }
+            } else {
+                return response()->json(402);
+            }
+        } else {
+            //không đổi mật khẩu
+            if (Hash::check($password, Auth::guard('customers')->user()->password)) {
+                $user->name = $name;
+                $user->phone = $phone;
+                $user->address = $address;
+                $user->save();
+                return response()->json(200);
+            } else {
+                return response()->json(401);
+            }
         }
     }
 }
