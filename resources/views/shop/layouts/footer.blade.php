@@ -152,7 +152,6 @@ use Illuminate\Support\Facades\Auth;
         </div>
     </div>
 </footer>
-
 <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="accountModal"
     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">

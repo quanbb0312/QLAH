@@ -62,13 +62,13 @@
     <link rel="preload" href="//theme.hstatic.net/200000680123/1001107404/14/plugin.css?v=47" as="style">
     <link rel="preload" href="//theme.hstatic.net/200000680123/1001107404/14/styles.scss.css?v=47" as="style">
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="TITEK" />
+    <meta property="og:title" content="" />
     <meta property="og:image"
         content="http://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
     <meta property="og:image:secure_url"
         content="https://file.hstatic.net/200000680123/file/logo_edfb515c8ac44773af96df32e1910cf8.svg" />
     <meta property="og:url" content="http://127.0.0.1:8000/shop/" />
-    <meta property="og:site_name" content="TITEK" />
+    <meta property="og:site_name" content="" />
     <link href="//theme.hstatic.net/200000680123/1001107404/14/plugin.css?v=47" rel='stylesheet' type='text/css'
         media='all' />
     <link href="//theme.hstatic.net/200000680123/1001107404/14/styles.scss.css?v=47" rel='stylesheet' type='text/css'

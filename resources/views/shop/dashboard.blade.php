@@ -2,7 +2,7 @@
 @section('content')
     <main>
         <h1 class="d-none">
-            TITEK
+            QLAH
         </h1>
         <section id="slider">
             <div class="container">
@@ -152,7 +152,8 @@
                             <div class="proLoop">
                                 <div class="pro_content">
                                     <div class="productImg">
-                                        <a href="{{route('shop-product-detail', $product->id)}}" title="{{ $product->productName }}">
+                                        <a href="{{ route('shop-product-detail', $product->id) }}"
+                                            title="{{ $product->productName }}">
                                             <picture>
                                                 <img data-src=""
                                                     src="{{ asset('storage/products/' . $product->productImage) }}"
@@ -161,7 +162,7 @@
                                         </a>
                                     </div>
                                     <h3 class="productName">
-                                        <a href="{{route('shop-product-detail', $product->id)}}"
+                                        <a href="{{ route('shop-product-detail', $product->id) }}"
                                             title="{{ $product->productName }}">{{ $product->productName }}</a>
                                     </h3>
 
@@ -232,7 +233,8 @@
                                 <div class="pro_content">
                                     <div class="productImg">
 
-                                        <a href="{{route('shop-product-detail', $product->id)}}" title="{{ $product->productName }}">
+                                        <a href="{{ route('shop-product-detail', $product->id) }}"
+                                            title="{{ $product->productName }}">
 
                                             <picture>
                                                 <img data-src=""
@@ -242,7 +244,7 @@
                                         </a>
                                     </div>
                                     <h3 class="productName">
-                                        <a href="{{route('shop-product-detail', $product->id)}}"
+                                        <a href="{{ route('shop-product-detail', $product->id) }}"
                                             title="{{ $product->productName }}">{{ $product->productName }}</a>
                                     </h3>
 
