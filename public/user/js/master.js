@@ -2,18 +2,16 @@
  $('body').on('click', '.AddCartLoop', function(e) {
     e.preventDefault();
     let id = $(this).attr('data-id');
-    let urlCart = $(this).attr('data-href');
-    let url = $(this).attr('href');
     $.ajax({
         type: "POST",
-        url: url,
+        url: _appUrl + "/shop/cart/add",
         data: {
             id: id,
             _token: _token
         },
         success: function(data) {
             $('a[data-type="sidebarAllMainCart"]').trigger('click');
-            getCartSidebar(urlCart);
+            getCartSidebar();
         },
         error: function() {
             $('#alertError').modal('show').find('.modal-body').html(
@@ -23,11 +21,11 @@
 });
 
 //get list product in cart
-function getCartSidebar(urlCart) {
+function getCartSidebar() {
     setTimeout(function() {
         $.ajax({
             type: "GET",
-            url: urlCart,
+            url: _appUrl + "/shop/cart/list-cart",
             data: {
                 _token: _token
             },
@@ -52,7 +50,7 @@ function showProductCart(data) {
         count++;
         item += `
                 <div class="itemMain" data-id="${value.id}">
-                <a><img class="itemImage img-fluid" src="{{ asset('storage/products/'.${value.image}}}"/></a>
+                <a><img class="itemImage img-fluid" src="${_appUrl}/storage/products/${value.image}"/></a>
                 <div class="itemInfo">
                 <a class="itemTitle">${value.nameVi}</a>
                 <div class="itemPriceInfo">
@@ -87,11 +85,10 @@ function showProductCart(data) {
 //update cart
 function updateQuantitySidebar(that) {
     var idItem = $(that).parent().find('input').attr('data-id');
-    var href = $(that).parent().find('input').attr('data-href');
     var quanItem = $(that).parent().find('input').val();
     $.ajax({
         type: 'POST',
-        url: href,
+        url: _appUrl + "/shop/cart/update",
         data: {
             _token: _token,
             id: idItem,
@@ -131,10 +128,9 @@ $('body').on('change', '.sidebarAllMainCart .itemQuantityCart input', function(e
 $('body').on('click', '.removeItemCart', function(e) {
     e.preventDefault();
     var id = $(this).parents('.itemMain').attr('data-id');
-    var href = $(this).attr('data-href');
     $.ajax({
         type: 'POST',
-        url: href,
+        url: _appUrl + "/shop/cart/remove",
         data: {
             _token: _token,
             id: id,
@@ -150,26 +146,23 @@ $('body').on('click', '.removeItemCart', function(e) {
 
 // show cart modal
 $('a[data-type="sidebarAllMainCart"]').on('click', function() {
-    let href = $(this).attr('data-href');
-    getCartSidebar(href);
+    getCartSidebar();
 });
 
 //register customer
 $('#register-customer').on('click', function(e) {
-    $('#message-login').html('');
+    $('#message-error-login').html('');
     $('#message-error-create').html('');
     e.preventDefault();
-    let csrf = '{{ csrf_token() }}';
     let name = $('#register-first-name').val();
     let email = $('#register-email').val();
     let phone = $('#register-phone').val();
     let address = $('#register-address').val();
     let password = $('#register-password').val();
-    let href = $(this).attr('data-href');
 
     $.ajax({
         type: 'POST',
-        url: href,
+        url: _appUrl + "/shop/gaurd/register",
         data: {
             _token: _token,
             name: name,
@@ -180,6 +173,7 @@ $('#register-customer').on('click', function(e) {
         },
         success: function(res) {
             $('#modalLoginTab').trigger('click');
+            $('#message-success-login').html('You have successfully registered your account!!!')
         },
         error: function(XMLHttpRequest, textStatus) {
             console.log(XMLHttpRequest.responseJSON.message);
@@ -193,13 +187,12 @@ $('#login-customer').on('click', function(e) {
     $('#message-error-login').html('');
     $('#message-success-login').html('');
     e.preventDefault();
-    let href = $(this).attr('data-href');
     let email = $('#login-email').val();
     let password = $('#login-password').val();
 
     $.ajax({
         type: 'POST',
-        url: href,
+        url: _appUrl + "/shop/gaurd/login",
         data: {
             _token: _token,
             email: email,
@@ -219,7 +212,7 @@ $('#login-customer').on('click', function(e) {
 });
 
 $('#payment-view').on('click', function(e) {
-    $('#message-login').html('');
+    $('#message-error-login').html('');
     e.preventDefault();
     let href = $(this).attr('href');
 
@@ -237,7 +230,7 @@ $('#payment-view').on('click', function(e) {
                 console.log('have not customer');
                 $('.closeSidebar').trigger('click');
                 $('#customer-setting').trigger('click');
-                $('#message-login').html('You need to login to access the payment page');
+                $('#message-error-login').html('You need to login to access the payment page');
             }
         },
         error: function(XMLHttpRequest, textStatus) {
@@ -252,11 +245,10 @@ $('#check_forget_password').on('click', function(e){
     $('#message-success-login').html('');
     $('#message-error-email').html('');
     let email = $('#recover-email').val();
-    let href = $(this).attr('data-href');
 
     $.ajax({
         type: 'POST',
-        url: href,
+        url: _appUrl + "/shop/gaurd/sendmail",
         data: {
             _token: _token,
             email: email,

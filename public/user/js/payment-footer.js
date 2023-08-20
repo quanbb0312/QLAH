@@ -3,11 +3,12 @@ $(document).ready(function() {
 
     function checkPayment() {
         let check = localStorage.getItem('checkout');
+        let history = _appUrl + "/shop/payment/history";
         if (check) {
             localStorage.removeItem('checkout');
             $('#message-checkout').attr('style', 'padding:5px');
             $('#message-checkout').html(
-                "You have successfully placed an order. Go to <a style='color:red' href='{{ route('payment-history') }}'>Order History</a> to review your order history"
+                "You have successfully placed an order. Go to <a style='color:red' href='"+history+"'>Order History</a> to review your order history"
             );
         }
     }
@@ -17,19 +18,18 @@ $(document).ready(function() {
         $('#message-error').html('');
         e.preventDefault();
         let href = $(this).attr('data-href');
-        let csrf = '{{ csrf_token() }}';
         let name = $('#billing_address_full_name').val();
         let email = $('#checkout_user_email').val();
         let phone = $('#billing_address_phone').val();
         let address = $('#billing_address_address').val();
         let note = $('#billing_note').val();
-        console.log(href);
+        let home = _appUrl + "/shop";
 
         $.ajax({
             type: 'POST',
             url: href,
             data: {
-                _token: csrf,
+                _token: _token,
                 name: name,
                 email: email,
                 phone: phone,
@@ -43,12 +43,12 @@ $(document).ready(function() {
                 } else if (res == 401) {
                     $('#message-error').attr('style', 'padding:5px');
                     $('#message-error').html(
-                        "Please add product to cart before checkout!!! Back to <a href='{{ route('dashboad') }}'>Home</a>"
+                        "Please add product to cart before checkout!!! Back to <a href='"+home+"'>Home</a>"
                     );
                 } else {
                     $('#message-error').attr('style', 'padding:5px');
                     $('#message-error').html(
-                        "Please login before checkout!!! Go to <a href='{{ route('dashboad') }}'>Login</a>"
+                        "Please login before checkout!!! Go to <a href='"+home+"'>Login</a>"
                     );
                 }
             },
