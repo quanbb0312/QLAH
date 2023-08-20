@@ -2,6 +2,7 @@
 <html class="no-js" lang="vi">
 
 <head>
+    <base href="./">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="revisit-after" content="1 day" />
@@ -82,7 +83,10 @@
         type='text/css' media='all' />
     <meta name="google-site-verification" content="K-HvD-MG-MkX8DKJSpDPAtryQJ4q3wNAdFsH-FryVlk" />
     <link rel="stylesheet" href="{{asset('user/css/master.css')}}" type="text/css">
-
+    <script>
+        var _appUrl = '{!! url('/') !!}';
+        var _token = '{!! csrf_token() !!}';
+    </script>
 </head>
 
 <body id="titek" class="index template-index">

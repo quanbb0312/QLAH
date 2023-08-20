@@ -4,7 +4,7 @@
     <title>
         QLAH - Thanh toán đơn hàng
     </title>
-    <link rel="stylesheet" href="../../user/payment.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('user/payment.css')}}" type="text/css">
     <meta name="description" content="QLAH - Thanh toán đơn hàng">
     <link href="//theme.hstatic.net/200000680123/1001107404/14/check_out.css?v=47" rel="stylesheet" type="text/css"
         media="all">
@@ -16,6 +16,10 @@
     <script src="{{asset('user/js/payment-header.js')}}"></script>
     <script defer="" src="https://stats.hstatic.net/beacon.min.js" hrv-beacon-t="200000680123"></script>
     <script>
+        var _appUrl = '{!! url('/') !!}';
+        var _token = '{!! csrf_token() !!}';
+    </script>
+    <script>
         window.HaravanAnalytics.ga4 = "G-24C1XZ9BDQ";
         window.HaravanAnalytics.enhancedEcommercev4 = true;
         window.dataLayer = window.dataLayer || [];
@@ -25,6 +29,7 @@
         gtag('js', new Date());
         gtag('config', 'G-24C1XZ9BDQ');
     </script>
+    <script src="{{asset('user/js/payment-footer.js')}}"></script>
 </head>
 
 <body style="">
@@ -63,7 +68,7 @@
                                                         <div class="product-thumbnail-wrapper">
                                                             <img class="product-thumbnail-image"
                                                                 alt="{{ $product['nameVi'] }}"
-                                                                src="//product.hstatic.net/200000680123/product/1a7cba9a-8c0b-421d-b661-e5517f2d56bf_8598f3ac7b2c40719121814101a18ab8_small.png">
+                                                                src="{{asset('storage/products/' . $product['image'])}}">
                                                         </div>
                                                         <span class="product-thumbnail-quantity"
                                                             aria-hidden="true">{{ $product['quantity'] }}</span>
@@ -332,7 +337,7 @@
         </div>
 
     </div>
-<script src="{{asset('user/js/payment-footer.js')}}"></script>
+
 </body>
 
 </html>
