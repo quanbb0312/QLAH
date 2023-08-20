@@ -271,9 +271,6 @@ $('#check_forget_password').on('click', function(e){
 //chang info
 $('#change-info').on('click', function(e){
     e.preventDefault();
-    $('#password').val('');
-    $('#newpassword').val('');
-    $('#renewpassword').val('');
     $('#message-success-change-info').html('');
     $('#message-error-change-info').html('');
     let name = $('#name').val();

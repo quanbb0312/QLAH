@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class GaurdChangeInfo extends FormRequest
 {
@@ -23,7 +25,7 @@ class GaurdChangeInfo extends FormRequest
     {
         return [
             'name' => ['required', 'min:5', 'max:50'],
-            'phone' => ['required', 'min:10', 'max:11', 'unique:users'],
+            'phone' => ['required', 'min:10', 'max:11', Rule::unique('customers')->ignore(Auth::guard('customers')->user()->id)],
             'address' => ['required', 'min:3', 'max:200'],
             'password' => ['required', 'min:3', 'max:200']
         ];
