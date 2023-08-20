@@ -15,7 +15,7 @@ class Order extends Model
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
-    
+
     public function products()
     {
         return $this->belongsToMany(Product::class, 'order_details', 'order_id', 'product_id');
@@ -24,11 +24,11 @@ class Order extends Model
     public function scopeSearch($query)
     {
         if ($key = request()->key) {
-            $query->join('customers', 'orders.customer_id','=','customers.id')
-            ->where('customers.name', 'like', '%' . $key . '%')
-            ->orwhere('customers.email ', 'like', '%' . $key . '%')
-            ->orwhere('customers.phone', 'like', '%' . $key . '%')
-            ->orwhere('customers.address', 'like', '%' . $key . '%');
+            $query->join('customers', 'orders.customer_id', '=', 'customers.id')
+                ->where('customers.name', 'like', '%' . $key . '%')
+                ->orwhere('customers.email', 'like', '%' . $key . '%')
+                ->orwhere('customers.phone', 'like', '%' . $key . '%')
+                ->orwhere('customers.address', 'like', '%' . $key . '%');
         }
         return $query;
     }

@@ -21,9 +21,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($products as $key => $product)
                                     <tr>
-                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $product->productName }}</td>
                                         <td>{{ number_format($product->productPrice, 0, '.', ',') }} VNĐ</td>
                                         <td>{{ $product->productQuantity }}</td>
@@ -33,7 +33,6 @@
                                         <td>{{ $product->productDetails }}</td>
                                         <td>{{ $product->category->catName }}</td>
                                         <td>
-
                                             <a href="{{ route('product-edit', $product->id) }}"
                                                 class="btn btn-primary">Edit</a>
                                             <a href="#" class="btn btn-danger" data-toggle="modal"

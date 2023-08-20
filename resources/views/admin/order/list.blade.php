@@ -5,7 +5,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Category List</h3> 
+                        <h3 class="card-title">Order List</h3>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -30,7 +30,8 @@
                                         <td>{{ number_format($order->total) }} VND</td>
                                         <td>{{ $order->note }}</td>
                                         <td>
-                                            <a href="{{ route('order-show-detail', $order->id) }}" class="btn btn-primary">Show</a>
+                                            <a href="{{ route('order-show-detail', $order->id) }}"
+                                                class="btn btn-primary">Show</a>
 
                                             <!-- Delete Form -->
                                             <a href="#" class="btn btn-danger" data-toggle="modal"
@@ -41,7 +42,8 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteModalLabel{{ $order->id }}">
+                                                            <h5 class="modal-title"
+                                                                id="deleteModalLabel{{ $order->id }}">
                                                                 Confirm Deletion</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -58,7 +60,8 @@
                                                                 method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
                                                             </form>
                                                         </div>
                                                     </div>

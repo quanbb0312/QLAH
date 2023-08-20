@@ -5,7 +5,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Category List</h3> 
+                        <h3 class="card-title">Customer List</h3>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -18,9 +18,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($customers as $customer)
+                                @foreach ($customers as $key => $customer)
                                     <tr>
-                                        <td>{{ $customer->id }}</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $customer->name }}</td>
                                         <td>{{ $customer->phone }}</td>
                                         <td>{{ $customer->email }}</td>
@@ -38,7 +38,8 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteModalLabel{{ $customer->id }}">
+                                                            <h5 class="modal-title"
+                                                                id="deleteModalLabel{{ $customer->id }}">
                                                                 Confirm Deletion</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -56,7 +57,8 @@
                                                                 method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
                                                             </form>
                                                         </div>
                                                     </div>

@@ -82,16 +82,11 @@
     <link href="//theme.hstatic.net/200000680123/1001107404/14/styles-no-index.scss.css?v=47" rel='stylesheet'
         type='text/css' media='all' />
     <meta name="google-site-verification" content="K-HvD-MG-MkX8DKJSpDPAtryQJ4q3wNAdFsH-FryVlk" />
-<<<<<<< Updated upstream
-    <link rel="stylesheet" href="{{asset('user/css/master.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('user/css/master.css') }}" type="text/css">
     <script>
         var _appUrl = '{!! url('/') !!}';
         var _token = '{!! csrf_token() !!}';
     </script>
-=======
-    <link rel="stylesheet" href="{{ asset('user/css/master.css') }}" type="text/css">
-
->>>>>>> Stashed changes
 </head>
 
 <body id="titek" class="index template-index">
