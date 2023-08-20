@@ -28,9 +28,9 @@ class ProductStoreRequest extends FormRequest
             'productSlug' => ['required', 'unique:products', 'min:3'],
             'productPrice' => ['required', 'min:10000', 'max:1000000000', 'numeric'],
             'productDetails' => ['required', 'min:3', 'max:200'],
-            'image' => ['required', 'mimes:jpg,bmp,png'],
+            'image' => ['required', 'mimes:jpg,bmp,png,webp'],
             'productQuantity' => ['required', 'numeric', 'min:1', 'max:1000'],
-            'category_id' => ['required', 'numeric', 'in:'.implode(',', $categories_id)],
+            'category_id' => ['required', 'numeric', 'in:' . implode(',', $categories_id)],
         ];
     }
 }

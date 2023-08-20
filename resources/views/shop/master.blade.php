@@ -18,9 +18,9 @@
     <meta name="robots" content="index,follow,noodp">
     <meta name="revisit-after" content="1 day" />
     <script defer src='https://stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000680123'></script>
-    <script type='text/javascript' src="{{asset('user/js/header-master.js')}}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/header-master.js') }}"></script>
     <script async src='https://www.googletagmanager.com/gtag/js?id=G-24C1XZ9BDQ'></script>
-    <script src="{{asset('user/js/header-master1.js')}}"></script>
+    <script src="{{ asset('user/js/header-master1.js') }}"></script>
     <!-- SEO META DESCRIPTION -->
     <meta name="description" content="" />
     <!-- END SEO META DESCRIPTION -->
@@ -82,11 +82,16 @@
     <link href="//theme.hstatic.net/200000680123/1001107404/14/styles-no-index.scss.css?v=47" rel='stylesheet'
         type='text/css' media='all' />
     <meta name="google-site-verification" content="K-HvD-MG-MkX8DKJSpDPAtryQJ4q3wNAdFsH-FryVlk" />
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="{{asset('user/css/master.css')}}" type="text/css">
     <script>
         var _appUrl = '{!! url('/') !!}';
         var _token = '{!! csrf_token() !!}';
     </script>
+=======
+    <link rel="stylesheet" href="{{ asset('user/css/master.css') }}" type="text/css">
+
+>>>>>>> Stashed changes
 </head>
 
 <body id="titek" class="index template-index">
@@ -104,12 +109,9 @@
     @include('shop.layouts.header')
 
     @yield('content')
-
-
     @include('shop.layouts.footer')
-
-    <script src="{{asset('user/js/default.js')}}"></script>
-    <script src="{{asset('user/js/default2.js')}}"></script>   
+    <script src="{{ asset('user/js/default.js') }}"></script>
+    <script src="{{ asset('user/js/default2.js') }}"></script>
     <script src="//theme.hstatic.net/200000680123/1001107404/14/plugin.js?v=47"></script>
     <script src="//theme.hstatic.net/200000680123/1001107404/14/main.js?v=47"></script>
     <script src='//hstatic.net/0/0/global/option_selection.js' type='text/javascript'></script>
@@ -119,7 +121,7 @@
     <script>
         var _token = '{!! csrf_token() !!}';
     </script>
-    <script src="{{asset('user/js/master.js')}}"></script>
+    <script src="{{ asset('user/js/master.js') }}"></script>
 </body>
 
 </html>

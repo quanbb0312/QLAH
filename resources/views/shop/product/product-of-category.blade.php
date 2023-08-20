@@ -27,6 +27,9 @@
                                                     id="filterForm">
                                                     <label class="sortBy" for="sortBy">Sắp xếp theo:</label>
                                                     <select id="sortBy" class="form-control" name="filter">
+                                                        <option value="">
+                                                            ---chọn khoảng giá---
+                                                        </option>
                                                         <option value="1"
                                                             {{ $request->filter == '1' ? 'selected' : '' }}>Dưới 1 triệu
                                                         </option>
@@ -57,8 +60,8 @@
                                         <div class="proLoop">
                                             <div class="pro_content">
                                                 <div class="productImg">
-                                                    <a href="{{route('shop-product-detail', $product->id)}}" title="{{ $product->productName }}"
-                                                        class="productImgLink">
+                                                    <a href="{{ route('shop-product-detail', $product->id) }}"
+                                                        title="{{ $product->productName }}" class="productImgLink">
                                                         <picture>
                                                             <img src="{{ asset('storage/products/' . $product->productImage) }}"
                                                                 class="img-fluid lazyloaded"
@@ -67,7 +70,7 @@
                                                     </a>
                                                 </div>
                                                 <h3 class="productName">
-                                                    <a href="{{route('shop-product-detail', $product->id)}}"
+                                                    <a href="{{ route('shop-product-detail', $product->id) }}"
                                                         title="{{ $product->productName }}">{{ $product->productName }}</a>
                                                 </h3>
                                                 <div class="p-price-group">
