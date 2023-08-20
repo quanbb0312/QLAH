@@ -15,7 +15,7 @@ class DashboadController extends Controller
 
         $keyboards = Category::where('id', 4)->with('products')->first();
         $screens = Category::where('id', 3)->with('products')->first();
-        return view('shop.dashboad', compact('listCategory', 'keyboards', 'screens'));
+        return view('shop.dashboard', compact('listCategory', 'keyboards', 'screens'));
     }
 
     public function checkGuard()
