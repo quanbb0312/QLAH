@@ -26,7 +26,7 @@ class CategoryStoreRequest extends FormRequest
             'catName' => ['required', 'unique:categories', 'min:3', 'max:50'],
             'catSlug' => ['required', 'unique:categories', 'min:3', 'max:50'],
             'catDescriptions' => ['required', 'min:3', 'max:50'],
-            'catImage' => ['required', 'mimes:jpg,bmp,png'],
+            'catImage' => ['required', 'mimes:jpg,bmp,png,webp'],
         ];
     }
 }

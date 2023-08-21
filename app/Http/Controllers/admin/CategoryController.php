@@ -16,6 +16,11 @@ class CategoryController extends Controller
     {
         return view('admin.category.add');
     }
+    public function list()
+    {
+        $categories = Category::search()->paginate($this->paginate);
+        return view('admin.category.list', compact('categories'));
+    }
 
     public function save(CategoryStoreRequest $request)
     {
@@ -91,10 +96,5 @@ class CategoryController extends Controller
             }
             return redirect()->back();
         }
-    }
-    public function list()
-    {
-        $categories = Category::search()->paginate($this->paginate);
-        return view('admin.category.list', compact('categories'));
     }
 }

@@ -87,25 +87,27 @@ class AuthController extends Controller
     }
 
     //show view confirm email
-    public function showViewEmail() {
+    public function showViewEmail()
+    {
         return view('admin.auth.confirm-email');
     }
 
     //send mail
-    public function sendMail(AdminSendMailRequest $request) {
+    public function sendMail(AdminSendMailRequest $request)
+    {
         $email = $request->email;
         $user = User::where('email', $email)->first();
-        $password = rand(100000,999999);
+        $password = rand(100000, 999999);
         if ($email && $user) {
-            $data=[
-                'type'=> 'Chào bạn,',
-                'task'=>'Bạn',
-                'content'=>'đã gửi yêu cầu lấy lại mật khẩu tài khoản !',
-                'note'=>'Dưới đây là mật khẩu của bạn. Không chia sẽ mật khẩu với người khác.
+            $data = [
+                'type' => 'Chào bạn,',
+                'task' => 'Bạn',
+                'content' => 'đã gửi yêu cầu lấy lại mật khẩu tài khoản !',
+                'note' => 'Dưới đây là mật khẩu của bạn. Không chia sẽ mật khẩu với người khác.
                 Hãy nhanh chóng đổi mật khẩu để tăng bảo mật cho tài khoản!
-                <br><br>Mật khẩu: '.$password.'<br>'
+                <br><br>Mật khẩu: ' . $password . '<br>'
             ];
-            SendEmail::dispatch($data,$email)->delay(now()->addMinute());
+            SendEmail::dispatch($data, $email)->delay(now()->addMinute());
 
             $user->password = bcrypt($password);
             $user->save();
@@ -116,12 +118,14 @@ class AuthController extends Controller
     }
 
     ///show view change password
-    public function showViewChangePassword(Request $request) {
+    public function showViewChangePassword(Request $request)
+    {
         return view('admin.auth.change-password');
     }
 
     //change password
-    public function changePassword(AdminChangePasswordRequest $request) {
+    public function changePassword(AdminChangePasswordRequest $request)
+    {
         $email = $request->email;
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;

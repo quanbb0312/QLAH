@@ -102,7 +102,6 @@
         </div>
     </div>
     @include('shop.layouts.header')
-
     @yield('content')
     @include('shop.layouts.footer')
     <script src="{{ asset('user/js/default.js') }}"></script>
