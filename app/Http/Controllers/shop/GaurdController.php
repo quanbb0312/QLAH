@@ -71,7 +71,8 @@ class GaurdController extends Controller
         }
     }
 
-    public function changeInfo(GaurdChangeInfo $request) {
+    public function changeInfo(GaurdChangeInfo $request)
+    {
         $name = $request->name;
         $phone = $request->phone;
         $address = $request->address;

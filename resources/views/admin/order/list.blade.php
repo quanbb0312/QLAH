@@ -6,6 +6,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Order List</h3>
+                        @if (Session::has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('error') }}
+                            </div>
+                        @endif
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
                         <table class="table">
                             <thead>
                                 <tr>

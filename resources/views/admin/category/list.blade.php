@@ -5,7 +5,17 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Category List</h3>   
+                        <h3 class="card-title">Category List</h3>
+                        @if (Session::has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('error') }}
+                            </div>
+                        @endif
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
                         <table class="table">
                             <thead>
                                 <tr>
@@ -28,7 +38,8 @@
                                         </td>
                                         <td>{{ $category->catDescriptions }}</td>
                                         <td>
-                                            <a href="{{ route('category-edit', $category->id) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('category-edit', $category->id) }}"
+                                                class="btn btn-primary">Edit</a>
 
                                             <!-- Delete Form -->
                                             <a href="#" class="btn btn-danger" data-toggle="modal"
@@ -39,7 +50,8 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteModalLabel{{ $category->id }}">
+                                                            <h5 class="modal-title"
+                                                                id="deleteModalLabel{{ $category->id }}">
                                                                 Confirm Deletion</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -57,7 +69,8 @@
                                                                 method="POST">
                                                                 @method('DELETE')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Delete</button>
                                                             </form>
                                                         </div>
                                                     </div>

@@ -43,6 +43,7 @@ class CartController extends Controller
         }
         session()->put('cart', $cart);
         $data = [];
+        //trả về true or false
         $data['cart'] = session()->has('cart');
         return response()->json($data);
     }

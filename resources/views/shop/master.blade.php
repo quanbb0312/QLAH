@@ -83,6 +83,7 @@
         type='text/css' media='all' />
     <meta name="google-site-verification" content="K-HvD-MG-MkX8DKJSpDPAtryQJ4q3wNAdFsH-FryVlk" />
     <link rel="stylesheet" href="{{ asset('user/css/master.css') }}" type="text/css">
+    {{-- jscript của cart --}}
     <script>
         var _appUrl = '{!! url('/') !!}';
         var _token = '{!! csrf_token() !!}';

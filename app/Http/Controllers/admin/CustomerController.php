@@ -7,6 +7,7 @@ use App\Http\Requests\CustomerStoreRequest;
 use App\Http\Requests\CustomerUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Order;
 
 class CustomerController extends Controller
 {
@@ -62,8 +63,13 @@ class CustomerController extends Controller
     public function delete($id)
     {
         // Xóa khách hàng dựa trên $id từ CSDL
+        $checkorder = Order::where('customer_id', $id)->first();
+        if ($checkorder) {
+            return redirect()->back()->with('error', 'Customer can not be deleted because it is already have a customer in order');
+        }
         $customer = Customer::findOrFail($id);
         $customer->delete();
+
 
         return redirect()->route('customer-list')->with('success', 'Customer deleted successfully!');
     }

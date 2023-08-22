@@ -1,19 +1,23 @@
- ///add to cart
- $('body').on('click', '.AddCartLoop', function(e) {
+///add to cart
+$('body').on('click', '.AddCartLoop', function (e) {
     e.preventDefault();
     let id = $(this).attr('data-id');
+    // câu lệnh gọi ajax
     $.ajax({
+        //method: 'POST'
         type: "POST",
+        //url: đường dẫn
         url: _appUrl + "/shop/cart/add",
+        //data gửi liệu
         data: {
             id: id,
             _token: _token
         },
-        success: function(data) {
+        success: function (data) {
             $('a[data-type="sidebarAllMainCart"]').trigger('click');
             getCartSidebar();
         },
-        error: function() {
+        error: function () {
             $('#alertError').modal('show').find('.modal-body').html(
                 'Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
         }
@@ -22,17 +26,17 @@
 
 //get list product in cart
 function getCartSidebar() {
-    setTimeout(function() {
+    setTimeout(function () {
         $.ajax({
             type: "GET",
             url: _appUrl + "/shop/cart/list-cart",
             data: {
                 _token: _token
             },
-            success: function(data) {
+            success: function (data) {
                 showProductCart(data);
             },
-            error: function() {
+            error: function () {
                 $('#alertError').modal('show').find('.modal-body').html(
                     'Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');
             }
@@ -45,7 +49,7 @@ function showProductCart(data) {
     let item = '';
     let total = 0;
     let count = 0;
-    $.each(data, function(index, value) {
+    $.each(data, function (index, value) {
         total += value.price * value.quantity;
         count++;
         item += `
@@ -94,19 +98,19 @@ function updateQuantitySidebar(that) {
             id: idItem,
             quantity: quanItem
         },
-        success: function(cart) {
+        success: function (cart) {
             $('.headerCartCount').html(cart.count)
             $('.totalPrice span').last().html(new Intl.NumberFormat('vi-VN', {
                 style: 'currency',
                 currency: 'VND'
             }).format(cart.TotalAllRefreshAjax))
         },
-        error: function(XMLHttpRequest, textStatus) {
+        error: function (XMLHttpRequest, textStatus) {
             Haravan.onError(XMLHttpRequest, textStatus);
         }
     })
 }
-$('body').on('click', '.sidebarAllMainCart .itemQuantityCart .qtyBtn', function(e) {
+$('body').on('click', '.sidebarAllMainCart .itemQuantityCart .qtyBtn', function (e) {
     e.preventDefault();
     let type = $(this).data('type');
     let max = $('#itemQuantityCart').attr('max');
@@ -120,12 +124,12 @@ $('body').on('click', '.sidebarAllMainCart .itemQuantityCart .qtyBtn', function(
     }
     updateQuantitySidebar($(this))
 })
-$('body').on('change', '.sidebarAllMainCart .itemQuantityCart input', function(e) {
+$('body').on('change', '.sidebarAllMainCart .itemQuantityCart input', function (e) {
     updateQuantitySidebar($(this));
 })
 
 //remove product in cart
-$('body').on('click', '.removeItemCart', function(e) {
+$('body').on('click', '.removeItemCart', function (e) {
     e.preventDefault();
     var id = $(this).parents('.itemMain').attr('data-id');
     $.ajax({
@@ -135,22 +139,22 @@ $('body').on('click', '.removeItemCart', function(e) {
             _token: _token,
             id: id,
         },
-        success: function(cart) {
+        success: function (cart) {
             showProductCart(cart);
         },
-        error: function(XMLHttpRequest, textStatus) {
+        error: function (XMLHttpRequest, textStatus) {
             Haravan.onError(XMLHttpRequest, textStatus);
         }
     })
 });
 
 // show cart modal
-$('a[data-type="sidebarAllMainCart"]').on('click', function() {
+$('a[data-type="sidebarAllMainCart"]').on('click', function () {
     getCartSidebar();
 });
 
 //register customer
-$('#register-customer').on('click', function(e) {
+$('#register-customer').on('click', function (e) {
     $('#message-error-login').html('');
     $('#message-error-create').html('');
     e.preventDefault();
@@ -171,11 +175,11 @@ $('#register-customer').on('click', function(e) {
             address: address,
             password: password,
         },
-        success: function(res) {
+        success: function (res) {
             $('#modalLoginTab').trigger('click');
             $('#message-success-login').html('You have successfully registered your account!!!')
         },
-        error: function(XMLHttpRequest, textStatus) {
+        error: function (XMLHttpRequest, textStatus) {
             console.log(XMLHttpRequest.responseJSON.message);
             $('#message-error-create').html(XMLHttpRequest.responseJSON.message);
         }
@@ -183,7 +187,7 @@ $('#register-customer').on('click', function(e) {
 });
 
 //login-customer
-$('#login-customer').on('click', function(e) {
+$('#login-customer').on('click', function (e) {
     $('#message-error-login').html('');
     $('#message-success-login').html('');
     e.preventDefault();
@@ -198,20 +202,20 @@ $('#login-customer').on('click', function(e) {
             email: email,
             password: password,
         },
-        success: function(res) {
+        success: function (res) {
             if (res == 200) {
                 location.reload();
             } else {
                 $('#message-error-login').html('Email or passord is not correct!');
             }
         },
-        error: function(XMLHttpRequest, textStatus) {
+        error: function (XMLHttpRequest, textStatus) {
             $('#message-error-login').html(XMLHttpRequest.responseJSON.message);
         }
     })
 });
 
-$('#payment-view').on('click', function(e) {
+$('#payment-view').on('click', function (e) {
     $('#message-error-login').html('');
     e.preventDefault();
     let href = $(this).attr('href');
@@ -222,7 +226,7 @@ $('#payment-view').on('click', function(e) {
         data: {
             _token: _token,
         },
-        success: function(res) {
+        success: function (res) {
             if (res == 200) {
                 console.log('have customer');
                 $('#payment-get-view').submit();
@@ -233,14 +237,14 @@ $('#payment-view').on('click', function(e) {
                 $('#message-error-login').html('You need to login to access the payment page');
             }
         },
-        error: function(XMLHttpRequest, textStatus) {
+        error: function (XMLHttpRequest, textStatus) {
             Haravan.onError(XMLHttpRequest, textStatus);
         }
     })
 })
 
 //forget password
-$('#check_forget_password').on('click', function(e){
+$('#check_forget_password').on('click', function (e) {
     e.preventDefault();
     $('#message-success-login').html('');
     $('#message-error-email').html('');
@@ -253,7 +257,7 @@ $('#check_forget_password').on('click', function(e){
             _token: _token,
             email: email,
         },
-        success: function(res) {
+        success: function (res) {
             if (res == 200) {
                 $('#modalLoginTab').trigger('click');
                 $('#message-success-login').html('New password has been sent to your email');
@@ -262,14 +266,14 @@ $('#check_forget_password').on('click', function(e){
                 $('#message-error-email').html('Email is not registered!');
             }
         },
-        error: function(XMLHttpRequest, textStatus) {
+        error: function (XMLHttpRequest, textStatus) {
             $('#message-error-email').html(XMLHttpRequest.responseJSON.message);
         }
     })
 });
 
 //chang info
-$('#change-info').on('click', function(e){
+$('#change-info').on('click', function (e) {
     e.preventDefault();
     $('#message-success-change-info').html('');
     $('#message-error-change-info').html('');
@@ -294,7 +298,7 @@ $('#change-info').on('click', function(e){
             newpassword: newpassword,
             renewpassword: renewpassword,
         },
-        success: function(res) {
+        success: function (res) {
             if (res == 200) {
                 //thay đổi mk thành công
                 $('#message-success-change-info').html('You have successfully changed the information!');
@@ -310,7 +314,7 @@ $('#change-info').on('click', function(e){
                 $('#message-error-change-info').html('Re-entered password is incorrect!');
             }
         },
-        error: function(XMLHttpRequest, textStatus) {
+        error: function (XMLHttpRequest, textStatus) {
             $('#message-error-change-info').html(XMLHttpRequest.responseJSON.message);
         }
     })

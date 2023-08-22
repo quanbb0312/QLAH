@@ -7,6 +7,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Product List</h3>
+                        @if (Session::has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('error') }}
+                            </div>
+                        @endif
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>

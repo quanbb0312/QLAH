@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -54,11 +55,16 @@ class ProductController extends Controller
             return redirect()->back();
         }
     }
-
-
     public function delete($id)
     {
-        Product::where('id', '=', $id)->delete();
+        $checkproductinorder = OrderDetail::where('product_id', $id)->first();
+        if ($checkproductinorder) {
+            return redirect()->back()->with('error', 'You can not delete this product because it is already have a product in order.');
+        }
+        $pro = Product::FindOrFail($id);
+        $image = 'public/products/' . $pro->productImage;
+        Storage::delete($image);
+        $pro->delete();
         return redirect()->back()->with('success', 'Product delete successfully!');
     }
     public function edit($id)

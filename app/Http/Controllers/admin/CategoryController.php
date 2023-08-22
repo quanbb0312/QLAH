@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -51,7 +52,15 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        Category::where('id', '=', $id)->delete();
+        // check xem sản phẩm có thuộc danh mục hay không
+        $checkproduct = Product::where('category_id', $id)->first();
+        if ($checkproduct) {
+            return redirect()->back()->with('error', 'You can not delete this category because it is already have product.');
+        }
+        $category = Category::FindOrFail($id);
+        $image = 'public/categoryImage/' . $category->catImage;
+        Storage::delete($image);
+        $category->delete();
         return redirect()->back()->with('success', 'Category deleted successfully!');
     }
 
