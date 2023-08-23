@@ -20,6 +20,27 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#menu-user" aria-expanded="false"
+                aria-controls="menu-user">
+                <span class="menu-title">User Manager</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+            </a>
+            <div class="collapse" id="menu-user">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user-add') }}">Add user</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user-list') }}">Show all</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user-list') }}">Edit/Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#menu-category" aria-expanded="false"
                 aria-controls="menu-category">
                 <span class="menu-title">Category Manager</span>
