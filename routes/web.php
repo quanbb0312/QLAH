@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\DashboadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\shop\CartController;
 use App\Http\Controllers\shop\DashboadController as ShopDashboadController;
 use App\Http\Controllers\shop\GaurdController;
@@ -33,6 +34,16 @@ Route::prefix('admin')->group(function () {
 // admin Product
 Route::prefix('admin')->middleware(['isLoggedIn'])->group(function () {
     Route::get('index', [DashboadController::class, 'index'])->name('admin.index');
+
+    //product
+    Route::prefix('user')->group(function () {
+        Route::get('list', [UserController::class, 'list'])->name('user-list');
+        Route::get('add', [UserController::class, 'add'])->name('user-add');
+        Route::post('save', [UserController::class, 'save'])->name('user-save');
+        Route::delete('delete/{id}', [UserController::class, 'delete'])->name('user-delete');
+        Route::get('edit/{id}', [UserController::class, 'edit'])->name('user-edit');
+        Route::post('update/{id}', [UserController::class, 'update'])->name('user-update');
+    });
 
     //product
     Route::prefix('product')->group(function () {
