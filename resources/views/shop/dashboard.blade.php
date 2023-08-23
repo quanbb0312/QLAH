@@ -217,7 +217,7 @@
             <div class="container">
                 <div class="sectionTitleAll">
                     <h2>
-                        <a href="/collections/gear">{{ $screens->catName }}</a>
+                        <a href="#">{{ $screens->catName }}</a>
                     </h2>
                 </div>
                 <div class="group-one-main-list">
@@ -232,10 +232,8 @@
                             <div class="proLoop">
                                 <div class="pro_content">
                                     <div class="productImg">
-
                                         <a href="{{ route('shop-product-detail', $product->id) }}"
                                             title="{{ $product->productName }}">
-
                                             <picture>
                                                 <img data-src=""
                                                     src="{{ asset('storage/products/' . $product->productImage) }}"
@@ -247,7 +245,6 @@
                                         <a href="{{ route('shop-product-detail', $product->id) }}"
                                             title="{{ $product->productName }}">{{ $product->productName }}</a>
                                     </h3>
-
                                     <div class="p-price-group">
 
                                         <span class="p-price">
@@ -269,7 +266,6 @@
                                         </a>
                                     </div>
                                     <div class="productAction">
-
                                         <a href="javascript:void:0" class="setQuickview"
                                             data-handle="ban-phim-akko-3087-v2-world-tour-tokyo" data-toggle="modal"
                                             data-target="#quickviewLogin" data-whatever="@quickviewLogin"><i

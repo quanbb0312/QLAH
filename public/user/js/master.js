@@ -1,81 +1,98 @@
 ///add to cart
 $('body').on('click', '.AddCartLoop', function (e) {
     e.preventDefault();
+
+    // Lấy giá trị thuộc tính 'data-id' của phần tử được bấm
     let id = $(this).attr('data-id');
-    // câu lệnh gọi ajax
+
+    // Gọi Ajax để thêm sản phẩm vào giỏ hàng
     $.ajax({
-        //method: 'POST'
         type: "POST",
-        //url: đường dẫn
-        url: _appUrl + "/shop/cart/add",
-        //data gửi liệu
+        url: _appUrl + "/shop/cart/add", // Đường dẫn tới phương thức thêm vào giỏ hàng
         data: {
             id: id,
-            _token: _token
+            _token: _token // Thêm token bảo vệ CSRF để xác thực yêu cầu
         },
         success: function (data) {
+            // Khi yêu cầu thành công, kích hoạt sự kiện 'click' trên một phần tử khác
             $('a[data-type="sidebarAllMainCart"]').trigger('click');
+
+            // Gọi hàm để cập nhật thông tin giỏ hàng trong thanh sidebar
             getCartSidebar();
         },
         error: function () {
+            // Khi xảy ra lỗi, hiển thị thông báo lỗi trong modal
             $('#alertError').modal('show').find('.modal-body').html(
-                'Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');;
+                'Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');
         }
     })
 });
 
+
 //get list product in cart
 function getCartSidebar() {
     setTimeout(function () {
+        // Gửi yêu cầu Ajax sau một thời gian chờ (0ms) để cập nhật thông tin giỏ hàng trong thanh sidebar
         $.ajax({
             type: "GET",
-            url: _appUrl + "/shop/cart/list-cart",
+            url: _appUrl + "/shop/cart/list-cart", // Đường dẫn tới phương thức liệt kê giỏ hàng
             data: {
-                _token: _token
+                _token: _token // Thêm token bảo vệ CSRF để xác thực yêu cầu
             },
             success: function (data) {
+                // Khi yêu cầu thành công, gọi hàm showProductCart để hiển thị sản phẩm trong giỏ hàng
                 showProductCart(data);
             },
             error: function () {
+                // Khi xảy ra lỗi, hiển thị thông báo lỗi trong modal
                 $('#alertError').modal('show').find('.modal-body').html(
                     'Xin lỗi, có vấn đề về tồn kho, vui lòng thử lại sau!');
             }
         })
-    }, 0)
+    }, 0);
 };
+
 
 //show product in cart
 function showProductCart(data) {
+    // Khởi tạo biến để chứa HTML tạo các sản phẩm trong giỏ hàng
     let item = '';
     let total = 0;
     let count = 0;
+
+    // Duyệt qua từng sản phẩm trong dữ liệu trả về từ yêu cầu Ajax
     $.each(data, function (index, value) {
+        // Tính tổng giá trị cho các sản phẩm và đếm số lượng sản phẩm
         total += value.price * value.quantity;
         count++;
+
+        // Tạo HTML cho mỗi sản phẩm trong giỏ hàng
         item += `
-                <div class="itemMain" data-id="${value.id}">
+            <div class="itemMain" data-id="${value.id}">
                 <a><img class="itemImage img-fluid" src="${_appUrl}/storage/products/${value.image}"/></a>
                 <div class="itemInfo">
-                <a class="itemTitle">${value.nameVi}</a>
-                <div class="itemPriceInfo">
-                <span class="itemPriceMain">${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value.price)}</span>
+                    <a class="itemTitle">${value.nameVi}</a>
+                    <div class="itemPriceInfo">
+                        <span class="itemPriceMain">${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value.price)}</span>
+                    </div>
+                    <div class="itemAction">
+                        <div class="groupAdd">
+                            <div class="itemQuantityCart">
+                                <button class="qtyBtn minusQuan" data-type="minus">-</button>
+                                <input type="number" data-href="{{ route('shop-cart-update') }}" id="itemQuantityCart" name="quantity" data-id=${value.id} value="${value.quantity}" min="1" max="${value.max}" class="quantitySelector">
+                                <button class="qtyBtn plusQuan" data-type="plus">+</button>
+                            </div>
+                            <div data-href="{{ route('shop-cart-remove') }}" class="removeItemCart">
+                                <i class="lni lni-trash"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="itemAction">
-                <div class="groupAdd">
-                <div class="itemQuantityCart">
-                <button class="qtyBtn minusQuan" data-type="minus">-</button>
-                <input type="number" data-href="{{ route('shop-cart-update') }}" id="itemQuantityCart" name="quantity" data-id=${value.id} value="${value.quantity}" min="1" max="${value.max}" class="quantitySelector">
-                <button class="qtyBtn plusQuan" data-type="plus">+</button>
-                </div>
-                <div data-href="{{ route('shop-cart-remove') }}" class="removeItemCart">
-                <i class="lni lni-trash"></i>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                `;
+            </div>
+        `;
     });
+
+    // Đặt HTML đã tạo vào vị trí tương ứng trong giao diện người dùng
     $('.sidebarAllMainCart .sidebarAllBody').html('');
     $('.sidebarAllMainCart .totalPrice span').last().html(new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -83,69 +100,92 @@ function showProductCart(data) {
     }).format(total))
     $('.headerCart .headerCartCount').html(count)
     $('.sidebarAllMainCart .sidebarAllBody').html(item);
-
 }
+
 
 //update cart
 function updateQuantitySidebar(that) {
+    // Lấy ID sản phẩm và số lượng từ phần tử HTML mà hàm này được gọi từ
     var idItem = $(that).parent().find('input').attr('data-id');
     var quanItem = $(that).parent().find('input').val();
+
+    // Gửi yêu cầu Ajax để cập nhật số lượng sản phẩm trong giỏ hàng
     $.ajax({
         type: 'POST',
-        url: _appUrl + "/shop/cart/update",
+        url: _appUrl + "/shop/cart/update", // Đường dẫn tới phương thức cập nhật số lượng
         data: {
-            _token: _token,
+            _token: _token, // Token bảo vệ CSRF
             id: idItem,
             quantity: quanItem
         },
         success: function (cart) {
-            $('.headerCartCount').html(cart.count)
+            // Khi yêu cầu thành công, cập nhật số lượng sản phẩm và tổng giá trị trong giao diện người dùng
+            $('.headerCartCount').html(cart.count); // Cập nhật số lượng sản phẩm trong biểu tượng giỏ hàng trên header
             $('.totalPrice span').last().html(new Intl.NumberFormat('vi-VN', {
                 style: 'currency',
                 currency: 'VND'
-            }).format(cart.TotalAllRefreshAjax))
+            }).format(cart.TotalAllRefreshAjax)); // Cập nhật tổng giá trị giỏ hàng
         },
         error: function (XMLHttpRequest, textStatus) {
-            Haravan.onError(XMLHttpRequest, textStatus);
+            Haravan.onError(XMLHttpRequest, textStatus); // Xử lý lỗi Ajax
         }
-    })
+    });
 }
+
 $('body').on('click', '.sidebarAllMainCart .itemQuantityCart .qtyBtn', function (e) {
     e.preventDefault();
+
+    // Lấy giá trị của thuộc tính 'data-type' từ phần tử được bấm
     let type = $(this).data('type');
+
+    // Lấy giá trị tối đa từ thuộc tính 'max' của phần tử input
     let max = $('#itemQuantityCart').attr('max');
+
+    // Kiểm tra nút "plus" hoặc "minus" đã được bấm
     if (type == "plus") {
+        // Tăng số lượng nếu chưa vượt quá giá trị tối đa
         if (parseInt($(this).prev().val()) < max) {
             $(this).prev().val(parseInt($(this).prev().val()) + 1);
         }
     } else {
+        // Giảm số lượng nếu lớn hơn 1
         if (parseInt($(this).next().val()) !== 1)
             $(this).next().val(parseInt($(this).next().val()) - 1);
     }
-    updateQuantitySidebar($(this))
-})
-$('body').on('change', '.sidebarAllMainCart .itemQuantityCart input', function (e) {
+
+    // Gọi hàm cập nhật số lượng sản phẩm
     updateQuantitySidebar($(this));
-})
+});
+
+$('body').on('change', '.sidebarAllMainCart .itemQuantityCart input', function (e) {
+    // Gọi hàm cập nhật số lượng sản phẩm khi giá trị input thay đổi
+    updateQuantitySidebar($(this));
+});
+
 
 //remove product in cart
 $('body').on('click', '.removeItemCart', function (e) {
     e.preventDefault();
+
+    // Lấy ID sản phẩm từ thuộc tính 'data-id' của phần tử cha
     var id = $(this).parents('.itemMain').attr('data-id');
+
+    // Gửi yêu cầu Ajax để xóa sản phẩm khỏi giỏ hàng
     $.ajax({
         type: 'POST',
-        url: _appUrl + "/shop/cart/remove",
+        url: _appUrl + "/shop/cart/remove", // Đường dẫn tới phương thức xóa sản phẩm
         data: {
-            _token: _token,
+            _token: _token, // Token bảo vệ CSRF
             id: id,
         },
         success: function (cart) {
+            // Khi yêu cầu thành công, gọi hàm showProductCart để cập nhật giao diện sản phẩm trong giỏ hàng
             showProductCart(cart);
         },
         error: function (XMLHttpRequest, textStatus) {
-            Haravan.onError(XMLHttpRequest, textStatus);
+            Haravan.onError(XMLHttpRequest, textStatus); // Xử lý lỗi Ajax
         }
-    })
+    });
 });
 
 // show cart modal

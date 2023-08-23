@@ -39,7 +39,6 @@ class CategoryController extends Controller
             // Gán trường catImage của đối tượng category với tên mới
             $category->catImage = $newFileName;
         }
-
         try {
             $category->save();
             return redirect()->back()->with('success', 'Category added successfully!');
@@ -69,11 +68,6 @@ class CategoryController extends Controller
         $category = Category::where('id', '=', $id)->first();
         return view('admin.category.edit', compact('category'));
     }
-    public function showCategories()
-    {
-        $categories = Category::all();
-        return view('category-list', compact('categories'));
-    }
 
     public function update($id, CategoryUpdateRequest $request)
     {
@@ -82,28 +76,33 @@ class CategoryController extends Controller
         $category->catName =  $request->catName;
         $category->catSlug =  $request->catSlug;
         $category->catDescriptions =  $request->catDescriptions;
-        $oldImg = $category->catImage;
-        $file = $request->new_image;
-        if ($request->hasFile('new_image')) {
-            $fileExtension = $file->getClientOriginalName();
-            $fileName = time();
-            $newFileName = $fileName . '.' . $fileExtension;
-            $request->file('new_image')->storeAs('public/categoryImage', $newFileName);
-            $category->catImage = $newFileName;
+        $oldImg = $category->catImage;  // Lưu giữ tên tệp ảnh hiện tại của danh mục
+        $file = $request->new_image;  // Lấy thông tin về tệp ảnh mới từ yêu cầu
+
+        if ($request->hasFile('new_image')) {  // Kiểm tra xem yêu cầu có chứa tệp ảnh mới hay không
+            $fileExtension = $file->getClientOriginalName();  // Lấy phần mở rộng của tên tệp
+            $fileName = time();  // Tạo một tên tệp mới dựa trên thời gian
+            $newFileName = $fileName . '.' . $fileExtension;  // Kết hợp tên và phần mở rộng để tạo tên tệp mới
+            $request->file('new_image')->storeAs('public/categoryImage', $newFileName);  // Lưu trữ tệp ảnh mới trong thư mục 'categoryImage'
+            $category->catImage = $newFileName;  // Cập nhật tên tệp ảnh mới cho danh mục
         }
+
         try {
-            $category->save();
-            if ($request->hasFile('new_image')) {
-                $image = 'public/categoryImage/' . $oldImg;
-                Storage::delete($image);
+            $category->save();  // Lưu thay đổi của danh mục vào cơ sở dữ liệu
+
+            if ($request->hasFile('new_image')) {  // Nếu có tệp ảnh mới
+                $image = 'public/categoryImage/' . $oldImg;  // Xác định đường dẫn đến tệp ảnh cũ
+                Storage::delete($image);  // Xóa tệp ảnh cũ
             }
-            return redirect()->back()->with('success', 'Category updated successfully!');
+
+            return redirect()->back()->with('success', 'Category update successfully!');  // Chuyển hướng về trang trước với thông báo thành công
         } catch (\Exception $th) {
-            if ($request->hasFile('new_image')) {
-                $image = 'public/categoryImage/' . $newFileName;
-                Storage::delete($image);
+            if ($request->hasFile('new_image')) {  // Nếu có tệp ảnh mới
+                $image = 'public/categoryImage/' . $newFileName;  // Xác định đường dẫn đến tệp ảnh mới không thành công
+                Storage::delete($image);  // Xóa tệp ảnh mới không thành công
             }
-            return redirect()->back();
+
+            return redirect()->back()->with('error', 'Category can not update!'); // Chuyển hướng về trang trước khi có lỗi xảy ra
         }
     }
 }
